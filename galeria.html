@@ -3,24 +3,41 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="theme-color" content="#f4e5f2" />
-		<title>Galería de Histología | Clínica Anglo Americana</title>
+		<meta name="theme-color" content="#0d0d15" />
+		<title>Galería de Histología | Histología II</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+		<script>
+			if (localStorage.getItem('histologia-theme') === 'light') {
+				document.documentElement.classList.add('light-mode');
+			}
+		</script>
 		<link rel="stylesheet" href="styles.css" />
 	</head>
 	<body>
-		<div class="page-wrapper gallery-page">
-			<header class="navbar">
-				<a class="logo" href="index.html" aria-label="Clínica Anglo Americana, inicio">
-					<img src="image/logo.png" alt="Clínica Anglo Americana" />
+		<div class="page-wrapper gallery-page" id="top">
+			<header class="dashboard-nav" aria-label="Navegación principal">
+				<a class="dashboard-brand" href="index.html" aria-label="Histotecnología II, inicio">
+					<span class="header-brand-content">
+						<img class="header-logo-icon" src="image/image_8.png" alt="Universidad de Carabobo" />
+						<img class="header-logo-icon" src="image/image_7.png" alt="Histotecnología" />
+						<span>Histotecnología <strong>II</strong></span>
+					</span>
 				</a>
-				<nav class="nav-links" aria-label="Navegación principal">
+				<nav class="dashboard-links" id="siteNavigation" aria-label="Navegación principal">
 					<a href="index.html">Inicio</a>
 					<a href="galeria.html" aria-current="page">Galería</a>
 					<a href="quiz.html">Quiz</a>
 				</nav>
+				<div class="dashboard-nav-actions">
+					<button class="theme-toggle" type="button" data-theme-toggle aria-label="Activar modo claro" aria-pressed="false">
+						<span class="theme-toggle-icon" aria-hidden="true">☼</span>
+					</button>
+					<button class="menu-toggle" type="button" data-menu-toggle aria-controls="siteNavigation" aria-expanded="false" aria-label="Abrir menú de navegación">
+						<span aria-hidden="true">☰</span>
+					</button>
+				</div>
 			</header>
 
 			<main class="gallery-main">
@@ -131,50 +148,38 @@
 				</section>
 			</main>
 
-			<footer class="site-footer">
-				<div class="footer-grid">
-					<div class="footer-column">
-						<h3>Sobre la Plataforma</h3>
-						<p>Espacio virtual dedicado al aprendizaje y exploración del mundo microscópico, ofreciendo acceso a muestras, recursos educativos e información científica.</p>
+			<footer class="dashboard-site-footer">
+				<div class="dashboard-footer-main">
+					<div class="footer-brand-block">
+						<a class="dashboard-brand" href="index.html" aria-label="Histología II, inicio">
+							<img src="image/logo.png" alt="" />
+							<span>Histología <strong>II</strong></span>
+						</a>
+						<p>Guía Digital <span aria-hidden="true">•</span> Módulo Digestivo</p>
 					</div>
-					<div class="footer-column">
-						<h3>Soporte y Ayuda</h3>
-						<p>Encuentra indicaciones sobre el uso de las herramientas y la navegación dentro del laboratorio.</p>
-					</div>
-					<div class="footer-column">
-						<h3>Información Legal</h3>
-						<p>Este sitio web tiene fines educativos e informativos. El contenido, imágenes y recursos utilizados están protegidos por sus respectivos derechos de autor y no pueden ser reproducidos sin autorización.</p>
-					</div>
-					<div class="footer-column footer-newsletter">
-						<h3>Nota de Actualización</h3>
-						<p>El catálogo de muestras y la información científica se mantienen en revisión constante.</p>
-						<div class="newsletter-box">
-							<span class="mail-icon" aria-hidden="true">
-								<svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-									<path d="M4 7.5A2.5 2.5 0 0 1 6.5 5h11A2.5 2.5 0 0 1 20 7.5v9A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5v-9Zm2.3-.5 6.7 5.2 6.7-5.2H6.3Zm12.2 2.2-6.5 5.1a1 1 0 0 1-1.2 0L5.5 9.2v7.3c0 .3.2.5.5.5h11c.3 0 .5-.2.5-.5V9.2Z" fill="currentColor"/>
-								</svg>
-							</span>
-							<span>Ingrese tu correo</span>
-						</div>
-						<button class="subscribe-btn" type="button">SUSCRIBIRME</button>
+					<nav class="footer-quick-links" aria-label="Navegación rápida">
+						<h2>Explorar</h2>
+						<a href="index.html">Inicio</a>
+						<a href="galeria.html">Galería</a>
+						<a href="visor.html">Visor virtual</a>
+						<a href="quiz.html">Quiz</a>
+					</nav>
+					<div class="footer-credit-block" id="contacto">
+						<p>Recurso educativo de Histología II.</p>
+						<p>Identidad institucional: Clínica Anglo Americana. Los recursos visuales conservan sus créditos y licencias cuando se indican.</p>
+						<details class="footer-contact">
+							<summary>Contacto y créditos</summary>
+							<p>Para consultas académicas o información sobre los recursos, comunícate con tu equipo docente.</p>
+						</details>
 					</div>
 				</div>
-				<div class="footer-bottom">
-					<div class="footer-bottom-text">Derechos de autor 2005 - 2026 T. Clark Brejle y Robert L. Sorenson... Todos los derechos reservados.</div>
-					<div class="social-icons" aria-label="Redes sociales">
-						<button class="social-btn" type="button" aria-label="Facebook">
-							<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.4l.4-2.8h-2.8V7.5c0-.8.2-1.3 1.3-1.3h1.5V3.6c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.3H8v2.8h2.5v8h3Z" fill="currentColor"/></svg>
-						</button>
-						<button class="social-btn" type="button" aria-label="Instagram">
-							<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2.5h10A4.5 4.5 0 0 1 21.5 7v10A4.5 4.5 0 0 1 17 21.5H7A4.5 4.5 0 0 1 2.5 17V7A4.5 4.5 0 0 1 7 2.5Zm0 2A2.5 2.5 0 0 0 4.5 7v10A2.5 2.5 0 0 0 7 19.5h10A2.5 2.5 0 0 0 19.5 17V7A2.5 2.5 0 0 0 17 4.5H7Zm5 2.2A4.3 4.3 0 1 1 7.7 13 4.3 4.3 0 0 1 12 6.7Zm0 2A2.3 2.3 0 1 0 14.3 11 2.3 2.3 0 0 0 12 8.7Zm4.7-1.7a1.1 1.1 0 1 1-1.1 1.1 1.1 1.1 0 0 1 1.1-1.1Z" fill="currentColor"/></svg>
-						</button>
-						<button class="social-btn" type="button" aria-label="X">
-							<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 3h2.8l-6.1 7 7.2 11H16l-4.9-7.4L5.8 21H3l6.6-7.6L3 3h7.3l4.4 6.7L18.9 3Zm-1 16.2h1.6L7.3 4.7H5.6l12.3 14.5Z" fill="currentColor"/></svg>
-						</button>
-					</div>
+				<div class="dashboard-footer-bottom">
+					<span>Histología II <span aria-hidden="true">•</span> Módulo Digestivo</span>
+					<a href="#top" class="footer-back-to-top">Volver arriba ↑</a>
 				</div>
 			</footer>
 		</div>
+		<script src="script.js"></script>
 		<script>
 			document.querySelectorAll(".chapter-more").forEach((button) => {
 				const link = document.createElement("a");

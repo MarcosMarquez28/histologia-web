@@ -1,135 +1,169 @@
 <!DOCTYPE html>
 <html lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="theme-color" content="#f4e5f2" />
-		<title>Cuestionarios de Histología | Clínica Anglo Americana</title>
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-		<link rel="stylesheet" href="styles.css" />
-	</head>
-	<body>
-		<div class="page-wrapper gallery-page quiz-page">
-			<header class="navbar">
-				<a class="logo" href="index.html" aria-label="Clínica Anglo Americana, inicio">
-					<img src="image/logo.png" alt="Clínica Anglo Americana" />
-				</a>
-				<nav class="nav-links" aria-label="Navegación principal">
-					<a href="index.html">Inicio</a>
-					<a href="galeria.html">Galería</a>
-					<a href="quiz.html" aria-current="page">Quiz</a>
-				</nav>
-			</header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0d0d15" />
+    <meta name="description" content="Pon a prueba tus conocimientos sobre los tejidos y preparados histológicos del sistema digestivo." />
+    <title>Quiz de Histología | Histología II</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <script>
+      if (localStorage.getItem('histologia-theme') === 'light') {
+        document.documentElement.classList.add('light-mode');
+      }
+    </script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="dashboard-body">
+    <div class="page-wrapper home-dashboard quiz-dashboard" id="top">
+      <header class="dashboard-nav" aria-label="Navegación principal">
+        <a class="dashboard-brand" href="index.html" aria-label="Histotecnología II, inicio">
+          <span class="header-brand-content">
+            <img class="header-logo-icon" src="image/image_8.png" alt="Universidad de Carabobo" />
+            <img class="header-logo-icon" src="image/image_7.png" alt="Histotecnología" />
+            <span>Histotecnología <strong>II</strong></span>
+          </span>
+        </a>
+        <nav class="dashboard-links" id="siteNavigation" aria-label="Navegación principal">
+          <a href="index.html">Inicio</a>
+          <a href="galeria.html">Galería</a>
+          <a href="quiz.html" aria-current="page">Quiz</a>
+        </nav>
+        <div class="dashboard-nav-actions">
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Activar modo claro" aria-pressed="false">
+            <span class="theme-toggle-icon" aria-hidden="true">☼</span>
+          </button>
+          <button class="menu-toggle" type="button" data-menu-toggle aria-controls="siteNavigation" aria-expanded="false" aria-label="Abrir menú de navegación">
+            <span aria-hidden="true">☰</span>
+          </button>
+        </div>
+      </header>
 
-			<main class="gallery-main">
-				<section class="gallery-intro quiz-intro" aria-labelledby="quiz-title">
-					<p class="gallery-eyebrow">Evalúa lo aprendido</p>
-					<h1 id="quiz-title">CUESTIONARIOS</h1>
-					<p>Estos cuestionarios solo cubren material que se esperaría que se discutiera en un laboratorio de histología. Por ahora, los cuestionarios solo están disponibles para los capítulos 1 al 8 y el capítulo 21.</p>
-				</section>
+      <main class="quiz-main">
+        <section class="quiz-intro-panel" aria-labelledby="quiz-title">
+          <p class="dashboard-eyebrow">MÓDULO DIGESTIVO · AUTOEVALUACIÓN</p>
+          <h1 id="quiz-title">Pon a prueba tus <span>conocimientos</span></h1>
+          <p>Elige un tema para repasar las estructuras histológicas y comprobar lo aprendido a tu ritmo.</p>
+          <div class="quiz-meta"><span>6 temas</span><span>Selección múltiple</span><span>Retroalimentación inmediata</span></div>
+        </section>
 
-				<section class="gallery-section quiz-section" aria-labelledby="cells-title">
-					<div class="gallery-section-heading">
-						<p class="gallery-eyebrow">Capítulos 1 al 8</p>
-						<h2 id="cells-title">CÉLULAS Y TEJIDOS</h2>
-						<p>¿Cuáles son los cuatro tipos básicos de tejido en histología?</p>
-					</div>
-					<div class="chapter-grid quiz-grid">
-						<article class="chapter-card quiz-card">
-							<div class="chapter-image quiz-image"><img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=800&q=85" alt="Preparación microscópica de células" loading="lazy" /></div>
-							<div class="chapter-content"><h3>Capítulo 1</h3><p>La Célula</p><button class="quiz-action" type="button">Iniciar Quiz</button></div>
-						</article>
-						<article class="chapter-card quiz-card">
-							<div class="chapter-image quiz-image"><img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Histological_section_of_small_intestine_epithelial_tissue%2C_under_optical_microscope%2C_stained_with_HE.jpg" alt="Micrografía de epitelio intestinal teñido con hematoxilina y eosina" loading="lazy" /><span class="quiz-image-credit"><a href="https://commons.wikimedia.org/wiki/File:Histological_section_of_small_intestine_epithelial_tissue,_under_optical_microscope,_stained_with_HE.jpg" target="_blank" rel="noopener">Otávio Astor Vaz Costa</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></span></div>
-							<div class="chapter-content"><h3>Capítulo 2</h3><p>El Epitelio</p><button class="quiz-action" type="button">Iniciar Quiz</button></div>
-						</article>
-						<article class="chapter-card quiz-card">
-							<div class="chapter-image quiz-image"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Connective_Tissue_Reticular_%2840885193805%29.jpg" alt="Micrografía de tejido conectivo reticular" loading="lazy" /></div>
-							<div class="chapter-content"><h3>Capítulo 3</h3><p>Tejido Conectivo</p><button class="quiz-action" type="button">Iniciar Quiz</button></div>
-						</article>
-						<article class="chapter-card quiz-card">
-							<div class="chapter-image quiz-image"><img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Skeletal_muscle_histology.jpg" alt="Micrografía de tejido muscular esquelético" loading="lazy" /><span class="quiz-image-credit"><a href="https://commons.wikimedia.org/wiki/File:Skeletal_muscle_histology.jpg" target="_blank" rel="noopener">Veeresh Likhitha</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></span></div>
-							<div class="chapter-content"><h3>Capítulo 4</h3><p>El Músculo</p><button class="quiz-action" type="button">Iniciar Quiz</button></div>
-						</article>
-						<article class="chapter-card quiz-card">
-							<div class="chapter-image quiz-image"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Histology_of_articular_cartilage_zones.jpg" alt="Micrografía de las zonas del cartílago articular" loading="lazy" /></div>
-							<div class="chapter-content"><h3>Capítulo 5</h3><p>Cartílago y Hueso</p><button class="quiz-action" type="button">Iniciar Quiz</button></div>
-						</article>
-						<article class="chapter-card quiz-card">
-							<div class="chapter-image quiz-image"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Ependyma.png" alt="Micrografía de células ependimarias del sistema nervioso central" loading="lazy" /><span class="quiz-image-credit"><a href="https://commons.wikimedia.org/wiki/File:Ependyma.png" target="_blank" rel="noopener">Martin Hasselblatt, MD</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener">CC BY-SA 3.0</a></span></div>
-							<div class="chapter-content"><h3>Capítulo 6</h3><p>Tejido Nervioso</p><button class="quiz-action" type="button">Iniciar Quiz</button></div>
-						</article>
-						<article class="chapter-card quiz-card">
-							<div class="chapter-image quiz-image"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c6/Blood_film_01.jpg" alt="Frotis sanguíneo teñido con Giemsa" loading="lazy" /></div>
-							<div class="chapter-content"><h3>Capítulo 7</h3><p>Sangre Periférica</p><button class="quiz-action" type="button">Iniciar Quiz</button></div>
-						</article>
-						<article class="chapter-card quiz-card">
-							<div class="chapter-image quiz-image"><img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Bone_marrow_cellularity_in_QuPath.png" alt="Micrografía digital de celularidad de médula ósea" loading="lazy" /></div>
-							<div class="chapter-content"><h3>Capítulo 8</h3><p>Hematopoyesis</p><button class="quiz-action" type="button">Iniciar Quiz</button></div>
-						</article>
-					</div>
-				</section>
+        <section class="quiz-selection" id="quizSelection" aria-labelledby="quiz-selection-title">
+          <div class="quiz-section-heading">
+            <div>
+              <p class="dashboard-eyebrow">SELECCIONA UN PREPARADO</p>
+              <h2 id="quiz-selection-title" tabindex="-1">Explora las autoevaluaciones</h2>
+            </div>
+            <label class="module-search quiz-search" for="quizSearch">
+              <span aria-hidden="true">⌕</span>
+              <input id="quizSearch" type="search" placeholder="Buscar por tema o estructura..." autocomplete="off" />
+              <kbd>/</kbd>
+            </label>
+          </div>
+          <div class="quiz-grid" id="quizGrid">
+            <article class="quiz-card" data-topic="esofago" data-search="esofago mucosa epitelio submucosa glandulas muscular adventicia">
+              <div class="quiz-card-top"><span class="quiz-topic-icon" aria-hidden="true">◉</span><span class="quiz-topic-label">TEMA 01</span></div>
+              <p class="quiz-card-eyebrow">TUBO DIGESTIVO</p>
+              <h3>Quiz: Esófago</h3>
+              <p class="quiz-card-description">Epitelio de revestimiento, glándulas submucosas y capas de la pared esofágica.</p>
+              <div class="quiz-card-badges"><span>3 preguntas</span><span>Selección múltiple</span></div>
+              <button class="quiz-card-action" type="button" data-start-quiz="esofago">Comenzar Quiz <span aria-hidden="true">→</span></button>
+            </article>
+            <article class="quiz-card" data-topic="estomago" data-search="estomago gástrico glandulas celulas parietales principales mucosa">
+              <div class="quiz-card-top"><span class="quiz-topic-icon" aria-hidden="true">◒</span><span class="quiz-topic-label">TEMA 02</span></div>
+              <p class="quiz-card-eyebrow">TUBO DIGESTIVO</p>
+              <h3>Quiz: Estómago y glándulas gástricas</h3>
+              <p class="quiz-card-description">Células parietales y principales, fositas, glándulas y organización de la mucosa.</p>
+              <div class="quiz-card-badges"><span>3 preguntas</span><span>Selección múltiple</span></div>
+              <button class="quiz-card-action" type="button" data-start-quiz="estomago">Comenzar Quiz <span aria-hidden="true">→</span></button>
+            </article>
+            <article class="quiz-card" data-topic="intestino-delgado" data-search="intestino delgado vellosidades criptas paneth enterocitos plicas">
+              <div class="quiz-card-top"><span class="quiz-topic-icon" aria-hidden="true">⟡</span><span class="quiz-topic-label">TEMA 03</span></div>
+              <p class="quiz-card-eyebrow">TUBO DIGESTIVO</p>
+              <h3>Quiz: Intestino delgado</h3>
+              <p class="quiz-card-description">Vellosidades, criptas de Lieberkühn, enterocitos y células de Paneth.</p>
+              <div class="quiz-card-badges"><span>3 preguntas</span><span>Selección múltiple</span></div>
+              <button class="quiz-card-action" type="button" data-start-quiz="intestino-delgado">Comenzar Quiz <span aria-hidden="true">→</span></button>
+            </article>
+            <article class="quiz-card" data-topic="intestino-grueso" data-search="intestino grueso colon criptas caliciformes mucosa">
+              <div class="quiz-card-top"><span class="quiz-topic-icon" aria-hidden="true">◎</span><span class="quiz-topic-label">TEMA 04</span></div>
+              <p class="quiz-card-eyebrow">TUBO DIGESTIVO</p>
+              <h3>Quiz: Intestino grueso</h3>
+              <p class="quiz-card-description">Rasgos distintivos del colon, criptas rectas y células caliciformes.</p>
+              <div class="quiz-card-badges"><span>3 preguntas</span><span>Selección múltiple</span></div>
+              <button class="quiz-card-action" type="button" data-start-quiz="intestino-grueso">Comenzar Quiz <span aria-hidden="true">→</span></button>
+            </article>
+            <article class="quiz-card" data-topic="higado" data-search="higado lobulillo hepatocitos sinusoides vena central espacio porta">
+              <div class="quiz-card-top"><span class="quiz-topic-icon" aria-hidden="true">✧</span><span class="quiz-topic-label">TEMA 05</span></div>
+              <p class="quiz-card-eyebrow">ÓRGANOS ANEXOS</p>
+              <h3>Quiz: Hígado</h3>
+              <p class="quiz-card-description">Lobulillo hepático, sinusoides, hepatocitos y espacios porta.</p>
+              <div class="quiz-card-badges"><span>3 preguntas</span><span>Selección múltiple</span></div>
+              <button class="quiz-card-action" type="button" data-start-quiz="higado">Comenzar Quiz <span aria-hidden="true">→</span></button>
+            </article>
+            <article class="quiz-card" data-topic="pancreas" data-search="pancreas acinos serosos islotes langerhans endocrino exocrino">
+              <div class="quiz-card-top"><span class="quiz-topic-icon" aria-hidden="true">◌</span><span class="quiz-topic-label">TEMA 06</span></div>
+              <p class="quiz-card-eyebrow">ÓRGANOS ANEXOS</p>
+              <h3>Quiz: Páncreas</h3>
+              <p class="quiz-card-description">Porción exocrina, acinos serosos y función endocrina de los islotes.</p>
+              <div class="quiz-card-badges"><span>3 preguntas</span><span>Selección múltiple</span></div>
+              <button class="quiz-card-action" type="button" data-start-quiz="pancreas">Comenzar Quiz <span aria-hidden="true">→</span></button>
+            </article>
+          </div>
+          <p class="search-empty" id="quizSearchEmpty" hidden>No encontramos temas que coincidan con esa búsqueda.</p>
+        </section>
 
-				<section class="gallery-section quiz-section" aria-labelledby="imitations-title">
-					<div class="gallery-section-heading">
-						<p class="gallery-eyebrow">Capítulo 21</p>
-						<h2 id="imitations-title">IMITACIONES DE TEJIDOS</h2>
-						<p>¿Qué características permiten reconocer las imitaciones de tejidos?</p>
-					</div>
-					<div class="chapter-grid quiz-grid quiz-grid-featured">
-						<article class="chapter-card quiz-card">
-							<div class="chapter-image quiz-image"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f6/Histology_of_macular_artifacts_in_the_hippocampus.jpg" alt="Artefactos maculares en una micrografía del hipocampo" loading="lazy" /></div>
-							<div class="chapter-content"><h3>Capítulo 21</h3><p>Imitaciones de Tejidos</p><button class="quiz-action" type="button">Iniciar Quiz</button></div>
-						</article>
-					</div>
-				</section>
-			</main>
+        <section class="quiz-active" id="quizActive" aria-labelledby="activeQuizTitle" hidden>
+          <button class="quiz-back" id="backToQuizSelection" type="button"><span aria-hidden="true">←</span> Volver a la selección de temas</button>
+          <header class="quiz-active-header">
+            <p class="dashboard-eyebrow" id="activeQuizEyebrow">AUTOEVALUACIÓN</p>
+            <h2 id="activeQuizTitle" tabindex="-1"></h2>
+            <p id="activeQuizDescription"></p>
+            <div class="quiz-meta"><span id="activeQuizQuestionCount"></span><span>Selección múltiple</span><span>A tu ritmo</span></div>
+          </header>
+          <form class="quiz-form" id="digestiveQuiz">
+            <div id="quizQuestions"></div>
+            <div class="quiz-submit-row">
+              <button class="quiz-submit" type="submit">Ver mi resultado <span aria-hidden="true">→</span></button>
+              <button class="quiz-reset" type="reset">Volver a empezar</button>
+            </div>
+            <p class="quiz-result" id="quizResult" role="status" aria-live="polite" tabindex="-1" hidden></p>
+          </form>
+        </section>
+      </main>
 
-			<footer class="site-footer">
-				<div class="footer-grid">
-					<div class="footer-column">
-						<h3>Sobre la Plataforma</h3>
-						<p>Espacio virtual dedicado al aprendizaje y exploración del mundo microscópico, ofreciendo acceso a muestras, recursos educativos e información científica.</p>
-					</div>
-					<div class="footer-column">
-						<h3>Soporte y Ayuda</h3>
-						<p>Encuentra indicaciones sobre el uso de las herramientas y la navegación dentro del laboratorio.</p>
-					</div>
-					<div class="footer-column">
-						<h3>Información Legal</h3>
-						<p>Este sitio web tiene fines educativos e informativos. El contenido, imágenes y recursos utilizados están protegidos por sus respectivos derechos de autor y no pueden ser reproducidos sin autorización.</p>
-					</div>
-					<div class="footer-column footer-newsletter">
-						<h3>Nota de Actualización</h3>
-						<p>El catálogo de muestras y la información científica se mantienen en revisión constante.</p>
-						<div class="newsletter-box">
-							<span class="mail-icon" aria-hidden="true">
-								<svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-									<path d="M4 7.5A2.5 2.5 0 0 1 6.5 5h11A2.5 2.5 0 0 1 20 7.5v9A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5v-9Zm2.3-.5 6.7 5.2 6.7-5.2H6.3Zm12.2 2.2-6.5 5.1a1 1 0 0 1-1.2 0L5.5 9.2v7.3c0 .3.2.5.5.5h11c.3 0 .5-.2.5-.5V9.2Z" fill="currentColor" />
-								</svg>
-							</span>
-							<span>Ingrese tu correo</span>
-						</div>
-						<button class="subscribe-btn" type="button">SUSCRIBIRME</button>
-					</div>
-				</div>
-				<div class="footer-bottom">
-					<div class="footer-bottom-text">Derechos de autor 2005 - 2026 T. Clark Brejle y Robert L. Sorenson... Todos los derechos reservados.</div>
-					<div class="social-icons" aria-label="Redes sociales">
-						<button class="social-btn" type="button" aria-label="Facebook">
-							<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.4l.4-2.8h-2.8V7.5c0-.8.2-1.3 1.3-1.3h1.5V3.6c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.3H8v2.8h2.5v8h3Z" fill="currentColor" /></svg>
-						</button>
-						<button class="social-btn" type="button" aria-label="Instagram">
-							<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2.5h10A4.5 4.5 0 0 1 21.5 7v10A4.5 4.5 0 0 1 17 21.5H7A4.5 4.5 0 0 1 2.5 17V7A4.5 4.5 0 0 1 7 2.5Zm0 2A2.5 2.5 0 0 0 4.5 7v10A2.5 2.5 0 0 0 7 19.5h10A2.5 2.5 0 0 0 19.5 17V7A2.5 2.5 0 0 0 17 4.5H7Zm5 2.2A4.3 4.3 0 1 1 7.7 13 4.3 4.3 0 0 1 12 6.7Zm0 2A2.3 2.3 0 1 0 14.3 11 2.3 2.3 0 0 0 12 8.7Zm4.7-1.7a1.1 1.1 0 1 1-1.1 1.1 1.1 1.1 0 0 1 1.1-1.1Z" fill="currentColor" /></svg>
-						</button>
-						<button class="social-btn" type="button" aria-label="X">
-							<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 3h2.8l-6.1 7 7.2 11H16l-4.9-7.4L5.8 21H3l6.6-7.6L3 3h7.3l4.4 6.7L18.9 3Zm-1 16.2h1.6L7.3 4.7H5.6l12.3 14.5Z" fill="currentColor" /></svg>
-						</button>
-					</div>
-				</div>
-			</footer>
-		</div>
-	</body>
+      <footer class="dashboard-site-footer">
+        <div class="dashboard-footer-main">
+          <div class="footer-brand-block">
+            <a class="dashboard-brand" href="index.html" aria-label="Histología II, inicio">
+              <img src="image/logo.png" alt="" />
+              <span>Histología <strong>II</strong></span>
+            </a>
+            <p>Guía Digital <span aria-hidden="true">•</span> Módulo Digestivo</p>
+          </div>
+          <nav class="footer-quick-links" aria-label="Navegación rápida">
+            <h2>Explorar</h2>
+            <a href="index.html">Inicio</a>
+            <a href="galeria.html">Galería</a>
+            <a href="visor.html">Visor virtual</a>
+            <a href="quiz.html" aria-current="page">Quiz</a>
+          </nav>
+          <div class="footer-credit-block">
+            <p>Recurso educativo de Histología II.</p>
+            <p>Identidad institucional: Clínica Anglo Americana. Los recursos visuales conservan sus créditos y licencias cuando se indican.</p>
+            <details class="footer-contact">
+              <summary>Contacto y créditos</summary>
+              <p>Para consultas académicas o información sobre los recursos, comunícate con tu equipo docente.</p>
+            </details>
+          </div>
+        </div>
+        <div class="dashboard-footer-bottom">
+          <span>Histología II <span aria-hidden="true">•</span> Módulo Digestivo</span>
+          <a href="#top" class="footer-back-to-top">Volver arriba ↑</a>
+        </div>
+      </footer>
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html>

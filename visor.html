@@ -3,47 +3,75 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Visor de microscopio | Clínica Anglo Americana</title>
+    <meta name="theme-color" content="#0d0d15" />
+    <title>Visor de láminas | Histología II</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script>
+      if (localStorage.getItem('histologia-theme') === 'light') {
+        document.documentElement.classList.add('light-mode');
+      }
+    </script>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="page-wrapper gallery-page viewer-page">
-      <header class="navbar" aria-label="Navegación principal">
-        <a class="logo" href="index.html" aria-label="Clínica Anglo Americana, inicio">
-          <img src="image/logo.png" alt="Clínica Anglo Americana" />
+      <header class="dashboard-nav" aria-label="Navegación principal">
+        <a class="dashboard-brand" href="index.html" aria-label="Histotecnología II, inicio">
+          <span class="header-brand-content">
+            <img class="header-logo-icon" src="image/image_8.png" alt="Universidad de Carabobo" />
+            <img class="header-logo-icon" src="image/image_7.png" alt="Histotecnología" />
+            <span>Histotecnología <strong>II</strong></span>
+          </span>
         </a>
-        <nav class="nav-links" aria-label="Navegación principal">
+        <nav class="dashboard-links" id="siteNavigation" aria-label="Navegación principal">
           <a href="index.html">Inicio</a>
-          <a href="galeria.html" aria-current="page">Galería</a>
+          <a href="galeria.html">Galería</a>
           <a href="quiz.html">Quiz</a>
         </nav>
+        <div class="dashboard-nav-actions">
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Activar modo claro" aria-pressed="false">
+            <span class="theme-toggle-icon" aria-hidden="true">☼</span>
+          </button>
+          <button class="menu-toggle" type="button" data-menu-toggle aria-controls="siteNavigation" aria-expanded="false" aria-label="Abrir menú de navegación">
+            <span aria-hidden="true">☰</span>
+          </button>
+        </div>
       </header>
 
-      <main class="viewer-layout">
+      <main class="viewer-layout" id="viewerLayout">
         <section class="viewer-panel" aria-labelledby="tissue-title">
           <div class="viewer-meta-strip">
-            <span>Capítulo 14 - Tracto Gastrointestinal</span>
+            <span id="viewerChapter">MÓDULO DIGESTIVO · GUÍA DE ESTRUCTURAS</span>
           </div>
 
-          <div class="viewer-stage" id="viewerStage" aria-label="Visor de microscopio">
-            <div class="viewer-image" id="viewerImage" aria-label="Imagen microscópica del tejido">
+          <div class="viewer-stage" id="viewerStage" aria-label="Visor de referencia anatómica">
+            <div class="viewer-image" id="viewerImage" role="img" aria-label="Imagen de referencia ilustrativa; no representa un preparado real">
               <div class="viewer-overlay">
-                <span>Micrografía</span>
-                <strong>Paladar duro</strong>
+                <span>REFERENCIA HISTOLÓGICA</span>
+                <strong id="viewerImageTitle">Paladar duro</strong>
               </div>
             </div>
+            <button type="button" class="viewer-overlay-toggle" id="toggleViewerOverlay" aria-pressed="false" aria-label="Ocultar controles y guía anatómica">
+              <span aria-hidden="true">◉</span>
+              <span class="viewer-overlay-toggle-label">Vista limpia</span>
+            </button>
           </div>
 
           <div class="viewer-controls" aria-label="Controles del zoom y navegación">
-            <div class="zoom-preset-row">
-              <button type="button" data-zoom="1.1">1.1x</button>
-              <button type="button" data-zoom="4">4x</button>
-              <button type="button" data-zoom="10">10x</button>
-              <button type="button" data-zoom="20">20x</button>
-              <button type="button" data-zoom="40">40x</button>
+            <div class="viewer-tool-row">
+              <div class="zoom-preset-row" aria-label="Aumento del objetivo">
+                <span class="toolbar-label">AUMENTO</span>
+                <button type="button" data-zoom="1" data-magnification="4" aria-pressed="true">4×</button>
+                <button type="button" data-zoom="1.7" data-magnification="10" aria-pressed="false">10×</button>
+                <button type="button" data-zoom="4" data-magnification="40" aria-pressed="false">40×</button>
+              </div>
+              <div class="viewer-utility-actions">
+                <button type="button" id="resetView" aria-label="Reiniciar vista">Reiniciar vista</button>
+                <button type="button" id="toggleFullscreen" aria-label="Activar pantalla completa">⛶ <span>Pantalla completa</span></button>
+                <button type="button" class="info-toggle" id="toggleInfo" aria-controls="tissueInfo" aria-expanded="false">Anatomía</button>
+              </div>
             </div>
 
             <div class="zoom-manual-row">
@@ -51,28 +79,29 @@
               <input id="zoomSlider" type="range" min="100" max="400" step="5" value="100" aria-label="Control de zoom manual" />
               <button type="button" class="zoom-action" id="zoomIn" aria-label="Aumentar zoom">+</button>
               <span class="zoom-readout" id="zoomReadout">100%</span>
+              <span class="viewer-magnification" id="magnificationReadout">Objetivo 4×</span>
             </div>
-
-            <div class="viewer-navigation" aria-label="Navegación de la vista">
-              <button type="button" aria-label="Vista anterior">←</button>
-              <button type="button" aria-label="Vista siguiente">→</button>
-              <span>1000 µm</span>
-            </div>
+            <p class="viewer-status" id="viewerStatus" aria-live="polite"></p>
           </div>
         </section>
 
-        <aside class="info-panel" aria-labelledby="tissue-title">
-          <div class="info-thumb" aria-label="Miniatura de vista general del tejido"></div>
+        <aside class="info-panel" id="tissueInfo" aria-labelledby="tissue-title">
+          <div class="info-panel-heading">
+            <span class="info-kicker">GUÍA DE ESTRUCTURAS</span>
+            <button type="button" id="closeInfo" aria-label="Cerrar panel anatómico">×</button>
+          </div>
+          <div class="info-thumb" aria-hidden="true"><span>IMAGEN DE REFERENCIA</span></div>
 
           <div class="info-copy">
             <h1 id="tissue-title">Paladar Duro / Hard Palate</h1>
-            <p>
+            <p id="tissueDescription">
               La mucosa oral del paladar duro está recubierta por un epitelio estratificado queratinizado
               que ofrece protección frente a la mordida, la fricción y la temperatura. La superficie presenta
               una arquitectura de elevaciones y crestas con una submucosa densa y muy vascularizada.
             </p>
 
-            <ul>
+            <h2 class="structures-title">Puntos de observación</h2>
+            <ul id="tissueStructures">
               <li>Mucosa oral con epitelio estratificado queratinizado.</li>
               <li>Rugae palatinas y crestas longitudinales.</li>
               <li>Papilas dérmicas con tejido conectivo denso.</li>
@@ -81,9 +110,11 @@
             </ul>
           </div>
         </aside>
+        <button type="button" class="info-backdrop" id="infoBackdrop" aria-label="Cerrar panel anatómico"></button>
       </main>
     </div>
 
+    <script src="script.js"></script>
     <script src="visor.js"></script>
   </body>
 </html>

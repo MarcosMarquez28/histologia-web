@@ -3,178 +3,185 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Clinica Anglo Americana</title>
+    <meta name="theme-color" content="#0d0d15" />
+    <meta name="description" content="Explora preparados histológicos del sistema digestivo, estudia sus estructuras y practica con la Guía Digital de Histología II." />
+    <title>Histología II | Guía Digital</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <script>
+      if (localStorage.getItem('histologia-theme') === 'light') {
+        document.documentElement.classList.add('light-mode');
+      }
+    </script>
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
-    <div class="page-wrapper">
-      <header class="navbar">
-        <a class="logo" href="index.html" aria-label="Clínica Anglo Americana, inicio">
-          <img src="image/logo.png" alt="Clínica Anglo Americana" />
+  <body class="dashboard-body">
+    <div class="page-wrapper home-dashboard" id="top">
+      <header class="dashboard-nav" aria-label="Navegación principal">
+        <a class="dashboard-brand" href="index.html" aria-label="Histotecnología II, inicio">
+          <span class="header-brand-content">
+            <img class="header-logo-icon" src="image/image_8.png" alt="Universidad de Carabobo" />
+            <img class="header-logo-icon" src="image/image_7.png" alt="Histotecnología" />
+            <span>Histotecnología <strong>II</strong></span>
+          </span>
         </a>
-        <nav class="nav-links" aria-label="Navegación principal">
+        <nav class="dashboard-links" id="siteNavigation" aria-label="Navegación principal">
           <a href="index.html" aria-current="page">Inicio</a>
           <a href="galeria.html">Galería</a>
           <a href="quiz.html">Quiz</a>
         </nav>
+        <div class="dashboard-nav-actions">
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Activar modo claro" aria-pressed="false">
+            <span class="theme-toggle-icon" aria-hidden="true">☼</span>
+          </button>
+          <button class="menu-toggle" type="button" data-menu-toggle aria-controls="siteNavigation" aria-expanded="false" aria-label="Abrir menú de navegación">
+            <span aria-hidden="true">☰</span>
+          </button>
+        </div>
       </header>
 
-      <section class="banner-section" aria-label="Banner de nuestra institución">
-        <div class="banner-image" id="bannerImage" aria-hidden="true"></div>
-        <div class="banner-glass"></div>
-        <div class="banner-title-box">
-          <h2>NUESTRA INSTITUCIÓN</h2>
-        </div>
-        <div class="banner-text-box">
-          <p>
-            Originalmente desarrollado para estudiantes de la Universidad de Minnesota,
-            se ha convertido en uno de los recursos de histología más utilizados en
-            internet. El Departamento de Genética, Biología Celular y Desarrollo de la
-            Facultad de Medicina de la Universidad de Minnesota (Minneapolis, MN) y la
-            Facultad de Ciencias Biológicas, Recursos de Investigación y Aprendizaje
-            ofrecieron apoyo y recursos para poner este sitio a disposición de una
-            audiencia global.
-          </p>
-        </div>
-      </section>
-
-      <section class="history-section" aria-label="Nuestra historia">
-        <div class="history-intro-card">
-          <h2>NUESTRA HISTORIA</h2>
-          <p>
-            Durante más de un siglo, el Departamento de Anatomía de la Facultad de Medicina de la
-            Universidad de Minnesota (Minneapolis, MN) preparó, teñió y preservó meticulosamente
-            muestras de tejido que revelan la microanatomía de células y tejidos humanos. Estas
-            láminas son más que simples secciones de tejido; representan un legado de excelencia de
-            generaciones de miembros del departamento.
-          </p>
-        </div>
-
-        <div class="history-story-row">
-          <div class="history-copy-card">
-            <p>
-              Este recurso se basa en una larga trayectoria docente en la Universidad de Minnesota.
-              La colección docente se desarrolló durante las décadas de 1950 y 1960 bajo la dirección
-              de Anna-Mary Carpenter, Ph.D., M.D. Se hizo más accesible gracias a la publicación de
-              Human Histology: A Color Atlas de Anna-Mary Carpenter, Ph.D., M.D., publicada en 1968.
-              También sirvió como fuente principal de las micrografías ópticas para el Color Atlas of
-              Histology, de Stanley Erlandsen, Ph.D., y Jean Magney, M.S., publicado en 1992.
-            </p>
-          </div>
-
-          <div class="history-image-card">
-            <img src="image/9504f9268268d9f72ce1945ac0bae910e832166a.jpg" alt="Libro de histología con estetoscopio" />
-          </div>
-        </div>
-      </section>
-
-      <section class="feature-story" aria-label="Presentación del atlas">
-        <div class="feature-story-row">
-          <div class="feature-image-card">
-            <img src="image/916f5a3799ebbe203192f91886bdfabf93e1e0f8.jpg" alt="Colección de libros de histología" />
-          </div>
-
-          <div class="feature-copy-card">
-            <p>
-              Para presentar una gama más amplia de especímenes y avances en impresión en color,
-              publicamos el Atlas de Histología Humana: Guía de la Estructura Microscópica de
-              Células, Tejidos y Órganos. Cada ejemplar se presenta como una serie de fotografías a
-              aumentos crecientes para proporcionar contexto y una sensación de escala y proporción.
-              Este atlas ofrece a cada estudiante un resumen impreso accesible de las diapositivas
-              esenciales de este sitio.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section class="story-panel" aria-label="Texto final de historia">
-        <div class="story-panel-inner">
-          <p>
-            Aunque los libros de texto y atlas tradicionales ofrecen imágenes valiosas, no pueden sustituir la
-            experiencia de ver un espécimen entero a través de un microscopio. La Guía de Histología cierra esta
-            brecha presentando las láminas de microscopio en un formato virtual que fomenta la exploración.
-            Cada diapositiva de nuestra colección digital ha sido cuidadosamente seleccionada por su excelente
-            conservación, tinción de alta calidad y capacidad para demostrar características estructurales clave.
-            Durante más de cinco décadas de docencia, se produjeron muchas láminas adicionales de microscopio
-            por nosotros, otras instituciones y colaboradores individuales. Stanley Erlandsen, Ph.D., dirigió una
-            instalación central para microscopía electrónica. Este sitio presenta gran parte de su propio trabajo,
-            junto con numerosas imágenes recogidas de sus colegas, para apoyar la educación en histología.
-            Agradecemos mucho a nuestros estudiantes que brindaron el impulso y la orientación para crear una
-            presentación de histología que facilita su adquisición de conocimientos sobre la estructura microscópica
-            de células, tejidos y órganos. Fueron los estudiantes quienes nos enseñaron la mejor manera de enseñarles.
-          </p>
-        </div>
-      </section>
-
-      <script>
-        const bannerImages = [
-          "https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=1600&q=80",
-          "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1600&q=80",
-          "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1600&q=80"
-        ];
-
-        const bannerImage = document.getElementById("bannerImage");
-        let bannerIndex = 0;
-
-        function changeBannerImage() {
-          bannerIndex = (bannerIndex + 1) % bannerImages.length;
-          bannerImage.style.backgroundImage = `url('${bannerImages[bannerIndex]}')`;
-        }
-
-        bannerImage.style.backgroundImage = `url('${bannerImages[0]}')`;
-        setInterval(changeBannerImage, 4500);
-      </script>
-
-      <footer class="site-footer">
-        <div class="footer-grid">
-          <div class="footer-column">
-            <h3>Sobre la Plataforma</h3>
-            <p>Espacio virtual dedicado al aprendizaje y exploración del mundo microscópico, ofreciendo acceso a muestras, recursos educativos e información científica.</p>
-          </div>
-
-          <div class="footer-column">
-            <h3>Soporte y Ayuda</h3>
-            <p>Encuentra indicaciones sobre el uso de las herramientas y la navegación dentro del laboratorio.</p>
-          </div>
-
-          <div class="footer-column">
-            <h3>Información Legal</h3>
-            <p>Este sitio web tiene fines educativos e informativos. El contenido, imágenes y recursos utilizados están protegidos por sus respectivos derechos de autor y no pueden ser reproducidos sin autorización.</p>
-          </div>
-
-          <div class="footer-column footer-newsletter">
-            <h3>Nota de Actualización</h3>
-            <p>El catálogo de muestras y la información científica se mantienen en revisión constante.</p>
-            <div class="newsletter-box">
-              <span class="mail-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-                  <path d="M4 7.5A2.5 2.5 0 0 1 6.5 5h11A2.5 2.5 0 0 1 20 7.5v9A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5v-9Zm2.3-.5 6.7 5.2 6.7-5.2H6.3Zm12.2 2.2-6.5 5.1a1 1 0 0 1-1.2 0L5.5 9.2v7.3c0 .3.2.5.5.5h11c.3 0 .5-.2.5-.5V9.2Z" fill="currentColor"/>
-                </svg>
-              </span>
-              <span>Ingrese tu correo</span>
+      <main>
+        <section class="dashboard-hero" id="visor-virtual" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <p class="dashboard-eyebrow"><span></span> LABORATORIO DIGITAL · HISTOLOGÍA</p>
+            <h1 id="hero-title">Explora lo invisible.<br /><span>Comprende lo esencial.</span></h1>
+            <p class="hero-description">Un recorrido interactivo por la microanatomía del sistema digestivo. Observa tejidos, identifica sus estructuras y conecta cada detalle con su función.</p>
+            <div class="hero-badges" aria-label="Características del módulo">
+              <span>Módulo digestivo</span>
+              <span>Aumentos 4×–40×</span>
+              <span>Aprendizaje interactivo</span>
             </div>
-            <button class="subscribe-btn" type="button">SUSCRIBIRME</button>
+            <a class="primary-action" href="visor.html">Explorar visor virtual <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="hero-orbit orbit-outer"></div>
+            <div class="hero-orbit orbit-inner"></div>
+            <div class="hero-micrograph"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+            <div class="hero-float-card"><span class="float-card-icon">✳</span><span><strong>Microanatomía</strong><small>Un mundo por descubrir</small></span></div>
+            <div class="hero-scale"><span>40×</span><small>MAGNIFICACIÓN</small></div>
+          </div>
+          <a class="scroll-cue" href="#galeria"><span></span> Desliza para explorar</a>
+        </section>
+
+        <section class="module-section" id="galeria" aria-labelledby="modules-title">
+          <div class="section-heading">
+            <div>
+              <p class="dashboard-eyebrow">TU RECORRIDO DE APRENDIZAJE</p>
+              <h2 id="modules-title">Atlas del sistema digestivo</h2>
+              <p>Selecciona un preparado para explorar su organización microscópica.</p>
+            </div>
+            <label class="module-search">
+              <span class="search-icon" aria-hidden="true">⌕</span>
+              <span class="visually-hidden">Buscar preparados</span>
+              <input id="moduleSearch" type="search" placeholder="Buscar órgano o estructura..." autocomplete="off" />
+              <kbd>/</kbd>
+            </label>
+          </div>
+
+          <div class="module-grid" id="moduleGrid" aria-live="polite">
+            <article class="module-card" data-search="esofago esófago epitelio estratificado adventicia mucosa muscular">
+              <div class="module-card-top"><span class="organ-icon icon-esophagus" aria-hidden="true">◉</span><span class="module-number">01 / 06</span></div>
+              <p class="module-system">TRACTO DIGESTIVO · 01</p>
+              <h3>Esófago</h3>
+              <p class="module-description">Epitelio plano estratificado no queratinizado, submucosa glandular y muscular propia.</p>
+              <div class="module-tags"><span>Mucosa</span><span>Glándulas</span><span>Adventicia</span></div>
+              <a class="module-action" href="visor.html?organ=esofago">Analizar lámina <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="module-card" data-search="estomago estómago fositas gastricas glándulas gastricas mucosa parietales principales">
+              <div class="module-card-top"><span class="organ-icon icon-stomach" aria-hidden="true">◉</span><span class="module-number">02 / 06</span></div>
+              <p class="module-system">TRACTO DIGESTIVO · 02</p>
+              <h3>Estómago</h3>
+              <p class="module-description">Fositas y glándulas gástricas con células mucosas, parietales y principales.</p>
+              <div class="module-tags"><span>Fovéolas</span><span>Células parietales</span></div>
+              <a class="module-action" href="visor.html?organ=estomago">Analizar lámina <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="module-card" data-search="intestino delgado duodeno yeyuno ileon íleon vellosidades enterocitos celulas paneth">
+              <div class="module-card-top"><span class="organ-icon icon-small-intestine" aria-hidden="true">◉</span><span class="module-number">03 / 06</span></div>
+              <p class="module-system">TRACTO DIGESTIVO · 03</p>
+              <h3>Intestino delgado</h3>
+              <p class="module-description">Vellosidades, criptas de Lieberkühn, enterocitos y células de Paneth.</p>
+              <div class="module-tags"><span>Vellosidades</span><span>Paneth</span></div>
+              <a class="module-action" href="visor.html?organ=intestino-delgado">Analizar lámina <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="module-card" data-search="intestino grueso colon criptas caliciformes mucosa">
+              <div class="module-card-top"><span class="organ-icon icon-large-intestine" aria-hidden="true">◉</span><span class="module-number">04 / 06</span></div>
+              <p class="module-system">TRACTO DIGESTIVO · 04</p>
+              <h3>Intestino grueso</h3>
+              <p class="module-description">Criptas rectas abundantes en células caliciformes y sin vellosidades.</p>
+              <div class="module-tags"><span>Colon</span><span>Células caliciformes</span></div>
+              <a class="module-action" href="visor.html?organ=intestino-grueso">Analizar lámina <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="module-card" data-search="higado hígado hepatocitos sinusoides espacio porta lobulillos">
+              <div class="module-card-top"><span class="organ-icon icon-liver" aria-hidden="true">◉</span><span class="module-number">05 / 06</span></div>
+              <p class="module-system">ÓRGANOS ANEXOS · 01</p>
+              <h3>Hígado</h3>
+              <p class="module-description">Lobulillos con cordones de hepatocitos, sinusoides y espacios porta.</p>
+              <div class="module-tags"><span>Hepatocitos</span><span>Sinusoides</span></div>
+              <a class="module-action" href="visor.html?organ=higado">Analizar lámina <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="module-card" data-search="pancreas páncreas acinos serosos islotes langerhans conductos">
+              <div class="module-card-top"><span class="organ-icon icon-pancreas" aria-hidden="true">◉</span><span class="module-number">06 / 06</span></div>
+              <p class="module-system">ÓRGANOS ANEXOS · 02</p>
+              <h3>Páncreas</h3>
+              <p class="module-description">Acinos serosos exocrinos y agrupaciones endocrinas de islotes de Langerhans.</p>
+              <div class="module-tags"><span>Acinos</span><span>Islotes</span></div>
+              <a class="module-action" href="visor.html?organ=pancreas">Analizar lámina <span aria-hidden="true">→</span></a>
+            </article>
+          </div>
+          <p class="search-empty" id="searchEmpty" hidden>No encontramos preparados que coincidan con esa búsqueda.</p>
+        </section>
+
+        <section class="quiz-promo" aria-labelledby="quiz-promo-title">
+          <div class="quiz-promo-icon" aria-hidden="true">?</div>
+          <div class="quiz-promo-copy">
+            <p class="dashboard-eyebrow">APRENDIZAJE ACTIVO</p>
+            <h2 id="quiz-promo-title">Pon a prueba tus conocimientos</h2>
+            <p>Ponte a prueba con preguntas interactivas sobre las capas tisulares y los preparados del sistema digestivo para consolidar lo aprendido en las prácticas.</p>
+          </div>
+          <a class="quiz-promo-action" href="quiz.html">Iniciar Quiz <span aria-hidden="true">→</span></a>
+        </section>
+
+      </main>
+
+      <footer class="dashboard-site-footer">
+        <div class="dashboard-footer-main">
+          <div class="footer-brand-block">
+            <a class="dashboard-brand" href="index.html" aria-label="Histología II, inicio">
+              <img src="image/logo.png" alt="" />
+              <span>Histología <strong>II</strong></span>
+            </a>
+            <p>Guía Digital <span aria-hidden="true">•</span> Módulo Digestivo</p>
+          </div>
+
+          <nav class="footer-quick-links" aria-label="Navegación rápida">
+            <h2>Explorar</h2>
+            <a href="index.html">Inicio</a>
+            <a href="galeria.html">Galería</a>
+            <a href="visor.html">Visor virtual</a>
+            <a href="quiz.html">Quiz</a>
+          </nav>
+
+          <div class="footer-credit-block" id="contacto">
+            <p>Recurso educativo de Histología II.</p>
+            <p>Identidad institucional: Clínica Anglo Americana. Los recursos visuales conservan sus créditos y licencias cuando se indican.</p>
+            <details class="footer-contact">
+              <summary>Contacto y créditos</summary>
+              <p>Para consultas académicas o información sobre los recursos, comunícate con tu equipo docente.</p>
+            </details>
           </div>
         </div>
-
-        <div class="footer-bottom">
-          <div class="footer-bottom-text">Derechos de autor 2005 - 2026 T. Clark Brejle y Robert L. Sorenson... Todos los derechos reservados.</div>
-          <div class="social-icons" aria-label="Redes sociales">
-            <button class="social-btn" type="button" aria-label="Facebook">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.4l.4-2.8h-2.8V7.5c0-.8.2-1.3 1.3-1.3h1.5V3.6c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.3H8v2.8h2.5v8h3Z" fill="currentColor"/></svg>
-            </button>
-            <button class="social-btn" type="button" aria-label="Instagram">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2.5h10A4.5 4.5 0 0 1 21.5 7v10A4.5 4.5 0 0 1 17 21.5H7A4.5 4.5 0 0 1 2.5 17V7A4.5 4.5 0 0 1 7 2.5Zm0 2A2.5 2.5 0 0 0 4.5 7v10A2.5 2.5 0 0 0 7 19.5h10A2.5 2.5 0 0 0 19.5 17V7A2.5 2.5 0 0 0 17 4.5H7Zm5 2.2A4.3 4.3 0 1 1 7.7 13 4.3 4.3 0 0 1 12 6.7Zm0 2A2.3 2.3 0 1 0 14.3 11 2.3 2.3 0 0 0 12 8.7Zm4.7-1.7a1.1 1.1 0 1 1-1.1 1.1 1.1 1.1 0 0 1 1.1-1.1Z" fill="currentColor"/></svg>
-            </button>
-            <button class="social-btn" type="button" aria-label="X">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 3h2.8l-6.1 7 7.2 11H16l-4.9-7.4L5.8 21H3l6.6-7.6L3 3h7.3l4.4 6.7L18.9 3Zm-1 16.2h1.6L7.3 4.7H5.6l12.3 14.5Z" fill="currentColor"/></svg>
-            </button>
-          </div>
+        <div class="dashboard-footer-bottom">
+          <span>Histología II <span aria-hidden="true">•</span> Módulo Digestivo</span>
+          <a href="#top" class="footer-back-to-top">Volver arriba ↑</a>
         </div>
       </footer>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>
