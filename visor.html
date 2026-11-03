@@ -47,10 +47,11 @@
           </div>
 
           <div class="viewer-stage" id="viewerStage" aria-label="Visor de referencia anatómica">
-            <div class="viewer-image" id="viewerImage" role="img" aria-label="Imagen de referencia ilustrativa; no representa un preparado real">
+            <div class="viewer-image" id="viewerImage" role="img" aria-label="Microfotografía de parótida a 4×">
+              <img class="viewer-image-source" id="viewerImageSource" src="image/parotida 4x.jpg" alt="" draggable="false" />
               <div class="viewer-overlay">
-                <span>REFERENCIA HISTOLÓGICA</span>
-                <strong id="viewerImageTitle">Paladar duro</strong>
+                <span id="viewerImageCaption">MICROFOTOGRAFÍA · PARÓTIDA</span>
+                <strong id="viewerImageTitle">Parótida · 4×</strong>
               </div>
             </div>
             <button type="button" class="viewer-overlay-toggle" id="toggleViewerOverlay" aria-pressed="false" aria-label="Ocultar controles y guía anatómica">
@@ -63,9 +64,12 @@
             <div class="viewer-tool-row">
               <div class="zoom-preset-row" aria-label="Aumento del objetivo">
                 <span class="toolbar-label">AUMENTO</span>
-                <button type="button" data-zoom="1" data-magnification="4" aria-pressed="true">4×</button>
-                <button type="button" data-zoom="1.7" data-magnification="10" aria-pressed="false">10×</button>
-                <button type="button" data-zoom="4" data-magnification="40" aria-pressed="false">40×</button>
+                <button type="button" data-zoom="1" data-magnification="4" data-image="image/parotida 4x.jpg" aria-pressed="true">4x</button>
+                <button type="button" data-zoom="1" data-magnification="4" data-image-key="4-second" aria-label="4x, segunda imagen" aria-pressed="false" hidden>4x</button>
+                <button type="button" data-zoom="1.7" data-magnification="10" data-image="image/parotida 10x.jpg" aria-pressed="false">10x</button>
+                <button type="button" data-zoom="1.7" data-magnification="10" data-image-key="10-second" aria-label="10x, segunda imagen" aria-pressed="false" hidden>10x</button>
+                <button type="button" data-zoom="4" data-magnification="40" data-image="image/parotida 40x.jpg" aria-pressed="false">40x</button>
+                <button type="button" data-zoom="4" data-magnification="40" data-image-key="40-second" aria-label="40x, segunda imagen" aria-pressed="false" hidden>40x</button>
               </div>
               <div class="viewer-utility-actions">
                 <button type="button" id="resetView" aria-label="Reiniciar vista">Reiniciar vista</button>
@@ -79,7 +83,7 @@
               <input id="zoomSlider" type="range" min="100" max="400" step="5" value="100" aria-label="Control de zoom manual" />
               <button type="button" class="zoom-action" id="zoomIn" aria-label="Aumentar zoom">+</button>
               <span class="zoom-readout" id="zoomReadout">100%</span>
-              <span class="viewer-magnification" id="magnificationReadout">Objetivo 4×</span>
+              <span class="viewer-magnification" id="magnificationReadout">Objetivo 4x</span>
             </div>
             <p class="viewer-status" id="viewerStatus" aria-live="polite"></p>
           </div>
@@ -90,7 +94,7 @@
             <span class="info-kicker">GUÍA DE ESTRUCTURAS</span>
             <button type="button" id="closeInfo" aria-label="Cerrar panel anatómico">×</button>
           </div>
-          <div class="info-thumb" aria-hidden="true"><span>IMAGEN DE REFERENCIA</span></div>
+          <div class="info-thumb" aria-hidden="true"><img id="referenceImage" alt="" hidden /><span>IMAGEN DE REFERENCIA</span></div>
 
           <div class="info-copy">
             <h1 id="tissue-title">Paladar Duro / Hard Palate</h1>
