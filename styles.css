@@ -2733,6 +2733,14 @@ body:has(.viewer-page) {
   line-height: 1.7;
 }
 
+.info-copy .structure-paragraph {
+  margin-bottom: 12px;
+}
+
+.info-thumb[hidden] {
+  display: none;
+}
+
 .structures-title {
   margin: 21px 0 10px;
   color: #dbe6f6;

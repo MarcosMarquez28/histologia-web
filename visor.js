@@ -125,26 +125,218 @@ const tissues = {
   unionEsofagogastrica: {
     title: 'Unión esofagogástrica',
     englishTitle: 'Esophagogastric Junction',
-    description: 'La unión esofagogástrica es la zona de transición entre el epitelio plano estratificado no queratinizado del esófago y el epitelio cilíndrico simple secretor de la mucosa gástrica.',
-    structures: ['Transición abrupta entre el epitelio esofágico y el gástrico.', 'Epitelio plano estratificado no queratinizado del esófago.', 'Epitelio cilíndrico simple de la mucosa gástrica.', 'Lámina propia y muscular de la mucosa a ambos lados de la unión.', 'Fositas y glándulas gástricas en el lado del estómago.']
+    description: 'La unión esofagogástrica marca un cambio funcional desde lo que es un simple conducto (esófago) hacia un verdadero órgano digestivo (estómago). El epitelio de la mucosa cambia desde plano estratificado (protección) hasta cilíndrico simple (secreción), que forma las glándulas que secretan mucinógeno, enzimas digestivas y ácido clorhídrico. La lámina propia, muy celular, contiene abundante tejido linfático difuso, lo cual enfatiza la contribución de esta capa al sistema inmunitario.',
+    structuresDisplay: 'paragraphs',
+    structures: [
+      'La transición entre el esófago y el estómago. El esófago y la región cardial del estómago: una región representativa de la mucosa cardial en la que se aprecia una parte de la transición. El esófago tiene un revestimiento interno de epitelio plano estratificado cuya superficie basal está interdigitada por papilas profundas de tejido conjuntivo. Cuando estas se seccionan en sentido oblicuo, aparecen como islotes de tejido conjuntivo dentro del epitelio grueso.',
+      'Debajo del epitelio están la lámina propia, a menudo infiltrada por linfocitos, y la muscular de la mucosa. En la transición entre el esófago y el estómago, el epitelio plano estratificado del esófago termina de forma abrupta y comienza el epitelio cilíndrico simple de la superficie del estómago.',
+      'La superficie del estómago contiene numerosas depresiones relativamente profundas denominadas criptas gástricas, o fovéolas, que poseen un epitelio similar al de la superficie con el cual se continúa. Las glándulas que desembocan en la base de las criptas son las glándulas cardiales. Toda la mucosa gástrica contiene glándulas. Existen tres tipos de glándula gástrica: cardial, fúndica y pilórica. Las glándulas cardiales se encuentran en las inmediaciones de la abertura del esófago, las glándulas pilóricas se localizan en la porción en forma de embudo (infundibuliforme) del estómago (que conduce al duodeno) y las glándulas fúndicas se encuentran a lo largo del resto del estómago.'
+    ]
   },
   estomago: {
     title: 'Estómago',
     englishTitle: 'Stomach',
-    description: 'La mucosa gástrica forma fositas que continúan en glándulas tubulares. Su epitelio cilíndrico simple y las células especializadas participan en la secreción de moco, ácido y enzimas digestivas.',
-    structures: ['Mucosa con fositas y glándulas gástricas.', 'Células mucosas superficiales y del cuello.', 'Células parietales productoras de ácido.', 'Células principales productoras de pepsinógeno.', 'Muscular externa con tres capas características.']
+    description: 'El estómago es la parte más ensanchada del tracto digestivo y conecta el esófago con el intestino delgado. La desembocadura del esófago en el estómago se denomina cardias, mientras que la salida del estómago al duodeno se denomina píloro. El alimento ingerido tiene consistencia semisólida después de la masticación y se acumula cierto tiempo en el estómago, donde es sometido a acciones mecánicas y químicas que lo transforman en un fluido espeso denominado quimo. Desde el estómago, el quimo es liberado en pequeñas porciones en el intestino delgado, donde tienen lugar la digestión y la absorción posteriores.',
+    structures: [
+      {
+        title: 'Regiones Histológicas del Estómago',
+        description: ' Desde el punto de vista histológico, el estómago se divide en tres regiones según el tipo de glándula que contiene cada una:',
+        children: [
+          {
+            title: 'La región cardial (cardias)',
+            description: 'La parte cercana al orificio esofágico, que contiene las glándulas cardiales.'
+          },
+          {
+            title: 'La región pilórica (píloro)',
+            description: 'La parte proximal con respecto al esfínter pilórico, que contiene las glándulas pilóricas.'
+          },
+          {
+            title: 'La región fúndica (fundus)',
+            description: 'La parte más grande del estómago que está situada entre el cardias y el píloro y contiene las glándulas gástricas o fúndicas.'
+          }
+        ]
+      },
+      {
+        title: 'Anatomía macroscópica de la mucosa',
+        description: ' El cardias rodea el orificio superior del estómago. La porción redondeada que está por encima y hacia la izquierda del cardias es el fundus. Por debajo del fundus se extiende la porción central del estómago, llamado cuerpo. La región del estómago que conecta con el duodeno es el píloro, que tiene dos partes: el antro pilórico, que conecta con el cuerpo del estómago, y el canal pilórico, que conduce hacia el duodeno. Cuando el estómago está vacío, la mucosa se dispone en grandes pliegues, que pueden reconocerse a simple vista. El píloro comunica con el duodeno a través del esfínter pilórico. El borde interno cóncavo del estómago se llama curvatura menor, y el borde externo convexo es la curvatura mayor.'
+      },
+      {
+        title: 'Superficie de la mucosa',
+        description: ' La superficie de la mucosa es una capa de células epiteliales cilíndricas simples llamada células mucosas superficiales. Tres capas yacen debajo de la mucosa. La submucosa del estómago está compuesta por tejido conectivo areolar. La muscular tiene tres capas de músculo liso (en lugar de las dos presentes en el intestino): una capa longitudinal externa, una capa circular media, y una capa oblicua interna. La capa oblicua está limitada casi exclusivamente al cuerpo del estómago. La serosa está compuesta por epitelio pavimentoso simple (mesotelio) y por tejido conectivo areolar; la porción de la serosa que cubre al estómago forma parte del peritoneo visceral. Las células epiteliales se extienden hacia dentro de la lámina propia, donde forman columnas de células secretoras llamadas glándulas gástricas, que limitan con conductos estrechos que reciben el nombre de criptas gástricas. Las secreciones de las glándulas gástricas fluyen dentro de las criptas gástricas y de ahí hacia la luz del estómago.'
+      },
+      {
+        title: 'Células mucosas superficiales (CMS)',
+        description: ' Revisten la superficie interna del estómago y las criptas gástricas (fovéolas). Poseen un cáliz mucoso apical que secreta una capa de moco protector. Tienen un tiempo de recambio rápido de entre 3 y 5 días.'
+      },
+      {
+        title: 'Células mucosas del cuello (CMC)',
+        description: ' Se localizan en los cuellos de las glándulas fúndicas. Tienen un citoplasma pálido y producen una secreción mucosa diferente a la de las células superficiales.'
+      },
+      {
+        title: 'Células mucosas glandulares (CMG)',
+        description: ' Forman las glándulas cardiales ubicadas en la región del cardias. Presentan un núcleo aplanado en la base y un citoplasma pálido.'
+      },
+      {
+        title: 'Células parietales (oxínticas) (CP)',
+        description: ' Se encuentran principalmente en las glándulas fúndicas. Se distinguen por su intensa eosinofilia (citoplasma muy rosado/acidófilo) y se encargan de secretar ácido clorhídrico (HCl).'
+      },
+      {
+        title: 'Células principales (CPr)',
+        description: ' Se ubican en las glándulas fúndicas. Tienen un núcleo redondo basal, un citoplasma con basofilia pronunciada debido al extenso retículo endoplasmático rugoso, y gránulos apicales que contienen pepsinógeno.'
+      },
+      {
+        title: 'Células enteroendocrinas (células argentafines)',
+        description: ' Se encuentran distribuidas en el fondo de las glándulas gástricas. No son visibles fácilmente con técnicas rutinarias de H&E, pero se pueden identificar mediante métodos histoquímicos especiales o tinción argéntica, donde se observan ennegrecidas por la plata.'
+      },
+      {
+        title: 'Pliegues y Superficie',
+        description: ' La superficie interna del estómago vacío permite descubrir varios pliegues longitudinales o rugosidades denominados rugae (arrugas gástricas). Los pliegues longitudinales rugosos de la submucosa permiten que el estómago se distienda cuando se llena. Son prominentes en las regiones más estrechas del estómago, pero están poco desarrollados en la porción superior. Al observar la superficie con una lupa, se detecta que regiones más pequeñas están formadas por surcos o hendiduras poco profundas que dividen la mucosa en regiones sobresalientes irregulares denominadas regiones mamiladas o sólo mamilones. Con un mayor aumento, pueden observarse muchos orificios en la superficie de la mucosa: las fositas gástricas o fovéolas.'
+      },
+      {
+        title: 'Epitelio Superficial',
+        description: ' Las células mucosas superficiales tapizan la superficie interna del estómago y de las fositas gástricas. Epitelio cilíndrico simple de revestimiento y secretor. Cada célula posee una gran dilatación apical llena de gránulos de mucinógeno, que crean una lámina glandular de células.'
+      },
+      {
+        title: 'Otras Glándulas Gástricas',
+        description: ' Glándulas cardiales compuestas por células secretoras de moco. Son tubulares, tortuosas y ramificadas, con un núcleo basal aplanado y citoplasma apical repleto de gránulos de mucinógeno.'
+      }
+    ]
+  },
+  glandulasCardiales: {
+    title: 'Glándulas cardiales y capas del estómago',
+    englishTitle: 'Cardiac Glands and Stomach Layers',
+    description: 'Son glándulas tubulares simples o ramificadas y ligeramente tortuosas, localizadas exclusivamente en la cardias, la zona de transición entre el esófago y el estómago (aproximadamente en un anillo de 1 a 3 cm alrededor del orificio cardial). Su función principal es secretar moco neutro y alcalino junto con bicarbonato, lo que forma una barrera protectora en la mucosa para evitar la autodigestión por el reflujo del jugo gástrico ácido proveniente del cuerpo estomacal. También pueden secretar pequeñas cantidades de lisozima.',
+    structures: [
+      {
+        title: 'Mucosa - Epitelio superficial',
+        description: 'Epitelio cilíndrico simple mucosecretor que tapiza la superficie y se invagina para formar fositas gástricas (o fovéolas) relativamente cortas y poco profundas.'
+      },
+      {
+        title: 'Glándulas',
+        description: 'Las unidades glandulares cardiales desembocan en el fondo de estas fositas. Están compuestas casi en su totalidad por células secretoras de moco, aunque de forma ocasional se pueden encontrar células enteroendocrinas y células parietales aisladas.'
+      },
+      {
+        title: 'Lámina propia',
+        description: 'Consiste en un tejido conectivo laxo muy escaso que rodea y sostiene a las glándulas cardiales. Contiene fibroblastos, capilares sanguíneos fenestrados, células del sistema inmunitario (linfocitos, plasmocitos, macrófagos y eosinófilos) y ocasionalmente folículos linfoides.'
+      },
+      {
+        title: 'Muscular de la mucosa',
+        description: 'Es una capa delgada de músculo liso (dispuesta típicamente en una capa circular interna y una longitudinal externa) que separa la mucosa de la submucosa subyacente y emite prolongaciones hacia la lámina propia para facilitar el movimiento de las glándulas.'
+      },
+      {
+        title: 'Células secretoras de moco',
+        description: 'Células cilíndricas con un núcleo aplanado ubicado en la base. Su citoplasma apical está lleno de gránulos de mucinógeno que se tiñen pálidamente con técnicas de rutina (H&E), pero reaccionan fuertemente con la técnica de PAS (ácido periódico de Schiff) debido a su contenido de glucoproteínas neutras.'
+      },
+      {
+        title: 'Muscular externa',
+        description: 'A nivel del estómago, la capa muscular externa es más gruesa y está compuesta por tres capas de músculo liso:',
+        children: [
+          { title: 'Interna', description: 'Oblicua.' },
+          { title: 'Media', description: 'Circular.' },
+          { title: 'Externa', description: 'Longitudinal.' },
+          'Permite la mezcla mecánica del quimo gástrico y su propulsión hacia el píloro.'
+        ]
+      },
+      {
+        title: 'Serosa',
+        description: 'Es la capa más externa que recubre al estómago (peritoneo visceral). Está compuesta por un mesotelio (epitelio plano simple) apoyado sobre una capa delgada de tejido conectivo laxo y tejido adiposo.'
+      }
+    ]
   },
   fundus: {
-    title: 'Fundus',
+    title: 'Glándulas Fúndicas de la Mucosa Gástrica',
     englishTitle: 'Gastric Fundus',
-    description: 'El fundus gástrico presenta mucosa con glándulas fúndicas tubulares. En ellas se distinguen células mucosas del cuello, parietales y principales, relacionadas con la secreción gástrica.',
-    structures: ['Fositas gástricas que continúan en glándulas fúndicas.', 'Células parietales acidófilas.', 'Células principales basófilas.', 'Células mucosas del cuello.', 'Lámina propia entre glándulas tubulares.']
+    description: 'Las glándulas fúndicas, también llamadas glándulas gástricas, están presentes en toda la mucosa gástrica, excepto en las regiones relativamente pequeñas ocupadas por las glándulas cardiales y pilóricas. Las glándulas fúndicas son glándulas tubulares simples ramificadas que se extienden desde el fondo de las fositas gástricas hasta la muscular de la mucosa.',
+    structures: [
+      {
+        title: 'Mucosa (Epitelio y Glándulas)',
+        description: 'Epitelio cilíndrico simple compuesto en su totalidad por células mucosas superficiales. Las glándulas fúndicas (u oxínticas) son glándulas tubulares simples y ramificadas que ocupan casi toda la lámina propia del fondo y del cuerpo del estómago.'
+      },
+      {
+        title: 'Lámina propia',
+        description: 'La lámina propia a nivel del fondo y cuerpo gástrico es un tejido conectivo laxo muy escaso y delgado. Esto se debe a que está extremadamente ocupada y densamente empaquetada por las glándulas fúndicas (oxínticas), dejando espacios mínimos entre ellas.'
+      },
+      {
+        title: 'Muscular',
+        description: 'Presentes en toda la mucosa gástrica, excepto en las regiones ocupadas por las glándulas cardiales y pilóricas.'
+      },
+      {
+        title: 'Regiones de la glándula fúndica',
+        children: [
+          {
+            title: 'Istmo',
+            description: 'Es el nicho de células madre donde estas se replican y diferencian. Normalmente, varias glándulas desembocan en una sola fosita gástrica. Es la sección más corta y superior de la glándula, conectada directamente con el fondo de la cripta gástrica.'
+          },
+          {
+            title: 'Cuello',
+            description: 'Es la región intermedia, estrecha y alargada. Predominan las células mucosas del cuello intercaladas con una gran cantidad de células parietales (oxínticas) maduras. Produce moco soluble (distinto al moco viscoso superficial) y comienzo de la secreción ácida activa.'
+          },
+          {
+            title: 'Base o Fondo',
+            description: 'Es la porción más profunda, ancha y ramificada de la glándula, ubicada inmediatamente por encima de la capa muscular de la mucosa. Predominan las células principales (zimógenas), acompañadas por algunas células parietales y células enteroendocrinas. Produce enzimas digestivas (pepsinógeno) y secreción de hormonas reguladoras.'
+          }
+        ]
+      },
+      {
+        title: 'Tipos Celulares de las Glándulas Fúndicas',
+        children: [
+          {
+            title: 'Células mucosas del cuello',
+            description: 'Ubicadas en el cuello de la glándula, se entremezclan con las células parietales. Son más cortas que las superficiales, con núcleo esferoidal y secretan un moco soluble.'
+          },
+          {
+            title: 'Células principales (cimógenas)',
+            description: 'Ubicadas en la parte profunda de las glándulas. Típicas células secretoras de proteínas; RER abundante en el citoplasma basal (aspecto basófilo) y citoplasma apical eosinófilo debido a los gránulos de cimógeno.'
+          },
+          {
+            title: 'Células parietales (oxínticas)',
+            description: 'Poseen un extenso sistema de canalículos intracelulares que se comunican con la luz, con abundantes microvellosidades y un sistema tubulovesicular en el citoplasma. Predominan en el cuello y producen ácido clorhídrico y factor intrínseco. Tienen la vida media más larga (150 a 200 días).'
+          },
+          {
+            title: 'Células enteroendocrinas',
+            description: 'Se encuentran en todos los niveles (más prevalentes en la base). Forman parte del Sistema Enteroendocrino (también llamadas células cromafines o argentafines por su afinidad a sales de cromo o plata). Se dividen en:',
+            children: [
+              {
+                title: 'Células "cerradas"',
+                description: 'Apoyadas en la lámina basal, no alcanzan la luz. Sus gránulos se secretan hacia el tejido conjuntivo.'
+              },
+              {
+                title: 'Células "abiertas"',
+                description: 'Poseen una extensión con microvellosidades expuestas a la luz glandular (actúan como quimiorreceptores).'
+              }
+            ]
+          },
+          'Células madre adultas indiferenciadas.'
+        ]
+      }
+    ]
   },
   piloro: {
-    title: 'Píloro',
+    title: 'Glándulas pilóricas y capas del estómago',
     englishTitle: 'Pylorus',
-    description: 'El píloro presenta fositas gástricas profundas que desembocan en glándulas mucosas ramificadas. La capa circular de la muscular externa se engrosa para formar el esfínter pilórico.',
-    structures: ['Fositas gástricas profundas.', 'Glándulas pilóricas predominantemente mucosas.', 'Lámina propia entre las glándulas.', 'Muscular de la mucosa.', 'Engrosamiento de la capa circular en el esfínter pilórico.']
+    description: 'Glándulas pilóricas: Tubulares, enrolladas y ramificadas. Sus células son similares a las mucosas superficiales y ayudan a proteger la mucosa pilórica. Las células de las glándulas pilóricas son similares a las células mucosas superficiales y contribuyen a proteger la mucosa pilórica. Las glándulas pilóricas están ubicadas en el antro pilórico (la parte del estómago entre el fundus y el píloro). Son glándulas tubulares, enrolladas y ramificadas. La luz es relativamente amplia y las células secretoras tienen un aspecto similar al de las células mucosas superficiales, lo cual sugiere una secreción bastante viscosa. Las células enteroendocrinas se encuentran intercaladas dentro del epitelio glandular junto con algunas células parietales. Las glándulas se vacían dentro de las criptas gástricas profundas que ocupan cerca de la mitad del espesor de la mucosa.',
+    structures: [
+      {
+        title: 'Lámina propia',
+        description: 'Escasa, compuesta por fibras reticulares, células musculares lisas, fibroblastos y células del sistema inmunitario (linfocitos, plasmocitos, macrófagos, eosinófilos).'
+      },
+      {
+        title: 'Muscular de la mucosa (muscularis mucosae)',
+        description: 'Compuesta por dos capas delgadas (circular interna y longitudinal externa); en algunas regiones hay una tercera capa circular y finos haces que se extienden hacia la lámina propia.'
+      },
+      {
+        title: 'Submucosa',
+        description: 'Tejido conjuntivo denso irregular con tejido adiposo, vasos sanguíneos, linfáticos y el plexo nervioso submucoso de Meissner.'
+      },
+      {
+        title: 'Muscular externa',
+        description: 'Compuesta por tres capas de músculo liso: longitudinal externa, circular media y oblicua interna. Entre las capas muscular circular y longitudinal se encuentra el plexo mientérico (de Auerbach).'
+      },
+      {
+        title: 'Serosa',
+        description: 'Equivalente al peritoneo visceral; compuesta por una capa de epitelio plano simple (mesotelio) y tejido conjuntivo submesotelial.'
+      }
+    ]
   },
   yeyuno: {
     title: 'Yeyuno',
@@ -184,8 +376,83 @@ const tissues = {
   'intestino-delgado': {
     title: 'Intestino delgado',
     englishTitle: 'Small intestine',
-    description: 'La superficie de absorción se amplía mediante pliegues, vellosidades y microvellosidades. Las criptas contienen células madre, enteroendocrinas y células de Paneth, especialmente evidentes en el íleon.',
-    structures: ['Mucosa con vellosidades y criptas de Lieberkühn.', 'Enterocitos con borde en cepillo.', 'Células caliciformes secretoras de moco.', 'Células de Paneth en la base de las criptas.', 'Submucosa con glándulas de Brunner en duodeno o placas de Peyer en íleon.']
+    description: 'El intestino delgado es el componente más largo del tubo digestivo, es el sitio principal para la digestión de alimentos y la absorción de los productos de la digestión. Mide más de 6 m y se divide en tres porciones anatómicas:',
+    descriptionItems: [
+      {
+        title: 'El duodeno',
+        description: '(con cerca de 25 cm de longitud) es la primera porción, y la más corta y ancha, del intestino delgado. Comienza a la altura del píloro del estómago y termina en el ángulo duodenoyeyunal.'
+      },
+      {
+        title: 'El yeyuno',
+        description: '(de casi 2.5 m de longitud) comienza en el ángulo duodenoyeyunal y constituye las dos quintas partes proximales del intestino delgado. Cambia de forma gradual sus características morfológicas hasta convertirse en el íleon.'
+      },
+      {
+        title: 'El íleon',
+        description: '(de aproximadamente 3,5 m de longitud) es la continuación del yeyuno y constituye las tres quintas partes distales del intestino delgado. Termina en la válvula ileocecal, la unión del íleon distal y el ciego.'
+      }
+    ],
+    structures: [
+      {
+        title: 'Modificaciones de la superficie luminal',
+        description: 'La formación de pliegues circulares (válvulas de Kerckring), vellosidades, microvellosidades y criptas de Lieberkühn incrementan el área de superficie de la luz intestinal.',
+        children: [
+          {
+            title: 'Vellosidades',
+            description: 'Salientes de la lámina propia. El núcleo de cada vellosidad contiene un conducto quilífero.'
+          },
+          {
+            title: 'Microvellosidades',
+            description: 'Recubren las vellosidades intestinales. Las invaginaciones del epitelio en la lámina propia entre las vellosidades forman glándulas intestinales denominadas criptas de Lieberkühn.'
+          }
+        ]
+      },
+      {
+        title: 'Células del intestino delgado',
+        children: [
+          {
+            title: 'Enterocitos',
+            description: 'Células absortivas que transportan nutrientes desde la luz intestinal hacia la sangre. Su borde en cepillo ayuda en la digestión final antes de la absorción.'
+          },
+          {
+            title: 'Células caliciformes',
+            description: 'Glándulas unicelulares que producen mucina, formando moco que protege y lubrica el epitelio intestinal.'
+          },
+          {
+            title: 'Células de Paneth',
+            description: 'Mantienen la inmunidad innata de la mucosa mediante la secreción de sustancias antimicrobianas como defensinas y lisozima.'
+          },
+          {
+            title: 'Células enteroendocrinas',
+            description: 'Producen hormonas endocrinas y paracrinas que regulan la motilidad, la secreción digestiva y la sensación de saciedad.'
+          },
+          {
+            title: 'Células M (micropliegues)',
+            description: 'Enterocitos especializados que captan antígenos en la luz intestinal y los entregan a células inmunitarias en los nódulos linfáticos.'
+          }
+        ]
+      },
+      {
+        title: 'Descripción histológica general',
+        children: [
+          {
+            title: 'Mucosa',
+            description: 'La mucosa del intestino delgado está revestida por un epitelio cilíndrico simple que forma vellosidades y criptas de Lieberkühn. Además de las células de la mucosa, la lámina propia posee un vaso quilífero, un tejido conjuntivo laxo con abundantes células inmunitarias (linfocitos, plasmocitos, mastocitos, macrófagos y eosinófilos) y numerosos nódulos linfáticos distribuidos a lo largo del intestino (son más grandes y prominentes en el íleon, y se denominan Placas de Peyer). La muscular de la mucosa está formada por dos capas delgadas de músculo liso: una circular interna y una longitudinal externa.'
+          },
+          {
+            title: 'Submucosa',
+            description: 'La submucosa está compuesta por tejido conjuntivo denso y contiene el plexo submucoso de Meissner, y glándulas de Brunner.'
+          },
+          {
+            title: 'Muscular externa',
+            description: 'La muscular externa está formada por dos capas de músculo liso: una circular interna y una longitudinal externa. Entre ambas se localiza el plexo mientérico de Auerbach, que coordina el peristaltismo y las contracciones que impulsan el quimo mezclado con los jugos digestivos a lo largo del intestino delgado.'
+          },
+          {
+            title: 'Serosa',
+            description: 'El intestino delgado está recubierto externamente por una serosa, con un epitelio peritoneal y una delgada capa de tejido conjuntivo subyacente, que constituye el revestimiento peritoneal.'
+          }
+        ]
+      }
+    ]
   },
   'intestino-grueso': {
     title: 'Intestino grueso: colon',
@@ -478,7 +745,14 @@ const chapterImageSets = {
       40: 'image/piloro 40x.jpg'
     }
   },
-  14: {
+  13: {
+    label: 'Intestino Delgado',
+    imageDescription: 'el intestino delgado',
+    images: {
+      4: 'image/intestino delgado.jpeg'
+    }
+  },
+  15: {
     label: 'Yeyuno',
     imageDescription: 'el yeyuno',
     images: {
@@ -487,7 +761,7 @@ const chapterImageSets = {
       40: 'image/yeyuno 40x.jpg'
     }
   },
-  15: {
+  16: {
     label: 'Íleon',
     imageDescription: 'el íleon',
     images: {
@@ -497,7 +771,7 @@ const chapterImageSets = {
       40: 'image/ileon 40x.jpeg'
     }
   },
-  16: {
+  18: {
     label: 'Colon',
     imageDescription: 'el colon',
     images: {
@@ -507,7 +781,7 @@ const chapterImageSets = {
       '40-second': 'image/colon 40.2x.jpg'
     }
   },
-  17: {
+  19: {
     label: 'Hígado',
     imageDescription: 'el hígado',
     variantLabels: {
@@ -524,7 +798,7 @@ const chapterImageSets = {
       '40-second': 'image/higado 40.2x.jpg'
     }
   },
-  18: {
+  20: {
     label: 'Vesícula Biliar',
     imageDescription: 'la vesícula biliar',
     images: {
@@ -533,7 +807,7 @@ const chapterImageSets = {
       40: 'image/vesicula 40x.jpg'
     }
   },
-  19: {
+  21: {
     label: 'Páncreas',
     imageDescription: 'el páncreas',
     images: {
@@ -632,10 +906,12 @@ function loadTissue() {
   const searchParams = new URLSearchParams(window.location.search);
   const requestedChapter = searchParams.get('chapter');
   const requestedOrgan = searchParams.get('organ');
-  if (requestedChapter === '10') {
+  if (requestedChapter === '14' || requestedChapter === '17') {
     document.getElementById('viewerChapter').textContent = `CAPÍTULO ${requestedChapter} · EN PREPARACIÓN`;
     document.getElementById('tissue-title').textContent = 'En preparación';
-    document.getElementById('tissueDescription').textContent = 'Este capítulo estará disponible próximamente.';
+    document.getElementById('tissueDescriptionTitle').hidden = true;
+    document.getElementById('tissueDescription').replaceChildren();
+    document.getElementById('structuresTitle').hidden = true;
     document.getElementById('tissueStructures').replaceChildren();
     document.getElementById('viewerImageTitle').textContent = 'En preparación';
     document.getElementById('viewerImageCaption').textContent = 'CAPÍTULO EN PREPARACIÓN';
@@ -646,7 +922,8 @@ function loadTissue() {
       button.hidden = true;
     });
     state.imagePath = '';
-    viewerStatus.textContent = 'El contenido de este capítulo se añadirá próximamente.';
+    magnificationReadout.textContent = 'Sin aumento';
+    viewerStatus.textContent = 'Este capítulo está reservado para nuevo contenido.';
     return;
   }
 
@@ -660,14 +937,16 @@ function loadTissue() {
     7: tissues.esofago,
     8: tissues.unionEsofagogastrica,
     9: tissues.estomago,
+    10: tissues.glandulasCardiales,
     11: tissues.fundus,
     12: tissues.piloro,
-    14: tissues.yeyuno,
-    15: tissues.ileon,
-    16: tissues['intestino-grueso'],
-    17: tissues.higado,
-    18: tissues.vesicula,
-    19: tissues.pancreas
+    13: tissues['intestino-delgado'],
+    15: tissues.yeyuno,
+    16: tissues.ileon,
+    18: tissues['intestino-grueso'],
+    19: tissues.higado,
+    20: tissues.vesicula,
+    21: tissues.pancreas
   }[requestedChapter];
   const tissue = chapterTissue || (requestedOrgan ? tissues[requestedOrgan] : tissues['paladar-duro']);
 
@@ -685,12 +964,25 @@ function loadTissue() {
   const isSublingualChapter = requestedChapter === '4';
   const isTongueTipChapter = requestedChapter === '5';
   const isEsophagusChapter = requestedChapter === '7';
+  const isEsophagogastricChapter = requestedChapter === '8';
+  const isStomachChapter = requestedChapter === '9';
+  const isCardiacGlandsChapter = requestedChapter === '10';
+  const isFundusChapter = requestedChapter === '11';
+  const isPylorusChapter = requestedChapter === '12';
+  const isSmallIntestineChapter = requestedChapter === '13';
+  structuresTitle.hidden = isEsophagogastricChapter;
   descriptionTitle.hidden = !isSalivaryGlandsChapter
     && !isParotidChapter
     && !isSubmandibularChapter
     && !isSublingualChapter
     && !isTongueTipChapter
-    && !isEsophagusChapter;
+    && !isEsophagusChapter
+    && !isEsophagogastricChapter
+    && !isStomachChapter
+    && !isCardiacGlandsChapter
+    && !isFundusChapter
+    && !isPylorusChapter
+    && !isSmallIntestineChapter;
   descriptionTitle.textContent = isSalivaryGlandsChapter
     ? 'Generalidades de las glándulas salivales'
     : isParotidChapter
@@ -701,7 +993,19 @@ function loadTissue() {
           ? 'Las glándulas sublinguales'
           : isTongueTipChapter
             ? 'Generalidades de la lengua'
-            : isEsophagusChapter ? 'Esófago generalidades:' : '';
+            : isEsophagusChapter
+              ? 'Esófago generalidades:'
+              : isEsophagogastricChapter
+                ? 'La Unión Esofagogástrica:'
+                : isStomachChapter
+                  ? 'Estómago - Generalidades:'
+                  : isCardiacGlandsChapter
+                    ? 'Glándulas cardiales:'
+                    : isFundusChapter
+                      ? 'Glándulas Fúndicas de la Mucosa Gástrica - Generalidades y Función:'
+                      : isPylorusChapter
+                        ? 'Glándulas pilóricas - Generalidades:'
+                        : isSmallIntestineChapter ? 'Intestino Delgado - Generalidades:' : '';
   structuresTitle.textContent = isSalivaryGlandsChapter
     ? 'Células de las glándulas salivales mayores'
     : 'Características histológicas';
@@ -712,6 +1016,17 @@ function loadTissue() {
     paragraph.textContent = description;
     return paragraph;
   }));
+  if (tissue.descriptionItems?.length) {
+    const descriptionList = document.createElement('ul');
+    descriptionList.append(...tissue.descriptionItems.map((item) => {
+      const listItem = document.createElement('li');
+      const title = document.createElement('strong');
+      title.textContent = `${item.title} `;
+      listItem.append(title, document.createTextNode(item.description));
+      return listItem;
+    }));
+    descriptionContainer.append(descriptionList);
+  }
   const chapterImageSet = chapterImageSets[requestedChapter];
   if (chapterImageSet) {
     const chapterTitles = {
@@ -724,14 +1039,16 @@ function loadTissue() {
       7: 'ESÓFAGO',
       8: 'UNIÓN ESOFAGOGÁSTRICA',
       9: 'ESTÓMAGO',
-      11: 'FUNDUS',
-      12: 'PÍLORO',
-      14: 'YEYUNO',
-      15: 'ÍLEON',
-      16: 'INTESTINO GRUESO: COLON',
-      17: 'HÍGADO',
-      18: 'VESÍCULA BILIAR',
-      19: 'PÁNCREAS'
+      10: 'GLÁNDULAS CARDIALES Y CAPAS DEL ESTÓMAGO',
+      11: 'GLÁNDULAS FÚNDICAS DE LA MUCOSA GÁSTRICA',
+      12: 'GLÁNDULAS PILÓRICAS Y CAPAS DEL ESTÓMAGO',
+      13: 'INTESTINO DELGADO',
+      15: 'YEYUNO',
+      16: 'ÍLEON',
+      18: 'INTESTINO GRUESO: COLON',
+      19: 'HÍGADO',
+      20: 'VESÍCULA BILIAR',
+      21: 'PÁNCREAS'
     };
     const chapterTitle = chapterTitles[requestedChapter];
     activeImageLabel = chapterImageSet.label;
@@ -763,9 +1080,40 @@ function loadTissue() {
     image.setAttribute('aria-label', `Microfotografía de ${activeImageDescription} a 4×`);
     document.getElementById('viewerImageTitle').textContent = `${activeImageLabel} · 4×`;
     document.getElementById('viewerImageCaption').textContent = `MICROFOTOGRAFÍA · ${activeImageLabel.toUpperCase()}`;
+  } else if (isCardiacGlandsChapter) {
+    document.getElementById('viewerChapter').textContent = 'CAPÍTULO 10 · GLÁNDULAS CARDIALES Y CAPAS DEL ESTÓMAGO';
+    document.getElementById('viewerImageTitle').textContent = 'Microfotografía no disponible';
+    document.getElementById('viewerImageCaption').textContent = 'CAPÍTULO SIN MICROFOTOGRAFÍA';
+    imageSource.removeAttribute('src');
+    image.setAttribute('aria-label', 'Capítulo 10 sin microfotografía');
+    document.querySelector('.info-thumb').hidden = true;
+    presetButtons.forEach((button) => {
+      button.hidden = true;
+    });
+    state.imagePath = '';
+    viewerStatus.textContent = 'El contenido histológico está disponible; no hay una microfotografía asignada a este capítulo.';
   }
 
   const structureList = document.getElementById('tissueStructures');
+  if (tissue.structuresDisplay === 'paragraphs') {
+    structureList.replaceChildren(...tissue.structures.map((text) => {
+      const paragraph = document.createElement('p');
+      paragraph.className = 'structure-paragraph';
+      if (typeof text === 'string') {
+        paragraph.textContent = text;
+      } else {
+        const title = document.createElement('strong');
+        title.textContent = text.title;
+        paragraph.append(title);
+        if (text.description) {
+          paragraph.append(document.createTextNode(text.description));
+        }
+      }
+      return paragraph;
+    }));
+    return;
+  }
+
   const createStructureItem = (structure) => {
     const item = document.createElement('li');
     if (typeof structure === 'string') {
@@ -785,7 +1133,9 @@ function loadTissue() {
     }
     return item;
   };
-  structureList.replaceChildren(...tissue.structures.map(createStructureItem));
+  const list = document.createElement('ul');
+  list.append(...tissue.structures.map(createStructureItem));
+  structureList.replaceChildren(list);
 }
 
 zoomSlider.addEventListener('input', (event) => {
