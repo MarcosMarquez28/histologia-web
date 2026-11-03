@@ -4614,6 +4614,20 @@ body.light-mode:has(.viewer-page) {
   color: #514555;
 }
 
+.light-mode .viewer-page .info-copy h1,
+.light-mode .viewer-page .info-copy .structures-title {
+  color: #30223a;
+  opacity: 1;
+}
+
+.light-mode .viewer-page .info-copy p,
+.light-mode .viewer-page .info-copy ul,
+.light-mode .viewer-page .info-copy li,
+.light-mode .viewer-page .info-copy li strong {
+  color: #403646;
+  opacity: 1;
+}
+
 .light-mode .viewer-page .info-copy li {
   border-color: rgba(173, 91, 177, 0.16);
 }

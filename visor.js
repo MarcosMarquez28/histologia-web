@@ -62,8 +62,25 @@ const tissues = {
   glandulasSalivales: {
     title: 'Glándulas Salivales',
     englishTitle: 'Salivary Glands',
-    description: 'Las glándulas salivales son glándulas exocrinas compuestas que producen y conducen saliva hacia la cavidad oral. Sus unidades secretoras y conductos se organizan en lobulillos separados por tabiques de tejido conectivo.',
-    structures: ['Acinos y túbulos secretores.', 'Células serosas y mucosas.', 'Conductos intralobulillares e interlobulillares.', 'Tabiques de tejido conectivo entre lobulillos.', 'Cápsula y organización glandular exocrina.']
+    description: 'Las glándulas salivales liberan en la cavidad bucal una secreción llamada saliva. Se secreta suficiente saliva para humedecer las mucosas de la boca y los dientes. Cuando los alimentos ingresan en la boca, aumenta la secreción de saliva, que lubrica y disuelve los alimentos e inicia su digestión química. La mucosa de la boca y la lengua contiene glándulas salivales que se abren directa o indirectamente, a través de pequeños conductos, en la cavidad bucal. Sin embargo, la mayor parte de la saliva se secreta en las glándulas salivales mayores, que no están contenidas en la mucosa de la boca y cuyos conductos desembocan en la cavidad bucal. Hay tres pares de glándulas salivales mayores: la parótida, la submandibular o submaxilar y la sublingual. Las glándulas parótidas se localizan por debajo y por delante de las orejas, entre la piel y el músculo masetero. Las glándulas submandibulares se hallan sobre el piso de la boca, en posición medial y parcialmente inferior al cuerpo de la mandíbula. Las glándulas sublinguales se encuentran por debajo de la lengua y por encima de las glándulas submandibulares.',
+    structures: [
+      {
+        title: 'Células mioepiteliales (células en cesta)',
+        description: 'Son contráctiles y se encuentran en todas las glándulas salivales de la boca. Se localizan entre la lámina basal y las células glandulares de las porciones secretoras o entre la lámina basal y las células de los conductos del sistema de conductos excretores. Son células aplanadas con largas prolongaciones citoplasmáticas ramificadas que rodean la porción secretora a modo de cesta, mientras que las células del sistema de conductos excretores son alargadas en el sentido del conducto. Por lo general, en los cortes histológicos solo se observa el núcleo aplanado.'
+      },
+      {
+        title: 'Células mucosas (citoplasma pálido, núcleo aplanado)',
+        description: 'Sintetizan y retienen las vesículas de mucinógeno que forman la secreción mucosa lubricante.'
+      },
+      {
+        title: 'Células serosas (tinción intensa, núcleo redondo)',
+        description: 'Sintetizan y empaquetan proteínas enzimáticas activas para la saliva.'
+      },
+      {
+        title: 'Linfocitos y plasmocitos aglomerados',
+        description: 'Proporcionan defensa inmunológica local, mediada principalmente por anticuerpos como la IgA secretora, en el tejido conjuntivo glandular.'
+      }
+    ]
   },
   'intestino-delgado': {
     title: 'Intestino delgado',
@@ -433,6 +450,14 @@ function loadTissue() {
   }
 
   document.getElementById('tissue-title').textContent = `${tissue.title} / ${tissue.englishTitle}`;
+  const descriptionTitle = document.getElementById('tissueDescriptionTitle');
+  const structuresTitle = document.getElementById('structuresTitle');
+  const isSalivaryGlandsChapter = requestedChapter === '1';
+  descriptionTitle.hidden = !isSalivaryGlandsChapter;
+  descriptionTitle.textContent = isSalivaryGlandsChapter ? 'Generalidades de las glándulas salivales' : '';
+  structuresTitle.textContent = isSalivaryGlandsChapter
+    ? 'Células de las glándulas salivales mayores'
+    : 'Puntos de observación';
   document.getElementById('tissueDescription').textContent = tissue.description;
   const chapterImageSet = chapterImageSets[requestedChapter];
   if (chapterImageSet) {
@@ -490,7 +515,13 @@ function loadTissue() {
   const structureList = document.getElementById('tissueStructures');
   structureList.replaceChildren(...tissue.structures.map((structure) => {
     const item = document.createElement('li');
-    item.textContent = structure;
+    if (typeof structure === 'string') {
+      item.textContent = structure;
+    } else {
+      const title = document.createElement('strong');
+      title.textContent = `${structure.title}: `;
+      item.append(title, document.createTextNode(structure.description));
+    }
     return item;
   }));
 }
