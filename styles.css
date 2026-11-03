@@ -2755,6 +2755,11 @@ body:has(.viewer-page) {
   border-bottom: 1px solid rgba(157, 179, 218, 0.08);
 }
 
+.info-copy li > ul {
+  margin-top: 8px;
+  padding-left: 12px;
+}
+
 .info-copy li::before {
   position: absolute;
   top: 15px;

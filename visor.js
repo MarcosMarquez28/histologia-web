@@ -20,8 +20,107 @@ const tissues = {
   esofago: {
     title: 'Esófago',
     englishTitle: 'Esophagus',
-    description: 'Conducto muscular revestido por epitelio plano estratificado no queratinizado. La mucosa protege frente a la fricción del bolo alimenticio y la muscular propia cambia de músculo esquelético a liso a lo largo de su trayecto.',
-    structures: ['Mucosa con epitelio plano estratificado no queratinizado.', 'Lámina propia y muscular de la mucosa.', 'Submucosa con glándulas esofágicas.', 'Muscular propia circular interna y longitudinal externa.', 'Adventicia; serosa únicamente en el segmento abdominal.']
+    description: 'El esófago es un tubo muscular. De alrededor de 25 cm de longitud, situado por detrás de la tráquea, comienza en el límite inferior de la laringofaringe y atraviesa el mediastino por delante de la columna vertebral. Luego pasa a través del diafragma por un orificio denominado hiato esofágico y termina en la porción superior del estómago. El esófago secreta moco y transporta alimentos hacia el estómago, no produce enzimas digestivas y no cumple funciones de absorción. La luz es aplanada e irregular al corte transversal como consecuencia de la contracción tónica de la capa circular interna de la muscular, que forma pliegues longitudinales de la membrana mucosa.',
+    structures: [
+      {
+        title: 'Mucosa: Lámina epitelial',
+        description: 'La lámina epitelial se compone de epitelio estratificado plano no cornificado muy grueso (300-500 µm). El epitelio es continuación del epitelio estratificado plano de la faringe, pero de pronto se modifica a simple cilíndrico en la zona de transición a la región del cardias del estómago. La modificación epitelial puede aparecer a una altura variable de la parte inferior del esófago, por lo que los últimos 1-2 cm pueden estar revestidos por epitelio simple cilíndrico. A menudo, las células epiteliales planas del esófago contienen glucógeno, que se tiñe con la técnica de PAS.',
+        children: [
+          {
+            title: 'Su función',
+            description: 'Proteger la pared esofágica contra la fricción y la abrasión mecánica producida por el paso de los alimentos. Su glucógeno acumulado actúa como reserva metabólica, y su transición a epitelio cilíndrico en el cardias marca el límite funcional con el estómago.'
+          }
+        ]
+      },
+      {
+        title: 'Lámina propia',
+        description: 'La lámina propia se compone de tejido conectivo laxo, que puede contener escasos folículos linfoides, a menudo localizados alrededor de los conductos excretores de las glándulas.',
+        children: [
+          {
+            title: 'Su función',
+            description: 'Soportar estructuralmente al epitelio y proporcionar defensa inmunológica local gracias a la presencia de folículos linfoides.'
+          }
+        ]
+      },
+      {
+        title: 'Lámina muscular de la mucosa',
+        description: 'La lámina muscular de la mucosa está muy desarrollada en el esófago y se compone sólo de fibras musculares de transcurso longitudinal (la muscular de la mucosa siempre está compuesta por músculo liso).',
+        children: [
+          {
+            title: 'Su función',
+            description: 'Generar los pliegues longitudinales de la mucosa y permitir su movilidad independiente para facilitar el tránsito del contenido alimentario.'
+          }
+        ]
+      },
+      {
+        title: 'Submucosa',
+        description: 'La submucosa se compone de tejido conectivo de densidad moderada, que permite la dilatación de la luz durante la deglución de alimentos, cuando desaparecen los pliegues longitudinales.',
+        children: [
+          {
+            title: 'Su función',
+            description: 'Permitir la distensión y la dilatación de la luz esofágica durante la deglución (momento en el cual desaparecen los pliegues longitudinales), además de servir de soporte para vasos y nervios.'
+          }
+        ]
+      },
+      {
+        title: 'Muscular',
+        description: 'La muscular se dispone en una capa circular interna y otra longitudinal externa. En su tercio superior, el esófago se compone de músculo estriado esquelético, pero en forma gradual aparecen células musculares lisas en cantidad creciente. En condiciones normales, en el tercio inferior sólo hay músculo liso. Entre las capas musculares, se distinguen células ganglionares autónomas dispersas pertenecientes al plexo mientérico (plexo de Auerbach).',
+        children: [
+          {
+            title: 'Su función',
+            description: 'Realizar las contracciones peristálticas coordinadas para propulsar el bolo alimenticio desde la faringe hacia el estómago. El plexo mientérico regula esta actividad motora.'
+          }
+        ]
+      },
+      {
+        title: 'Adventicia y Serosa',
+        description: 'La adventicia está formada por tejido conectivo laxo que fija el esófago a las estructuras circundantes. La última porción de esófago, ubicada en el abdomen, está recubierta por serosa (peritoneo).',
+        children: [
+          {
+            title: 'Adventicia (tejido conectivo laxo)',
+            description: 'Fijar y unir el esófago a las estructuras anatómicas circundantes en el mediastino.'
+          },
+          {
+            title: 'Serosa / Peritoneo (última porción abdominal)',
+            description: 'Revestir y lubricar la porción terminal del esófago ubicada en el abdomen, reduciendo la fricción con los órganos vecinos.'
+          }
+        ]
+      },
+      {
+        title: 'Glándulas del esófago',
+        description: 'En el esófago se encuentran glándulas en la submucosa, que se denominan glándulas submucosas, y en la mucosa, que por lo general se conocen como glándulas esofágicas cardiales.',
+        children: [
+          {
+            title: 'Glándulas submucosas',
+            description: 'Las glándulas submucosas se componen de adenómeros mucosos tubuloacinosos ramificados que forman pequeños grupos, cada uno de los cuales tiene un único conducto excretor. El conducto excretor está revestido primero por epitelio simple cúbico a cilíndrico, que pasa a estratificado plano durante el transcurso en la membrana mucosa.',
+            children: [
+              {
+                title: 'Su función',
+                description: 'Secretar moco hacia la luz para lubricar el paso de los alimentos y proteger la superficie epitelial.'
+              }
+            ]
+          },
+          {
+            title: 'Glándulas esofágicas cardiales',
+            description: 'Las glándulas esofágicas cardiales están ubicadas en la lámina propia de la membrana mucosa y sólo aparecen en una zona limitada de la porción más inferior del esófago, donde están más o menos relacionadas con las glándulas cardiales del estómago de allí el nombre. Las glándulas también son tubuloacinosas compuestas por células secretoras mucosas. También es posible encontrar glándulas con el mismo aspecto y la misma ubicación en la parte más superior del esófago.',
+            children: [
+              {
+                title: 'Su función',
+                description: 'Producir secreción mucosa en las zonas de transición superior e inferior para proteger la mucosa frente al desgaste y al contenido ácido.'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        title: 'Células del esófago',
+        children: [
+          'En la mucosa, tiene células superficiales que pueden exhibir algunos gránulos de queratohialina pero generalmente no se produce la queratinización.',
+          'En la submucosa, posee células ganglionares que forman el plexo submucoso interno (plexo de Meissner).',
+          'En la muscular, está el plexo mientérico (plexo de Auerbach).'
+        ]
+      }
+    ]
   },
   unionEsofagogastrica: {
     title: 'Unión esofagogástrica',
@@ -115,32 +214,160 @@ const tissues = {
   epitelio: {
     title: 'El Epitelio',
     englishTitle: 'Epithelium',
-    description: 'El tejido epitelial está formado por células estrechamente unidas que recubren superficies y cavidades, y también forman glándulas. En la parótida se observa tejido glandular exocrino organizado en acinos serosos y conductos.',
-    structures: ['Acinos serosos secretores.', 'Células epiteliales glandulares.', 'Conductos intralobulillares e interlobulillares.', 'Tabiques de tejido conectivo entre lobulillos.', 'Organización del epitelio glandular exocrino.']
+    description: 'Son serosas y de estructura par, y constituyen las glándulas salivales mayores más grandes. El conducto parotídeo se desplaza desde la glándula que se encuentra debajo y delante del oído para ingresar en la cavidad bucal opuesta al segundo diente molar superior. Las unidades secretoras en la parótida son acinos serosos y rodean numerosos conductos intercalados largos y estrechos; los conductos estriados son grandes y suele haber una gran cantidad de tejido adiposo.',
+    structures: [
+      {
+        title: 'Acinos serosos',
+        description: 'Sintetizan, almacenan y secretan proteínas y enzimas, como la amilasa salival, hacia la luz glandular para iniciar la digestión de carbohidratos y facilitar la lubricación.'
+      },
+      {
+        title: 'Tejido adiposo blanco',
+        description: 'Actúa como reserva energética, brinda soporte estructural y rellena espacios intersticiales; es característico y abundante en la glándula parótida.'
+      },
+      {
+        title: 'Lobulillo; conductos estriados (epitelio cilíndrico simple)',
+        description: 'Modifican activamente la composición iónica de la saliva, reabsorbiendo sodio y cloruro y secretando potasio y bicarbonato, para volverla hipotónica.'
+      },
+      {
+        title: 'Conductos intercalados',
+        description: 'Transportan la saliva primaria desde los acinos e inician la modificación de su contenido hidroelectrolítico mediante secreción y reabsorción de iones.'
+      },
+      {
+        title: 'Conductos excretores (epitelio estratificado cilíndrico)',
+        description: 'Conducen la saliva colectada desde los lobulillos hacia el exterior de la glándula y desembocan en la cavidad bucal.'
+      },
+      {
+        title: 'Tejido conjuntivo',
+        description: 'Sostiene, cohesiona y envuelve los lobulillos y las estructuras vasculonerviosas de la glándula.'
+      },
+      {
+        title: 'Células mioepiteliales',
+        description: 'Son células contráctiles que rodean los acinos y conductos para facilitar la expulsión de la secreción.'
+      }
+    ]
   },
   conectivo: {
     title: 'Tejido Conectivo',
     englishTitle: 'Connective Tissue',
-    description: 'En la glándula submandibular, el tejido conectivo forma la cápsula y los tabiques que dividen el parénquima en lobulillos; en su interior se distribuyen acinos y conductos glandulares.',
-    structures: ['Cápsula de tejido conectivo que rodea la glándula.', 'Tabiques interlobulillares.', 'Lobulillos con acinos serosos y mucosos.', 'Conductos glandulares entre los lobulillos.', 'Relación entre el estroma conectivo y el parénquima secretor.']
+    description: 'Son órganos pares más o menos grandes, están ubicadas debajo de cada lado del piso de la boca, cerca de la mandíbula. De cada glándula parte un conducto, con un trayecto central y hacia adelante, hasta una papila situada en el piso de la boca, lateral al frenillo de la lengua. Entre los acinos serosos predominantes suelen aparecer algunos acinos mucosos coronados por semilunas serosas. Los conductos intercalados son menos abundantes que en la glándula parótida.',
+    structures: [
+      {
+        title: 'Acinos mixtos (acinos mucosos y acinos serosos coronados por semilunas)',
+        description: 'Combinan la producción de secreción mucosa y serosa simultáneamente; las semilunas serosas aportan proteínas y enzimas complementarias al moco.'
+      },
+      {
+        title: 'Lobulillo; conductos estriados (epitelio cilíndrico simple)',
+        description: 'Modifican activamente la composición iónica de la saliva, reabsorbiendo sodio y cloruro y secretando potasio y bicarbonato, para volverla hipotónica.'
+      },
+      {
+        title: 'Conducto excretor (epitelio estratificado cilíndrico)',
+        description: 'Conduce la saliva colectada desde los lobulillos hacia el exterior de la glándula y desemboca en la cavidad bucal.'
+      },
+      {
+        title: 'Arterias y venas',
+        description: 'Proveen el flujo sanguíneo continuo necesario para la alta actividad metabólica y la secreción de saliva.'
+      },
+      {
+        title: 'Tejido conjuntivo',
+        description: 'Sostiene, cohesiona y envuelve los lobulillos y las estructuras vasculonerviosas de la glándula.'
+      },
+      {
+        title: 'Linfocitos y plasmocitos aglomerados',
+        description: 'Proporcionan defensa inmunológica local en el tejido conjuntivo glandular.'
+      },
+      {
+        title: 'Células mucosas',
+        description: 'Tienen citoplasma pálido y núcleo aplanado; sintetizan y retienen las vesículas de mucinógeno.'
+      },
+      {
+        title: 'Células serosas',
+        description: 'Se tiñen con intensidad y tienen núcleos redondos; sintetizan y empaquetan proteínas enzimáticas.'
+      },
+      {
+        title: 'Células mioepiteliales',
+        description: 'Son células contráctiles que facilitan la expulsión de la secreción.'
+      }
+    ]
   },
   sublingual: {
     title: 'Glándula Sublingual',
     englishTitle: 'Sublingual Gland',
-    description: 'La glándula sublingual es una glándula salival mixta, con predominio de unidades mucosas. Sus acinos y conductos se organizan en lobulillos separados por tabiques de tejido conectivo.',
-    structures: ['Predominio de acinos y túbulos mucosos.', 'Semilunas serosas asociadas a algunas unidades mixtas.', 'Conductos intralobulillares.', 'Tabiques conectivos que dividen la glándula en lobulillos.', 'Cápsula delgada de tejido conectivo.']
+    description: 'Son las más pequeñas de las glándulas salivales mayores pares; se encuentran en el piso de la boca, anteriores con respecto a las glándulas submandibulares. Sus múltiples conductos sublinguales pequeños desembocan en el conducto submandibular y también, de forma independiente, sobre el piso de la boca. Algunos de los acinos mucosos predominantes poseen semilunas serosas, pero es muy raro hallar acinos serosos puros. Los conductos intercalados y estriados son cortos, y a veces inexistentes; las unidades secretoras mucosas pueden ser más tubulares que acinares.',
+    structures: [
+      {
+        title: 'Acinos mucosos',
+        description: 'Secretan moco rico en glicoproteínas (mucinas) para lubricar, humedecer y proteger la mucosa bucal y el bolo alimenticio.'
+      },
+      {
+        title: 'Conductos intralobulillares (epitelio cilíndrico simple)',
+        description: 'Conducen la saliva colectada desde los lobulillos hacia el exterior de la glándula y desembocan en la cavidad bucal.'
+      },
+      {
+        title: 'Conducto intercalado (epitelio plano o cilíndrico simple)',
+        description: 'Transporta la saliva primaria desde los acinos e inicia la modificación de su contenido hidroelectrolítico mediante secreción y reabsorción de iones.'
+      },
+      {
+        title: 'Células mucosas',
+        description: 'Sintetizan y retienen las vesículas de mucinógeno; presentan citoplasma pálido y núcleo aplanado.'
+      },
+      {
+        title: 'Semilunas serosas',
+        description: 'Aportan secreción serosa y enzimas complementarias a los acinos mucosos.'
+      },
+      {
+        title: 'Células mioepiteliales',
+        description: 'Son células contráctiles que facilitan la expulsión de la secreción glandular.'
+      }
+    ]
   },
   puntaLengua: {
     title: 'Punta de lengua',
     englishTitle: 'Tip of the Tongue',
-    description: 'La punta de la lengua presenta mucosa especializada con papilas linguales y botones gustativos. En el tejido subyacente se observan haces de músculo esquelético orientados en distintas direcciones.',
-    structures: ['Papilas linguales de la mucosa especializada.', 'Epitelio plano estratificado de revestimiento.', 'Botones gustativos asociados a papilas.', 'Lámina propia de tejido conectivo.', 'Haces de músculo esquelético en varios planos.']
+    description: [
+      'La lengua es un órgano muscular que se proyecta dentro de la cavidad bucal desde su superficie inferior. Los músculos de la lengua son tanto extrínsecos, con un punto de inserción fuera de la lengua, como intrínsecos, confinados por completo dentro del órgano, sin inserción externa. El músculo estriado de la lengua está organizado en fascículos que, por lo general, se disponen en tres planos más o menos perpendiculares entre sí. Esta distribución de las fibras musculares permite una enorme flexibilidad y precisión en los movimientos de la lengua, que son esenciales para el habla humana, así como para su función en la digestión y en la deglución. Esta forma de organización muscular es exclusiva de la lengua. Entre los grupos de fibras musculares hay cantidades variables de tejido adiposo.',
+      'El sentido del gusto está localizado en la lengua, en particular en la parte posterior. La lengua incluye una porción móvil, el cuerpo de la lengua, y una porción fija, la raíz de la lengua. La superficie dorsal o dorso de la lengua está dividida por un surco con forma de V, el surco terminal, en dos tercios anteriores, orientados hacia la cavidad bucal, y un tercio posterior, orientado hacia la orofaringe; la punta de la V se dirige hacia atrás y termina en una pequeña cavidad.'
+    ],
+    structures: [
+      {
+        title: 'Mucosa',
+        description: 'La punta de la lengua presenta principalmente papilas filiformes y fungiformes. Las filiformes son proyecciones cónicas y curvadas del epitelio dirigidas posteriormente, no poseen corpúsculos gustativos y están revestidas por un epitelio plano estratificado muy cornificado. Las fungiformes se distribuyen entre las filiformes y aparecen como estructuras redondeadas en forma de hongo, emergentes y aisladas, revestidas por un epitelio plano estratificado no queratinizado; solo las fungiformes contienen corpúsculos gustativos, comprendidos por células neuroepiteliales, de sostén y basales.'
+      },
+      {
+        title: 'Lámina propia',
+        description: 'Bajo el epitelio se observa la lámina propia de tejido conjuntivo laxo, que sostiene las papilas y alberga vasos y nervios; más profundo se identifica tejido conjuntivo denso irregular formando tabiques y soporte estructural.'
+      },
+      {
+        title: 'Muscular',
+        description: 'En la región profunda se observa músculo estriado esquelético intrínseco y extrínseco.'
+      },
+      {
+        title: 'Adventicia',
+        description: 'Tejido conectivo.'
+      }
+    ]
   },
   baseLengua: {
     title: 'Base de lengua',
     englishTitle: 'Base of the Tongue',
-    description: 'La base de la lengua contiene mucosa especializada con tejido linfoide asociado, además de glándulas y haces de músculo esquelético. La organización de estas estructuras contribuye a la defensa y a las funciones de la lengua.',
-    structures: ['Mucosa lingual de la región posterior.', 'Tejido linfoide y folículos linguales.', 'Epitelio plano estratificado de revestimiento.', 'Glándulas linguales y sus conductos.', 'Haces de músculo esquelético en distintos planos.']
+    description: [],
+    structures: [
+      {
+        title: 'Mucosa',
+        description: 'La base de la lengua presenta principalmente papilas caliciformes y foliadas. Las caliciformes son estructuras grandes en forma de cúpula que se encuentran en la mucosa, justo por delante del surco terminal, mientras que las foliadas consisten en crestas bajas y paralelas, separadas en hendiduras profundas de la mucosa alineadas en ángulo recto con respecto al eje longitudinal de la lengua. Ambas están revestidas por un epitelio plano estratificado no queratinizado y contienen corpúsculos gustativos, conformados por células neuroepiteliales, de sostén y basales.'
+      },
+      {
+        title: 'Lámina propia',
+        description: 'Bajo el epitelio se observa la lámina propia formada por tejido conjuntivo laxo, que sostiene las papilas y contiene vasos y nervios; más profundo aparece tejido conjuntivo denso irregular formando tabiques y soporte estructural.'
+      },
+      {
+        title: 'Muscular',
+        description: 'En la región profunda se identifican fascículos de músculo estriado esquelético intrínseco y extrínseco.'
+      },
+      {
+        title: 'Adventicia',
+        description: 'Tejido conectivo.'
+      }
+    ]
   },
   'paladar-duro': {
     title: 'Paladar duro',
@@ -453,12 +680,38 @@ function loadTissue() {
   const descriptionTitle = document.getElementById('tissueDescriptionTitle');
   const structuresTitle = document.getElementById('structuresTitle');
   const isSalivaryGlandsChapter = requestedChapter === '1';
-  descriptionTitle.hidden = !isSalivaryGlandsChapter;
-  descriptionTitle.textContent = isSalivaryGlandsChapter ? 'Generalidades de las glándulas salivales' : '';
+  const isParotidChapter = requestedChapter === '2';
+  const isSubmandibularChapter = requestedChapter === '3';
+  const isSublingualChapter = requestedChapter === '4';
+  const isTongueTipChapter = requestedChapter === '5';
+  const isEsophagusChapter = requestedChapter === '7';
+  descriptionTitle.hidden = !isSalivaryGlandsChapter
+    && !isParotidChapter
+    && !isSubmandibularChapter
+    && !isSublingualChapter
+    && !isTongueTipChapter
+    && !isEsophagusChapter;
+  descriptionTitle.textContent = isSalivaryGlandsChapter
+    ? 'Generalidades de las glándulas salivales'
+    : isParotidChapter
+      ? 'Las glándulas parótidas'
+      : isSubmandibularChapter
+        ? 'Las glándulas submandibulares'
+        : isSublingualChapter
+          ? 'Las glándulas sublinguales'
+          : isTongueTipChapter
+            ? 'Generalidades de la lengua'
+            : isEsophagusChapter ? 'Esófago generalidades:' : '';
   structuresTitle.textContent = isSalivaryGlandsChapter
     ? 'Células de las glándulas salivales mayores'
-    : 'Puntos de observación';
-  document.getElementById('tissueDescription').textContent = tissue.description;
+    : 'Características histológicas';
+  const descriptionContainer = document.getElementById('tissueDescription');
+  const descriptionParagraphs = Array.isArray(tissue.description) ? tissue.description : [tissue.description];
+  descriptionContainer.replaceChildren(...descriptionParagraphs.map((description) => {
+    const paragraph = document.createElement('p');
+    paragraph.textContent = description;
+    return paragraph;
+  }));
   const chapterImageSet = chapterImageSets[requestedChapter];
   if (chapterImageSet) {
     const chapterTitles = {
@@ -513,17 +766,26 @@ function loadTissue() {
   }
 
   const structureList = document.getElementById('tissueStructures');
-  structureList.replaceChildren(...tissue.structures.map((structure) => {
+  const createStructureItem = (structure) => {
     const item = document.createElement('li');
     if (typeof structure === 'string') {
       item.textContent = structure;
     } else {
       const title = document.createElement('strong');
       title.textContent = `${structure.title}: `;
-      item.append(title, document.createTextNode(structure.description));
+      item.append(title);
+      if (structure.description) {
+        item.append(document.createTextNode(structure.description));
+      }
+      if (structure.children?.length) {
+        const children = document.createElement('ul');
+        children.append(...structure.children.map(createStructureItem));
+        item.append(children);
+      }
     }
     return item;
-  }));
+  };
+  structureList.replaceChildren(...tissue.structures.map(createStructureItem));
 }
 
 zoomSlider.addEventListener('input', (event) => {
