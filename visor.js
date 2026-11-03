@@ -341,14 +341,48 @@ const tissues = {
   yeyuno: {
     title: 'Yeyuno',
     englishTitle: 'Jejunum',
-    description: 'El yeyuno presenta pliegues circulares y vellosidades que amplían la superficie de absorción. Su mucosa contiene criptas de Lieberkühn, y la submucosa carece de las glándulas de Brunner características del duodeno.',
-    structures: ['Pliegues circulares con vellosidades.', 'Epitelio cilíndrico simple con enterocitos.', 'Células caliciformes entre los enterocitos.', 'Criptas de Lieberkühn en la mucosa.', 'Submucosa sin glándulas de Brunner ni placas de Peyer prominentes.']
+    description: 'El yeyuno es el principal sitio de absorción de sustancias nutritivas en el intestino delgado. Las vellosidades son más digitiformes que foliáceas y están cubiertas, sobre todo, por células epiteliales cilíndricas absortivas (enterocitos), aunque también hay células caliciformes y células enteroendocrinas. Las células madre de las que derivan todas estas células y las células de Paneth, que secretan la enzima antibacteriana lisozima, se encuentran en la base de las glándulas intestinales. Las células en replicación revisten la mitad basal de la glándula.',
+    structures: [
+      {
+        title: 'Mucosa',
+        description: 'Epitelio cilíndrico simple con vellosidades altas y delgadas, las más desarrolladas del intestino delgado. Criptas de Lieberkühn bien definidas. Enterocitos abundantes con chapa estriada, células caliciformes en número moderado, células de Paneth evidentes y células enteroendocrinas. La lámina propia contiene nódulos linfáticos, pero no forma Placas de Peyer prominentes. Muscular de la mucosa con dos capas delgadas.'
+      },
+      {
+        title: 'Submucosa',
+        description: 'Tejido conjuntivo denso sin glándulas de Brunner. Pliegues circulares muy desarrollados. Plexo de Meissner presente.'
+      },
+      {
+        title: 'Muscular externa',
+        description: 'Capa circular interna y longitudinal externa con plexo de Auerbach. Motilidad muy activa por ser la región de máxima absorción.'
+      },
+      {
+        title: 'Serosa',
+        description: 'Mesotelio y tejido conjuntivo.'
+      }
+    ]
   },
   ileon: {
     title: 'Íleon',
     englishTitle: 'Ileum',
-    description: 'El íleon es el segmento distal del intestino delgado. Su mucosa presenta vellosidades y criptas, con abundantes células caliciformes y agregados linfoides que forman las placas de Peyer.',
-    structures: ['Vellosidades intestinales más cortas que las del yeyuno.', 'Epitelio cilíndrico simple con enterocitos y células caliciformes.', 'Criptas de Lieberkühn en la mucosa.', 'Placas de Peyer como agregados linfoides en la mucosa y submucosa.', 'Células de Paneth en la base de las criptas.']
+    description: 'El íleon es el sitio principal de reabsorción de agua y electrólitos del intestino delgado. En esencia, tiene las mismas características histológicas que el yeyuno, pero con algunas diferencias características. Las vellosidades en el íleon suelen ser foliáceas y el tejido linfático en la lámina propia está organizado en nódulos pequeños y grandes que se encuentran más concentrados en el borde antimesentérico del íleon. Los nódulos se fusionan para formar grandes cúmulos de tejido linfático denominadas placas de Peyer. El epitelio superficial del intestino delgado se renueva cada 5-6 días. Las células madre están restringidas a la base de las glándulas de la mucosa y la zona de replicación celular está limitada a la mitad basal de la glándula. Las células migran hacia las vellosidades y se exfolian desde su extremo. Todas las células epiteliales, absortivas y caliciformes, así como las células enteroendocrinas y las de Paneth, derivan de la misma población de células madre; sin embargo, las enteroendocrinas migran con lentitud y las de Paneth no migran.',
+    structures: [
+      {
+        title: 'Mucosa',
+        description: 'Epitelio cilíndrico simple con vellosidades más cortas que en el yeyuno. Criptas de Lieberkühn bien desarrolladas. Enterocitos presentes, pero mayor cantidad de células caliciformes. Células de Paneth en el fondo de las criptas y células enteroendocrinas. La lámina propia contiene nódulos linfáticos en toda la mucosa, pero en el íleon estos nódulos se agrupan formando estructuras grandes y prominentes llamadas Placas de Peyer, que representan el componente linfoide más desarrollado del intestino delgado. Muscular de la mucosa con dos capas delgadas.'
+      },
+      {
+        title: 'Submucosa',
+        description: 'Tejido conjuntivo denso. Las Placas de Peyer pueden extenderse desde la mucosa hacia la submucosa. Plexo de Meissner presente. No hay glándulas de Brunner.'
+      },
+      {
+        title: 'Muscular externa',
+        description: 'Capa circular interna y longitudinal externa con plexo de Auerbach. Motilidad menos intensa que en el yeyuno.'
+      },
+      {
+        title: 'Serosa',
+        description: 'Mesotelio y tejido conjuntivo.'
+      }
+    ]
   },
   glandulasSalivales: {
     title: 'Glándulas Salivales',
@@ -454,29 +488,356 @@ const tissues = {
       }
     ]
   },
+  duodeno: {
+    title: 'Duodeno',
+    englishTitle: 'Duodenum',
+    description: 'El primer segmento, el duodeno, recibe un bolo alimenticio semidigerido (quimo) desde el estómago, así como secreciones del estómago, el páncreas, el hígado y la vesícula biliar, que contienen enzimas digestivas, precursores de enzimas y otros productos que contribuyen a la digestión y la absorción. El intestino delgado se caracteriza por los pliegues circulares (válvulas conniventes) permanentes, transversales, con un centro de submucosa y vellosidades que son proyecciones digitiformes y foliáceas de la mucosa que se extienden dentro de la luz intestinal. Las microvellosidades, que son múltiples evaginaciones digitiformes de la superficie apical de cada célula epitelial intestinal (enterocito), incrementan la superficie de absorción de metabolitos. Las glándulas mucosas se extienden hacia la lámina propia. Contienen a las células madre y en desarrollo que finalmente migrarán a la superficie de las vellosidades. En el duodeno, las glándulas submucosas (de Brunner) secretan moco alcalino que ayuda a neutralizar el quimo ácido. Los enterocitos no solo absorben metabolitos digeridos en la luz intestinal, sino que también sintetizan enzimas que se insertan en la membrana de las microvellosidades para la digestión terminal de los disacáridos y los dipéptidos.',
+    structures: [
+      {
+        title: 'Mucosa',
+        description: 'Epitelio cilíndrico simple con vellosidades anchas y cortas. Criptas de Lieberkühn poco profundas. Enterocitos con chapa estriada, pocas células caliciformes, células de Paneth en el fondo de las criptas y células enteroendocrinas. La lámina propia con tejido conectivo laxo. Muscular de la mucosa con dos capas delgadas de músculo liso.'
+      },
+      {
+        title: 'Submucosa',
+        description: 'Tejido conjuntivo denso con glándulas de Brunner, características del duodeno, que secretan moco alcalino para neutralizar el quimo ácido. Presencia del plexo submucoso de Meissner.'
+      },
+      {
+        title: 'Muscular externa',
+        description: 'Capa circular interna y longitudinal externa, con el plexo mientérico de Auerbach entre ambas. Responsable del avance del quimo mezclado con secreciones pancreáticas y biliares.'
+      },
+      {
+        title: 'Serosa',
+        description: 'Mesotelio y tejido conjuntivo subyacente.'
+      }
+    ]
+  },
   'intestino-grueso': {
+    title: 'Intestino Grueso',
+    englishTitle: 'Large intestine',
+    description: 'El intestino grueso comprende el ciego con su apéndice vermiforme, el colon, el recto y el conducto anal. El colon a su vez se subdivide, según su ubicación anatómica, en colon ascendente, transverso, descendente y sigmoide. Las cuatro capas características del tubo digestivo también aparecen en todo el intestino grueso. Sin embargo, a escala macroscópica se comprueban varios rasgos distintivos:',
+    descriptionItems: [
+      {
+        title: 'Tenias del colon:',
+        description: 'Que son tres bandas equidistantes, estrechas y gruesas, formadas por la capa longitudinal externa de la muscular externa. Se observan principalmente en el ciego y el colon, pero están ausentes en el recto, el conducto anal y el apéndice vermiforme.'
+      },
+      {
+        title: 'Haustras colónicas:',
+        description: 'Que son saculaciones visibles entre las tenias del colon en las superficies externas del ciego y el colon.'
+      },
+      {
+        title: 'Apéndices omentales:',
+        description: 'Que son pequeñas proyecciones adiposas de la serosa que se observan en la capa externa del colon.'
+      }
+    ],
+    structures: [
+      {
+        title: 'Células absortivas cilíndricas',
+        description: 'La función principal de las células absortivas cilíndricas es la reabsorción de agua y electrólitos. La morfología de las células absortivas es, en esencia, idéntica a la de los enterocitos del intestino delgado.'
+      },
+      {
+        title: 'Células caliciformes',
+        description: 'Tienen forma de copa o cáliz y funcionan como fábricas de moco lubrificante, vital para que los desechos sólidos puedan deslizarse suavemente sin lastimar las paredes del intestino.'
+      }
+    ]
+  },
+  colon: {
     title: 'Intestino grueso: colon',
     englishTitle: 'Large intestine: colon',
-    description: 'El colon presenta mucosa sin vellosidades y criptas rectas, numerosas y ricas en células caliciformes. La absorción de agua y la secreción de moco caracterizan su función.',
-    structures: ['Mucosa lisa sin vellosidades.', 'Criptas de Lieberkühn largas y paralelas.', 'Abundantes células caliciformes.', 'Muscular de la mucosa y submucosa bien delimitadas.', 'Muscular externa; tenias del colon en la capa longitudinal.']
+    description: [
+      'Las funciones principales del colon son la reabsorción de electrólitos y agua, así como la eliminación de alimento no digerido y otros desechos. La mucosa tiene una superficie lisa sin pliegues circulares ni vellosidades. Las abundantes glándulas simples (criptas de Lieberkühn) se extienden a través de todo el espesor de la mucosa. Las glándulas, así como la superficie, están revestidas por un epitelio cilíndrico simple que contiene células caliciformes, absortivas y enteroendocrinas, pero que generalmente no posee células de Paneth. También aquí, las células madre están restringidas al fondo de las glándulas (criptas) y la zona normal de replicación se extiende hasta cerca de una tercera parte de la altura de la cripta.',
+      'Si bien la lámina propia del intestino grueso contiene los mismos componentes básicos que el resto del tubo digestivo, muestra unas características estructurales adicionales y también mayor desarrollo. Esto incluye lo siguiente:'
+    ],
+    descriptionItems: [
+      {
+        title: 'Meseta de colágeno:',
+        description: 'Que es una capa gruesa de colágeno y proteoglucanos que se ubica entre la lámina basal del epitelio y la de los capilares venosos absortivos fenestrados.'
+      },
+      {
+        title: 'Vaina fibroblástica pericríptica:',
+        description: 'Que es una población bien desarrollada de fibroblastos cuyas células se replican con regularidad. Los fibroblastos se dividen justo debajo de la base de la glándula intestinal, junto a las células madre del epitelio (tanto en el intestino delgado como en el grueso).'
+      },
+      {
+        title: 'GALT:',
+        description: 'Que es continuo con el íleon terminal. En el intestino grueso, el GALT está más desarrollado; algunos nódulos linfáticos grandes distorsionan el espaciado regular de las glándulas intestinales y se extienden hacia la submucosa.'
+      }
+    ],
+    structures: [
+      {
+        title: 'Mucosa',
+        description: 'Es una superficie lisa sin vellosidades ni pliegues circulares, contiene:',
+        children: [
+          'Epitelio cilíndrico simple.',
+          'Glándulas intestinales (criptas de Lieberkühn).',
+          'Células caliciformes.',
+          'Lámina propia con meseta de colágeno, vaina fibroblástica pericríptica y vasos linfáticos.',
+          'No presenta células de Paneth.'
+        ]
+      },
+      {
+        title: 'Submucosa',
+        children: [
+          'Tejido adiposo.',
+          'Vasos sanguíneos.',
+          'Tejido conectivo denso irregular.',
+          'Plexo submucoso de Meissner.'
+        ]
+      },
+      {
+        title: 'Muscular externa',
+        children: [
+          'Capa circular interna y capa longitudinal externa.',
+          'Plexo mientérico de Auerbach.',
+          'En la región del ciego y colon tenemos las tenias del colon que forman las haustras del colon.'
+        ]
+      },
+      {
+        title: 'Serosa',
+        children: [
+          'Epitelio plano simple (mesotelio).',
+          'Tejido conectivo laxo y células adiposas.'
+        ]
+      }
+    ]
   },
   higado: {
     title: 'Hígado',
     englishTitle: 'Liver',
-    description: 'El parénquima se organiza en lobulillos y cordones de hepatocitos separados por sinusoides. La sangre fluye hacia la vena central mientras la bilis avanza en dirección opuesta hacia los conductos biliares.',
-    structures: ['Lobulillos hepáticos y vena central.', 'Cordones de hepatocitos.', 'Sinusoides con células endoteliales y de Kupffer.', 'Espacios porta con rama de vena porta y arteria hepática.', 'Canalículos biliares entre hepatocitos.']
+    description: [
+      'El hígado es la masa de tejido glandular más grande del organismo y el órgano interno más voluminoso. Se localiza en el cuadrante superior derecho y en parte del cuadrante superior izquierdo de la cavidad abdominal, protegido por la parrilla costal. El hígado está encerrado en una cápsula de tejido conjuntivo fibroso (cápsula de Glisson); una cubierta serosa (peritoneo visceral) rodea la cápsula, excepto donde el hígado se adhiere directamente al diafragma o los otros órganos. Anatómicamente, el hígado está dividido por surcos profundos en dos grandes lóbulos (derecho e izquierdo) y dos lóbulos pequeños (el lóbulo cuadrado y el caudado).',
+      'El hígado realiza un número muy elevado de funciones de muy distinto tipo y es un órgano vital. La función exocrina del hígado comprende la secreción de bilis que llega hasta la luz del duodeno por las vías biliares, pero además, el hígado sintetiza varias sustancias que libera a la sangre, entre ellas, numerosas proteínas sanguíneas.'
+    ],
+    structures: [
+      {
+        title: 'Organización estructural del hígado',
+        children: [
+          {
+            title: 'Parénquima',
+            description: 'Consiste en cordones bien organizados de hepatocitos, que en el adulto generalmente tienen una sola célula de espesor, separadas por capilares sinusoidales. En los niños de hasta 6 años de edad, los hepatocitos se distribuyen en cordones de dos células de espesor.'
+          },
+          {
+            title: 'Estroma de tejido conjuntivo',
+            description: 'Que se continúa con la cápsula fibrosa de Glisson. Los vasos sanguíneos, nervios, vasos linfáticos y conductos biliares discurren dentro del estroma de tejido conjuntivo.'
+          },
+          {
+            title: 'Capilares sinusoidales (sinusoides)',
+            description: 'Que conforman el conducto vascular entre los cordones de hepatocitos.'
+          },
+          {
+            title: 'Espacios perisinusoidales (espacios de Disse)',
+            description: 'Que se encuentran entre el endotelio sinusoidal y los hepatocitos.'
+          }
+        ]
+      },
+      {
+        title: 'Características histológicas del hígado',
+        children: [
+          {
+            title: 'Estroma de tejido conectivo',
+            description: 'La delgada cápsula de tejido conectivo denso irregular del hígado o cápsula de Glisson está engrosada alrededor de la vena cava inferior y en el hilio hepático, donde el tejido conectivo de la cápsula sigue a los vasos hacia el interior de la glándula.'
+          },
+          {
+            title: 'División del parénquima',
+            description: 'Se divide el parénquima hepático en lobulillos (la unidad estructural) y se denomina tejido conectivo periportal, dado que rodea las tríadas portales o de Glisson, es decir, la unidad compuesta por una ramificación de la arteria hepática, una de la vena porta y el sistema de vías biliares.'
+          },
+          {
+            title: 'Abundancia del tejido conectivo',
+            description: 'El tejido conectivo periportal es más abundante cerca del hilio, puesto que aquí los tres componentes de la tríada son más grandes que en las porciones terminales, donde son pequeños y sólo están rodeados por escasa cantidad de tejido conectivo laxo. También disminuye el tamaño del espacio interlobulillar.'
+          },
+          {
+            title: 'Red de fibras reticulares',
+            description: 'Dentro del lobulillo se observa una red rígida de fibras reticulares que, en la periferia, se continúan con el tejido conectivo periportal interlobulillar. La mayor parte del retículo intralobulillar está formado por las células de Ito, pero también por fibroblastos aislados, cuya presencia se demostró alrededor de los sinusoides.'
+          },
+          {
+            title: 'Conductos interlobulillares',
+            description: 'Poseen epitelio cilíndrico simple.'
+          }
+        ]
+      },
+      {
+        title: 'Lobulillos y Unidades Funcionales',
+        children: [
+          {
+            title: 'Lobulillo hepático clásico',
+            description: 'La unidad estructural hepática es el lobulillo hepático, un prisma hexagonal. El lobulillo se cierra contra el espacio periportal mediante una placa continua de hepatocitos, la placa limitante, que sólo posee pequeños orificios para las ramificaciones terminales de la arteria hepática, la vena porta y las vías biliares (los conductos biliares presentan epitelio cúbico simple). Hacia el centro del lobulillo se distingue el espacio central, que contiene la vena central. En consecuencia, el parénquima hepático humano conforma una masa más continua, sin lobulación nítida. Sin embargo, a partir de la localización de las venas centrales y de las tríadas de Glisson, es relativamente sencillo establecer los límites de un lobulillo hepático humano. El lobulillo hepático clásico se considera una unidad estructural anatómica, pero también puede calificarse como una unidad funcional, dado que por ejemplo el depósito de glucosa en los hepatocitos después de una comida se extiende en una zona concéntrica desde la periferia hacia el centro del lobulillo, formando zonas anulares.'
+          },
+          {
+            title: 'Lobulillo portal',
+            description: 'Un tercer tipo de subdivisión del parénquima hepático consiste en el lobulillo portal, de aspecto triangular en el corte, cuyos vértices están formados por tres venas centrales distintas y en el centro contiene una tríada de Glisson. El lobulillo portal destaca la función exocrina del hígado, es decir, la secreción de bilis.'
+          },
+          {
+            title: 'Ácino hepático',
+            description: 'Una unidad más pequeña, el ácino hepático, representa la mínima unidad funcional. Está compuesta por la cantidad de parénquima hepático que se encuentra entre dos venas centrales e incluye ramificaciones terminales de arteria hepática, vena porta y sistema de vías biliares (un conductillo terminal) como ejes. Es también conocido como ácino de Rappaport (ácino funcional o microcirculatorio).'
+          }
+        ]
+      },
+      {
+        title: 'Células del hígado',
+        children: [
+          {
+            title: 'Hepatocitos',
+            description: 'Están dispuestos en hileras de una célula de espesor como cordones anastomosados de una o dos células de espesor.'
+          },
+          {
+            title: 'Células de Kupffer',
+            description: 'Generalmente se reconocen por sus núcleos ovoides y por sobresalir dentro de la luz.'
+          },
+          {
+            title: 'Células endoteliales',
+            description: 'Célula plana o escamosa que posee núcleo alargado o adelgazado y más pequeño.'
+          },
+          'Células sinusoidales.',
+          'Células estrelladas hepáticas (Células de Ito o lipocitos).',
+          'Células Pit (Linfocitos NK hepáticos).'
+        ]
+      }
+    ]
   },
   vesicula: {
     title: 'Vesícula Biliar',
     englishTitle: 'Gallbladder',
-    description: 'La vesícula biliar concentra y almacena la bilis. Su mucosa forma pliegues revestidos por epitelio cilíndrico simple y carece de muscular de la mucosa y submucosa bien definidas.',
-    structures: ['Mucosa muy plegada revestida por epitelio cilíndrico simple.', 'Lámina propia de tejido conectivo laxo.', 'Capa muscular irregular de músculo liso.', 'Tejido perimuscular conectivo y vasos sanguíneos.', 'Serosa en la superficie libre y adventicia en la superficie hepática.']
+    description: [
+      'La vesícula biliar es un órgano hueco con forma de pera ubicado sobre la cara inferior del lóbulo hepático derecho. Se compone de un extremo ciego, el fondo, un cuerpo y un cuello que se continúa en el conducto cístico. La vesícula biliar aumenta de tamaño con facilidad y puede contener hasta 50 ml. En la vesícula biliar vacía contraída, la mucosa está muy pegada. La pared de la vesícula biliar está compuesta por mucosa, una muscular constituida por fibras de músculo liso, y una capa perimuscular de tejido conectivo, recubierta en parte por serosa.',
+      'La vesícula biliar puede almacenar la bilis entrante y extraer cerca del 90% del agua que contiene, lo cual incrementa hasta 10 veces la concentración de sales biliares, colesterol y bilirrubina. Las hormonas secretadas por las células enteroendocrinas del intestino delgado, en respuesta a la presencia de grasa en el duodeno proximal, estimulan las contracciones de músculo liso de la vesícula biliar. Estas contracciones ayudan a descargar la bilis concentrada en el colédoco, que la conduce hasta el duodeno.'
+    ],
+    structures: [
+      {
+        title: 'La mucosa',
+        description: 'Está revestida en su cara luminal por una capa de epitelio cilíndrico simple, los núcleos son ovalados y de ubicación basal, y el citoplasma es eosinófilo claro con abundantes microvellosidades cortas apicales. Además, presenta divertículos profundos de la mucosa llamados senos de Rokitansky-Aschoff.',
+        children: [
+          {
+            title: 'Función del epitelio cilíndrico simple (con microvellosidades cortas apicales y núcleos basales)',
+            description: 'Absorber agua y electrólitos del jugo biliar para concentrar la bilis almacenada.'
+          },
+          {
+            title: 'Función de los senos de Rokitansky-Aschoff (divertículos profundos de la mucosa)',
+            description: 'Representan invaginaciones profundas de la mucosa que penetran en la capa muscular (asociados en estados de distensión o cambios parietales).'
+          }
+        ]
+      },
+      {
+        title: 'La lámina propia',
+        description: 'Se compone de tejido conectivo laxo y en ella se encuentran glándulas mucosas dispersas, sobre todo en la región del cuello, y capilares fenestrados; esta capa es muy celular y contiene una gran cantidad de linfocitos y plasmocitos. La vesícula biliar carece de muscular de la mucosa y la mucosa limita directamente con una delgada capa de fibras musculares lisas.',
+        children: [
+          {
+            title: 'Función del tejido conectivo laxo',
+            description: 'Brindar sostén mecánico al epitelio, albergar capilares fenestrados para el transporte rápido de fluidos reabsorbidos y proporcionar defensa inmunológica local.'
+          },
+          {
+            title: 'Función de las glándulas mucosas (en lámina propia del cuello)',
+            description: 'Secretar moco para proteger la mucosa del cuello vesicular frente al roce y la corrosión biliar.'
+          },
+          {
+            title: 'Función de los capilares fenestrados (en la lámina propia)',
+            description: 'Facilitar el intercambio rápido y eficiente de agua y solutos reabsorbidos desde la bilis hacia el torrente sanguíneo.'
+          }
+        ]
+      },
+      {
+        title: 'La capa muscular',
+        description: 'Las fibras musculares lisas se disponen en haces separados por tejido conectivo en dirección no uniforme. Está rodeada en su totalidad por una capa de tejido conectivo perimuscular bien desarrollada, la cual es tejido conectivo denso y presenta características de cápsula que se continúa con la cápsula del hígado; posee abundantes fibras colágenas y elásticas.',
+        children: [
+          {
+            title: 'Función de los haces de músculo liso en direcciones no uniformes',
+            description: 'Contraerse coordinadamente por estímulo de la colecistocinina para expulsar la bilis concentrada hacia el conducto cístico durante la digestión.'
+          },
+          {
+            title: 'Función del tejido conectivo perimuscular (tejido conectivo denso, fibras elásticas y colágeno)',
+            description: 'Dar resistencia estructural, envolver la capa muscular y dar continuidad anatómica con la cápsula hepática.'
+          }
+        ]
+      },
+      {
+        title: 'La capa serosa de la vesícula biliar (peritoneo)',
+        description: 'La capa se transforma en una subserosa más laxa. Las capas de tejido conectivo contienen vasos sanguíneos, nervios, vías linfáticas y tejido adiposo.',
+        children: [
+          {
+            title: 'Función de la serosa',
+            description: 'Proteger exteriormente la vesícula, reducir la fricción con órganos vecinos, alojar tejido adiposo y permitir el paso de vasos sanguíneos, linfáticos y nervios.'
+          }
+        ]
+      },
+      {
+        title: 'Conducto Cístico',
+        description: 'La vesícula biliar se vacía a través del conducto cístico, que se une con el conducto hepático común y forma el conducto colédoco. La pared del conducto cístico contiene todas las capas de la vesícula biliar y la mucosa está plegada en una espiral que rodea la luz, formando la válvula espiral (válvula de Heister), la cual posee epitelio cilíndrico simple con microvellosidades cortas.',
+        children: [
+          {
+            title: 'Función de la válvula de Heister',
+            description: 'Mantener la luz del conducto cístico abierta y regular el flujo de entrada y salida de bilis, evitando el colapso de la vía durante cambios de presión.'
+          }
+        ]
+      },
+      {
+        title: 'Células de la vesícula biliar',
+        children: [
+          {
+            title: 'Células epiteliales alargadas (colangiocitos)',
+            description: 'Realizar la absorción activa de agua e iones para concentrar la bilis y participar en la modificación de su composición.'
+          },
+          {
+            title: 'Células mucosas',
+            description: 'Sintetizar y liberar mucinas que forman una barrera protectora sobre la superficie luminal.'
+          },
+          {
+            title: 'Linfitos y Plasmocitos',
+            description: 'Sintetizar anticuerpos y ejercer la vigilancia inmunológica contra agentes patógenos en la pared vesicular.'
+          }
+        ]
+      }
+    ]
   },
   pancreas: {
     title: 'Páncreas',
     englishTitle: 'Pancreas',
-    description: 'Glándula mixta lobulada: los acinos serosos producen secreción digestiva y los islotes de Langerhans forman el componente endocrino. Los conductos intercalares comienzan dentro del acino.',
-    structures: ['Acinos serosos con gránulos de zimógeno.', 'Células centroacinares en el inicio de los conductos.', 'Conductos intercalares e intralobulillares.', 'Islotes de Langerhans más pálidos que el acino.', 'Tabiques de tejido conectivo entre lobulillos.']
+    description: [
+      'El páncreas es una glándula alargada con las siguientes partes: cabeza, cuerpo y cola. La cabeza es la porción amplia que se localiza en la curva, con forma de “C”, del duodeno. Está unida al duodeno por medio de tejido conjuntivo. El cuerpo del páncreas, de ubicación central, atraviesa la línea media del cuerpo humano y la cola se extiende en dirección al hilio del bazo.',
+      'El páncreas es una glándula exocrina y endocrina. A diferencia del hígado, en el cual las funciones exocrinas y secretoras (endocrinas) se llevan a cabo en la misma célula, la doble función del páncreas se reparte en dos componentes estructuralmente distintos:'
+    ],
+    descriptionItems: [
+      {
+        title: 'El componente exocrino:',
+        description: 'Sintetiza y secreta enzimas hacia el duodeno, indispensables para la digestión en el intestino. Se localiza en toda la glándula; dentro del páncreas exocrino se encuentran dispersos grupos celulares bien definidos, denominados islotes de Langerhans, que constituyen el componente endocrino.'
+      },
+      {
+        title: 'El componente endocrino:',
+        description: 'Sintetiza las hormonas insulina y glucagón y las secreta en la sangre. Estas hormonas regulan el metabolismo de glucosa, lípidos y proteínas en el organismo.'
+      }
+    ],
+    structures: [
+      {
+        title: 'Células del páncreas (Islotes de Langerhans)',
+        children: [
+          {
+            title: 'Células B',
+            description: 'Constituyen entre el 60 y 70% del total de células insulares en los humanos; por lo general, se localizan en su porción central. Estas células secretan insulina.'
+          },
+          {
+            title: 'Células A',
+            description: 'Constituyen entre el 15 y 20% de la población insular en los humanos y, en general, se localizan en la periferia de los islotes. Estas células secretan glucagón.'
+          },
+          {
+            title: 'Células D',
+            description: 'Conforman entre el 5 y 10% del tejido pancreático endocrino total y también se localizan en la periferia de los islotes. Las células D secretan somatostatina dentro de sus gránulos de secreción, que son más grandes que los de las células A y B.'
+          },
+          {
+            title: 'Células PP (polipéptido pancreático)',
+            description: 'Estimulan las células gástricas principales, inhiben la secreción biliar y la motilidad intestinal, e inhiben la secreción de HCO3 y enzimas pancreáticas.'
+          }
+        ]
+      },
+      {
+        title: 'Histología',
+        children: [
+          {
+            title: 'Porción Exocrina',
+            description: 'Está compuesta principalmente por acinos serosos formados por células acinares, las cuales presentan gránulos de cimógeno eosinófilos en su citoplasma apical. Contiene células centroacinares, que corresponden al inicio de los conductos excretores (conductos de Boll) ubicados dentro de la luz del acino. Sintetiza y secreta enzimas digestivas hacia el duodeno.'
+          },
+          {
+            title: 'Porción Endocrina',
+            description: 'Representada por los islotes de Langerhans, que se observan como cúmulos celulares pálidos dispersos entre los acinos exocrinos. En su interior albergan distintos tipos celulares: Células Alfa (A), Células Beta (B), Células Delta (D) y Células PP (polipéptido pancreático).'
+          }
+        ]
+      }
+    ]
   },
   epitelio: {
     title: 'El Epitelio',
@@ -771,6 +1132,13 @@ const chapterImageSets = {
       40: 'image/ileon 40x.jpeg'
     }
   },
+  17: {
+    label: 'Intestino Grueso',
+    imageDescription: 'el intestino grueso',
+    images: {
+      4: 'image/Generalidades del Colon.jpeg'
+    }
+  },
   18: {
     label: 'Colon',
     imageDescription: 'el colon',
@@ -906,27 +1274,6 @@ function loadTissue() {
   const searchParams = new URLSearchParams(window.location.search);
   const requestedChapter = searchParams.get('chapter');
   const requestedOrgan = searchParams.get('organ');
-  if (requestedChapter === '14' || requestedChapter === '17') {
-    document.getElementById('viewerChapter').textContent = `CAPÍTULO ${requestedChapter} · EN PREPARACIÓN`;
-    document.getElementById('tissue-title').textContent = 'En preparación';
-    document.getElementById('tissueDescriptionTitle').hidden = true;
-    document.getElementById('tissueDescription').replaceChildren();
-    document.getElementById('structuresTitle').hidden = true;
-    document.getElementById('tissueStructures').replaceChildren();
-    document.getElementById('viewerImageTitle').textContent = 'En preparación';
-    document.getElementById('viewerImageCaption').textContent = 'CAPÍTULO EN PREPARACIÓN';
-    imageSource.removeAttribute('src');
-    image.setAttribute('aria-label', `Capítulo ${requestedChapter} en preparación`);
-    document.querySelector('.info-thumb').hidden = true;
-    presetButtons.forEach((button) => {
-      button.hidden = true;
-    });
-    state.imagePath = '';
-    magnificationReadout.textContent = 'Sin aumento';
-    viewerStatus.textContent = 'Este capítulo está reservado para nuevo contenido.';
-    return;
-  }
-
   const chapterTissue = {
     1: tissues.glandulasSalivales,
     2: tissues.epitelio,
@@ -941,9 +1288,11 @@ function loadTissue() {
     11: tissues.fundus,
     12: tissues.piloro,
     13: tissues['intestino-delgado'],
+    14: tissues.duodeno,
     15: tissues.yeyuno,
     16: tissues.ileon,
-    18: tissues['intestino-grueso'],
+    17: tissues['intestino-grueso'],
+    18: tissues.colon,
     19: tissues.higado,
     20: tissues.vesicula,
     21: tissues.pancreas
@@ -970,6 +1319,14 @@ function loadTissue() {
   const isFundusChapter = requestedChapter === '11';
   const isPylorusChapter = requestedChapter === '12';
   const isSmallIntestineChapter = requestedChapter === '13';
+  const isDuodenumChapter = requestedChapter === '14';
+  const isJejunumChapter = requestedChapter === '15';
+  const isIleumChapter = requestedChapter === '16';
+  const isLargeIntestineChapter = requestedChapter === '17';
+  const isColonChapter = requestedChapter === '18';
+  const isLiverChapter = requestedChapter === '19';
+  const isGallbladderChapter = requestedChapter === '20';
+  const isPancreasChapter = requestedChapter === '21';
   structuresTitle.hidden = isEsophagogastricChapter;
   descriptionTitle.hidden = !isSalivaryGlandsChapter
     && !isParotidChapter
@@ -982,7 +1339,15 @@ function loadTissue() {
     && !isCardiacGlandsChapter
     && !isFundusChapter
     && !isPylorusChapter
-    && !isSmallIntestineChapter;
+    && !isSmallIntestineChapter
+    && !isDuodenumChapter
+    && !isJejunumChapter
+    && !isIleumChapter
+    && !isLargeIntestineChapter
+    && !isColonChapter
+    && !isLiverChapter
+    && !isGallbladderChapter
+    && !isPancreasChapter;
   descriptionTitle.textContent = isSalivaryGlandsChapter
     ? 'Generalidades de las glándulas salivales'
     : isParotidChapter
@@ -1005,10 +1370,32 @@ function loadTissue() {
                       ? 'Glándulas Fúndicas de la Mucosa Gástrica - Generalidades y Función:'
                       : isPylorusChapter
                         ? 'Glándulas pilóricas - Generalidades:'
-                        : isSmallIntestineChapter ? 'Intestino Delgado - Generalidades:' : '';
+                        : isSmallIntestineChapter
+                          ? 'Intestino Delgado - Generalidades:'
+                          : isDuodenumChapter
+                            ? 'Duodeno - Porciones y Descripción:'
+                            : isJejunumChapter
+                              ? 'Yeyuno - Generalidades:'
+                              : isIleumChapter
+                                ? 'Íleon - Generalidades:'
+                                : isLargeIntestineChapter
+                                  ? 'Intestino Grueso - Generalidades:'
+                                  : isColonChapter
+                                    ? 'Colon - Generalidades:'
+                                    : isLiverChapter
+                                      ? 'Generalidades del hígado:'
+                                      : isGallbladderChapter
+                                        ? 'Generalidades de la vesícula biliar:'
+                                        : isPancreasChapter ? 'Páncreas - Generalidades:' : '';
   structuresTitle.textContent = isSalivaryGlandsChapter
     ? 'Células de las glándulas salivales mayores'
-    : 'Características histológicas';
+    : isColonChapter
+      ? 'Descripción histológica por capas:'
+      : isLiverChapter
+        ? 'Características histológicas del hígado:'
+        : isGallbladderChapter
+          ? 'Características histológicas de la vesícula biliar:'
+          : isPancreasChapter ? 'Histología:' : 'Características histológicas';
   const descriptionContainer = document.getElementById('tissueDescription');
   const descriptionParagraphs = Array.isArray(tissue.description) ? tissue.description : [tissue.description];
   descriptionContainer.replaceChildren(...descriptionParagraphs.map((description) => {
@@ -1043,8 +1430,10 @@ function loadTissue() {
       11: 'GLÁNDULAS FÚNDICAS DE LA MUCOSA GÁSTRICA',
       12: 'GLÁNDULAS PILÓRICAS Y CAPAS DEL ESTÓMAGO',
       13: 'INTESTINO DELGADO',
+      14: 'DUODENO',
       15: 'YEYUNO',
       16: 'ÍLEON',
+      17: 'INTESTINO GRUESO',
       18: 'INTESTINO GRUESO: COLON',
       19: 'HÍGADO',
       20: 'VESÍCULA BILIAR',
@@ -1080,6 +1469,20 @@ function loadTissue() {
     image.setAttribute('aria-label', `Microfotografía de ${activeImageDescription} a 4×`);
     document.getElementById('viewerImageTitle').textContent = `${activeImageLabel} · 4×`;
     document.getElementById('viewerImageCaption').textContent = `MICROFOTOGRAFÍA · ${activeImageLabel.toUpperCase()}`;
+  } else if (isDuodenumChapter) {
+    document.getElementById('viewerChapter').textContent = 'CAPÍTULO 14 · DUODENO';
+    document.getElementById('viewerImageTitle').textContent = 'Microfotografía no disponible';
+    document.getElementById('viewerImageCaption').textContent = 'CAPÍTULO SIN MICROFOTOGRAFÍA';
+    imageSource.removeAttribute('src');
+    image.setAttribute('aria-label', 'Capítulo 14 sin microfotografía');
+    document.getElementById('referenceImage').hidden = true;
+    document.querySelector('.info-thumb').hidden = true;
+    presetButtons.forEach((button) => {
+      button.hidden = true;
+    });
+    state.imagePath = '';
+    magnificationReadout.textContent = 'Sin aumento';
+    viewerStatus.textContent = 'El contenido histológico está disponible; no hay una microfotografía asignada a este capítulo.';
   } else if (isCardiacGlandsChapter) {
     document.getElementById('viewerChapter').textContent = 'CAPÍTULO 10 · GLÁNDULAS CARDIALES Y CAPAS DEL ESTÓMAGO';
     document.getElementById('viewerImageTitle').textContent = 'Microfotografía no disponible';
