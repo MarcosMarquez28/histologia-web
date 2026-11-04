@@ -1217,11 +1217,19 @@ const state = {
   startX: 0,
   startY: 0,
   startPanX: 0,
-  startPanY: 0
+  startPanY: 0,
+  pinchStartDistance: 0,
+  pinchStartZoom: 1
 };
 
 function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
+}
+
+function getTouchDistance(touchA, touchB) {
+  const dx = touchA.clientX - touchB.clientX;
+  const dy = touchA.clientY - touchB.clientY;
+  return Math.hypot(dx, dy);
 }
 
 function limitPan() {
@@ -1656,7 +1664,89 @@ stage.addEventListener('wheel', (event) => {
   setZoom(state.zoom * (1 + delta));
 }, { passive: false });
 
+stage.addEventListener('touchstart', (event) => {
+  if (event.target.closest('button')) {
+    return;
+  }
+
+  if (event.touches.length === 2) {
+    event.preventDefault();
+    state.dragging = false;
+    state.pinchStartDistance = getTouchDistance(event.touches[0], event.touches[1]);
+    state.pinchStartZoom = state.zoom;
+    stage.classList.remove('is-dragging');
+    return;
+  }
+
+  if (event.touches.length === 1) {
+    const touch = event.touches[0];
+    if (state.zoom <= state.minZoom) {
+      return;
+    }
+
+    state.dragging = true;
+    state.startX = touch.clientX;
+    state.startY = touch.clientY;
+    state.startPanX = state.panX;
+    state.startPanY = state.panY;
+    stage.classList.add('is-dragging');
+  }
+}, { passive: false });
+
+stage.addEventListener('touchmove', (event) => {
+  if (event.target.closest('button')) {
+    return;
+  }
+
+  if (event.touches.length === 2) {
+    event.preventDefault();
+    const distance = getTouchDistance(event.touches[0], event.touches[1]);
+    if (!state.pinchStartDistance) {
+      state.pinchStartDistance = distance;
+      state.pinchStartZoom = state.zoom;
+      return;
+    }
+
+    const nextZoom = state.pinchStartZoom * (distance / state.pinchStartDistance);
+    setZoom(nextZoom);
+    return;
+  }
+
+  if (event.touches.length === 1 && state.dragging) {
+    event.preventDefault();
+    const touch = event.touches[0];
+    state.panX = state.startPanX + (touch.clientX - state.startX);
+    state.panY = state.startPanY + (touch.clientY - state.startY);
+    limitPan();
+    renderImage();
+  }
+}, { passive: false });
+
+stage.addEventListener('touchend', (event) => {
+  if (event.touches.length === 0) {
+    state.dragging = false;
+    state.pinchStartDistance = 0;
+    stage.classList.remove('is-dragging');
+    return;
+  }
+
+  if (event.touches.length === 1) {
+    const touch = event.touches[0];
+    state.dragging = true;
+    state.startX = touch.clientX;
+    state.startY = touch.clientY;
+    state.startPanX = state.panX;
+    state.startPanY = state.panY;
+    state.pinchStartDistance = 0;
+    stage.classList.add('is-dragging');
+  }
+}, { passive: false });
+
 stage.addEventListener('pointerdown', (event) => {
+  if (event.pointerType === 'touch') {
+    return;
+  }
+
   if (event.pointerType !== 'mouse' && !event.target.closest('button')) {
     window.clearTimeout(overlayInteractionTimeout);
     image.classList.add('is-interacting');
@@ -1681,7 +1771,7 @@ stage.addEventListener('pointerdown', (event) => {
 });
 
 stage.addEventListener('pointermove', (event) => {
-  if (!state.dragging) {
+  if (event.pointerType === 'touch' || !state.dragging) {
     return;
   }
 
