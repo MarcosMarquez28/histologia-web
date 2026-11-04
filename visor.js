@@ -1048,7 +1048,7 @@ const chapterImageSets = {
     }
   },
   4: {
-    label: 'Sublingual',
+    label: 'Glándula Sublingual',
     imageDescription: 'la glándula sublingual',
     images: {
       4: 'image/sublingual 4x.jpg',
