@@ -1,6 +1,7 @@
 const searchInput = document.getElementById('moduleSearch');
 const moduleCards = Array.from(document.querySelectorAll('.module-card'));
 const emptyMessage = document.getElementById('searchEmpty');
+const modulePagination = document.getElementById('modulePagination');
 const themeToggleButtons = document.querySelectorAll('[data-theme-toggle]');
 const themeMeta = document.querySelector('meta[name="theme-color"]');
 
@@ -71,193 +72,185 @@ if (menuToggle && siteNavigation) {
   });
 }
 
-if (searchInput && emptyMessage) {
+if (searchInput && emptyMessage && modulePagination) {
   const normalizeText = (text) => text
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
     .toLocaleLowerCase('es');
 
-  searchInput.addEventListener('input', () => {
-    const query = normalizeText(searchInput.value.trim());
-    let visibleCards = 0;
+  const cardsPerPage = 6;
+  let currentPage = 1;
+  let matchingCards = moduleCards;
+
+  const renderModulePage = () => {
+    const pageCount = Math.ceil(matchingCards.length / cardsPerPage);
+    currentPage = Math.min(Math.max(currentPage, 1), Math.max(pageCount, 1));
+    const start = (currentPage - 1) * cardsPerPage;
+    const visibleCards = new Set(matchingCards.slice(start, start + cardsPerPage));
 
     moduleCards.forEach((card) => {
-      const searchableText = normalizeText(`${card.dataset.search || ''} ${card.textContent || ''}`);
-      const isMatch = searchableText.includes(query);
-      card.hidden = !isMatch;
-      visibleCards += Number(isMatch);
+      card.hidden = !visibleCards.has(card);
     });
 
-    emptyMessage.hidden = visibleCards !== 0;
+    modulePagination.replaceChildren();
+    modulePagination.hidden = pageCount <= 1;
+    if (pageCount <= 1) {
+      return;
+    }
+
+    for (let page = 1; page <= pageCount; page += 1) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'module-page-button';
+      button.textContent = String(page);
+      button.setAttribute('aria-label', `Página ${page} de capítulos`);
+      if (page === currentPage) {
+        button.setAttribute('aria-current', 'page');
+      }
+      modulePagination.append(button);
+    }
+  };
+
+  renderModulePage();
+
+  modulePagination.addEventListener('click', (event) => {
+    if (!(event.target instanceof Element)) {
+      return;
+    }
+    const button = event.target.closest('.module-page-button');
+    if (!button) {
+      return;
+    }
+    currentPage = Number(button.textContent);
+    renderModulePage();
+    document.getElementById('moduleGrid').scrollIntoView({block: 'start', behavior: 'smooth'});
   });
 
+  searchInput.addEventListener('input', () => {
+    const query = normalizeText(searchInput.value.trim());
+    matchingCards = moduleCards.filter((card) => {
+      const searchableText = normalizeText(`${card.dataset.search || ''} ${card.textContent || ''}`);
+      return searchableText.includes(query);
+    });
+    currentPage = 1;
+    emptyMessage.hidden = matchingCards.length !== 0;
+    renderModulePage();
+  });
 }
 
 const quizSearch = document.getElementById('quizSearch');
-const quizCards = Array.from(document.querySelectorAll('.quiz-card'));
+const quizGrid = document.getElementById('quizGrid');
+const quizPagination = document.getElementById('quizPagination');
 const quizSearchEmpty = document.getElementById('quizSearchEmpty');
 const quizSelection = document.getElementById('quizSelection');
 const activeQuiz = document.getElementById('quizActive');
 const quizForm = document.getElementById('digestiveQuiz');
 const quizQuestions = document.getElementById('quizQuestions');
 const quizResult = document.getElementById('quizResult');
-
-const quizzes = {
-  esofago: {
-    title: 'Quiz: Esófago',
-    description: 'Epitelio de revestimiento, glándulas submucosas y capas de la pared esofágica.',
-    questions: [
-      {
-        prompt: '¿Qué tipo de epitelio reviste normalmente la mucosa del esófago?',
-        options: ['Cilíndrico simple', 'Plano estratificado no queratinizado', 'De transición'],
-        answer: 1,
-        explanation: 'El epitelio plano estratificado no queratinizado protege al esófago de la fricción del bolo alimenticio.'
-      },
-      {
-        prompt: '¿Dónde se localizan las glándulas esofágicas propias?',
-        options: ['En la submucosa', 'En la serosa', 'En el epitelio superficial'],
-        answer: 0,
-        explanation: 'Las glándulas esofágicas propias se encuentran en la submucosa y secretan moco para lubricar el conducto.'
-      },
-      {
-        prompt: '¿Qué cambio caracteriza a la muscular externa a lo largo del esófago?',
-        options: ['Es músculo liso en toda su longitud', 'Es músculo esquelético en toda su longitud', 'Pasa de músculo esquelético a mixto y luego a liso'],
-        answer: 2,
-        explanation: 'El tercio superior es principalmente esquelético, el medio es mixto y el inferior es músculo liso.'
-      }
-    ]
-  },
-  estomago: {
-    title: 'Quiz: Estómago y glándulas gástricas',
-    description: 'Células parietales y principales, fositas, glándulas y organización de la mucosa.',
-    questions: [
-      {
-        prompt: '¿Qué secretan las células parietales gástricas?',
-        options: ['Ácido clorhídrico y factor intrínseco', 'Pepsinógeno y lipasa', 'Moco y bicarbonato exclusivamente'],
-        answer: 0,
-        explanation: 'Las células parietales secretan ácido clorhídrico y factor intrínseco, necesario para la absorción de vitamina B12.'
-      },
-      {
-        prompt: '¿Cuál es el producto precursor secretado por las células principales?',
-        options: ['Gastrina', 'Pepsinógeno', 'Factor intrínseco'],
-        answer: 1,
-        explanation: 'Las células principales secretan pepsinógeno, que se activa a pepsina en el medio ácido gástrico.'
-      },
-      {
-        prompt: '¿Qué estructura conecta la superficie gástrica con las glándulas de la mucosa?',
-        options: ['Vellosidad intestinal', 'Cripta de Lieberkühn', 'Fosita gástrica'],
-        answer: 2,
-        explanation: 'Las fositas gástricas son invaginaciones del epitelio superficial que continúan con las glándulas gástricas.'
-      }
-    ]
-  },
-  'intestino-delgado': {
-    title: 'Quiz: Intestino delgado',
-    description: 'Vellosidades, criptas de Lieberkühn, enterocitos y células de Paneth.',
-    questions: [
-      {
-        prompt: '¿Dónde se encuentran las células de Paneth?',
-        options: ['En las puntas de las vellosidades', 'En la base de las criptas de Lieberkühn', 'En la submucosa'],
-        answer: 1,
-        explanation: 'Las células de Paneth se localizan en la base de las criptas y participan en la defensa antimicrobiana.'
-      },
-      {
-        prompt: '¿Cuál es una función principal de las vellosidades intestinales?',
-        options: ['Aumentar la superficie de absorción', 'Producir ácido clorhídrico', 'Impulsar el contenido mediante músculo esquelético'],
-        answer: 0,
-        explanation: 'Las vellosidades y microvellosidades amplían la superficie disponible para la absorción de nutrientes.'
-      },
-      {
-        prompt: '¿Qué estructura central se encuentra en una vellosidad intestinal?',
-        options: ['Un conducto biliar', 'Una arteria central', 'Un vaso quilífero linfático'],
-        answer: 2,
-        explanation: 'El vaso quilífero central recoge lípidos absorbidos y forma parte de la red linfática de la vellosidad.'
-      }
-    ]
-  },
-  'intestino-grueso': {
-    title: 'Quiz: Intestino grueso',
-    description: 'Rasgos distintivos del colon, criptas rectas y células caliciformes.',
-    questions: [
-      {
-        prompt: '¿Qué rasgo distingue a la mucosa del colon de la del intestino delgado?',
-        options: ['Vellosidades altas', 'Ausencia de vellosidades y criptas rectas', 'Epitelio plano estratificado'],
-        answer: 1,
-        explanation: 'La mucosa del colon carece de vellosidades y presenta criptas rectas tubulares.'
-      },
-      {
-        prompt: '¿Qué tipo celular es especialmente abundante en las criptas del colon?',
-        options: ['Células caliciformes', 'Células parietales', 'Células de Paneth en toda la cripta'],
-        answer: 0,
-        explanation: 'Las células caliciformes abundantes producen moco que facilita el tránsito del contenido intestinal.'
-      },
-      {
-        prompt: '¿Cuál es una función importante del moco producido en el colon?',
-        options: ['Iniciar la digestión de proteínas', 'Absorber hierro', 'Lubricar y proteger la superficie epitelial'],
-        answer: 2,
-        explanation: 'El moco lubrica el contenido y protege el epitelio frente al roce y la actividad microbiana.'
-      }
-    ]
-  },
-  higado: {
-    title: 'Quiz: Hígado',
-    description: 'Lobulillo hepático, sinusoides, hepatocitos y espacios porta.',
-    questions: [
-      {
-        prompt: 'En el lobulillo hepático clásico, ¿hacia dónde fluye la sangre sinusoidal?',
-        options: ['Hacia los conductos biliares', 'Hacia la vena central', 'Desde la vena central hacia los espacios porta'],
-        answer: 1,
-        explanation: 'La sangre procedente de ramas de la vena porta y la arteria hepática fluye por los sinusoides hacia la vena central.'
-      },
-      {
-        prompt: '¿En qué dirección fluye la bilis respecto a la sangre sinusoidal?',
-        options: ['En dirección opuesta, hacia los conductos biliares del espacio porta', 'En la misma dirección, hacia la vena central', 'Directamente hacia los sinusoides'],
-        answer: 0,
-        explanation: 'La bilis fluye por canalículos entre hepatocitos hacia los conductos biliares, en dirección opuesta a la sangre.'
-      },
-      {
-        prompt: '¿Qué célula residente hepática participa en la fagocitosis dentro de los sinusoides?',
-        options: ['Célula de Paneth', 'Célula parietal', 'Célula de Kupffer'],
-        answer: 2,
-        explanation: 'Las células de Kupffer son macrófagos residentes asociados al revestimiento de los sinusoides hepáticos.'
-      }
-    ]
-  },
-  pancreas: {
-    title: 'Quiz: Páncreas',
-    description: 'Porción exocrina, acinos serosos y función endocrina de los islotes.',
-    questions: [
-      {
-        prompt: '¿Qué estructura constituye la porción exocrina predominante del páncreas?',
-        options: ['Acinos serosos', 'Folículos tiroideos', 'Glándulas mucosas'],
-        answer: 0,
-        explanation: 'Los acinos serosos pancreáticos producen enzimas digestivas que se conducen al duodeno.'
-      },
-      {
-        prompt: '¿Qué función cumplen los islotes de Langerhans?',
-        options: ['Secretar moco hacia los conductos', 'Liberar hormonas a la sangre', 'Producir bilis'],
-        answer: 1,
-        explanation: 'Los islotes son agrupaciones endocrinas que liberan hormonas, como insulina y glucagón, a la circulación.'
-      },
-      {
-        prompt: '¿Qué tipo celular se encuentra típicamente al inicio de los conductos intercalares pancreáticos?',
-        options: ['Célula caliciforme', 'Célula parietal', 'Célula centroacinar'],
-        answer: 2,
-        explanation: 'Las células centroacinares son características del páncreas y continúan con el epitelio de los conductos intercalares.'
-      }
-    ]
-  }
+const quizzes = window.digestiveQuizzes;
+const quizzesByTopic = new Map(Array.isArray(quizzes) ? quizzes.map((quiz) => [`capitulo-${quiz.chapter}`, quiz]) : []);
+const legacyQuizTopics = {
+  esofago: 'capitulo-7',
+  estomago: 'capitulo-9',
+  'intestino-delgado': 'capitulo-13',
+  'intestino-grueso': 'capitulo-18',
+  higado: 'capitulo-19',
+  pancreas: 'capitulo-21'
 };
 
-if (quizSearch && quizSearchEmpty && quizSelection && activeQuiz && quizForm && quizQuestions && quizResult) {
-  const activeQuizTitle = document.getElementById('activeQuizTitle');
-  const activeQuizDescription = document.getElementById('activeQuizDescription');
-  const activeQuizQuestionCount = document.getElementById('activeQuizQuestionCount');
+const activeQuizTitle = document.getElementById('activeQuizTitle');
+const activeQuizDescription = document.getElementById('activeQuizDescription');
+const activeQuizQuestionCount = document.getElementById('activeQuizQuestionCount');
 
-  const normalizeQuizText = (text) => text
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLocaleLowerCase('es');
+const normalizeQuizText = (text) => text
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .toLocaleLowerCase('es');
+
+const renderQuizCards = () => {
+  quizGrid.replaceChildren(...quizzes.map((quiz) => {
+    const card = document.createElement('article');
+    card.className = 'quiz-card';
+    card.dataset.topic = `capitulo-${quiz.chapter}`;
+    card.dataset.search = normalizeQuizText(`${quiz.title} ${quiz.category} ${quiz.description} ${quiz.questions.map((question) => question.prompt).join(' ')}`);
+
+    const top = document.createElement('div');
+    top.className = 'quiz-card-top';
+    const icon = document.createElement('span');
+    icon.className = 'quiz-topic-icon';
+    icon.setAttribute('aria-hidden', 'true');
+    icon.textContent = '◉';
+    const label = document.createElement('span');
+    label.className = 'quiz-topic-label';
+    label.textContent = `CAPÍTULO ${String(quiz.chapter).padStart(2, '0')}`;
+    top.append(icon, label);
+
+    const category = document.createElement('p');
+    category.className = 'quiz-card-eyebrow';
+    category.textContent = quiz.category;
+    const title = document.createElement('h3');
+    title.textContent = `Quiz: ${quiz.title}`;
+    const description = document.createElement('p');
+    description.className = 'quiz-card-description';
+    description.textContent = quiz.description;
+
+    const badges = document.createElement('div');
+    badges.className = 'quiz-card-badges';
+    const count = document.createElement('span');
+    count.textContent = `${quiz.questions.length} preguntas`;
+    const format = document.createElement('span');
+    format.textContent = 'Selección múltiple';
+    badges.append(count, format);
+
+    const startButton = document.createElement('button');
+    startButton.className = 'quiz-card-action';
+    startButton.type = 'button';
+    startButton.dataset.startQuiz = card.dataset.topic;
+    startButton.append(document.createTextNode('Comenzar Quiz '));
+    const arrow = document.createElement('span');
+    arrow.setAttribute('aria-hidden', 'true');
+    arrow.textContent = '→';
+    startButton.append(arrow);
+    card.append(top, category, title, description, badges, startButton);
+    return card;
+  }));
+};
+
+if (quizSearch && quizGrid && quizPagination && quizSearchEmpty && quizSelection && activeQuiz && quizForm && quizQuestions && quizResult) {
+  if (!Array.isArray(quizzes) || quizzes.length !== 21 || quizzes.some((quiz) => !Array.isArray(quiz.questions) || quiz.questions.length !== 4)) {
+    throw new Error('Las autoevaluaciones deben incluir 21 capítulos con cuatro preguntas cada una.');
+  }
+
+  renderQuizCards();
+  const quizCards = Array.from(quizGrid.querySelectorAll('.quiz-card'));
+  const cardsPerPage = 6;
+  let matchingCards = quizCards;
+  let currentPage = 1;
+
+  const renderQuizPage = () => {
+    const pageCount = Math.ceil(matchingCards.length / cardsPerPage);
+    currentPage = Math.min(Math.max(currentPage, 1), Math.max(pageCount, 1));
+    const start = (currentPage - 1) * cardsPerPage;
+    const visibleCards = new Set(matchingCards.slice(start, start + cardsPerPage));
+
+    quizCards.forEach((card) => {
+      card.hidden = !visibleCards.has(card);
+    });
+
+    quizPagination.replaceChildren();
+    quizPagination.hidden = pageCount <= 1;
+    for (let page = 1; page <= pageCount; page += 1) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'module-page-button';
+      button.textContent = String(page);
+      button.setAttribute('aria-label', `Página ${page} de autoevaluaciones`);
+      if (page === currentPage) {
+        button.setAttribute('aria-current', 'page');
+      }
+      quizPagination.append(button);
+    }
+  };
 
   const renderQuestions = (quiz) => {
     quizQuestions.replaceChildren();
@@ -296,32 +289,7 @@ if (quizSearch && quizSearchEmpty && quizSelection && activeQuiz && quizForm && 
     });
   };
 
-  const showQuiz = (topic, updateHistory = true) => {
-    const quiz = quizzes[topic];
-    if (!quiz) {
-      quizSelection.hidden = false;
-      activeQuiz.hidden = true;
-      return;
-    }
-
-    activeQuizTitle.textContent = quiz.title;
-    activeQuizDescription.textContent = quiz.description;
-    activeQuizQuestionCount.textContent = `${quiz.questions.length} preguntas`;
-    renderQuestions(quiz);
-    quizResult.hidden = true;
-    quizResult.textContent = '';
-    quizSelection.hidden = true;
-    activeQuiz.hidden = false;
-
-    if (updateHistory) {
-      const url = new URL(window.location.href);
-      url.searchParams.set('tema', topic);
-      window.history.pushState({ tema: topic }, '', url);
-    }
-
-    activeQuizTitle.focus();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const resolveQuizTopic = (topic) => legacyQuizTopics[topic] || topic;
 
   const showSelection = (updateHistory = true) => {
     activeQuiz.hidden = true;
@@ -335,23 +303,67 @@ if (quizSearch && quizSearchEmpty && quizSelection && activeQuiz && quizForm && 
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const showQuiz = (topic, updateHistory = true) => {
+    const resolvedTopic = resolveQuizTopic(topic);
+    const quiz = quizzesByTopic.get(resolvedTopic);
+    if (!quiz) {
+      showSelection(false);
+      return;
+    }
+
+    activeQuizTitle.textContent = `Quiz: ${quiz.title}`;
+    activeQuizDescription.textContent = quiz.description;
+    activeQuizQuestionCount.textContent = `${quiz.questions.length} preguntas`;
+    renderQuestions(quiz);
+    quizResult.hidden = true;
+    quizResult.textContent = '';
+    quizSelection.hidden = true;
+    activeQuiz.hidden = false;
+
+    if (updateHistory) {
+      const url = new URL(window.location.href);
+      url.searchParams.set('tema', resolvedTopic);
+      window.history.pushState({ tema: resolvedTopic }, '', url);
+    }
+
+    activeQuizTitle.focus();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  renderQuizPage();
+
   quizSearch.addEventListener('input', () => {
     const query = normalizeQuizText(quizSearch.value.trim());
-    let visibleCards = 0;
-
-    quizCards.forEach((card) => {
+    matchingCards = quizCards.filter((card) => {
       const searchableText = normalizeQuizText(`${card.dataset.search || ''} ${card.textContent || ''}`);
-      const isMatch = searchableText.includes(query);
-      card.hidden = !isMatch;
-      visibleCards += Number(isMatch);
+      return searchableText.includes(query);
     });
-    quizSearchEmpty.hidden = visibleCards !== 0;
+    currentPage = 1;
+    quizSearchEmpty.hidden = matchingCards.length !== 0;
+    renderQuizPage();
   });
 
-  quizCards.forEach((card) => {
-    card.querySelector('[data-start-quiz]').addEventListener('click', () => {
-      showQuiz(card.dataset.topic);
-    });
+  quizPagination.addEventListener('click', (event) => {
+    if (!(event.target instanceof Element)) {
+      return;
+    }
+    const button = event.target.closest('.module-page-button');
+    if (!button) {
+      return;
+    }
+    currentPage = Number(button.textContent);
+    renderQuizPage();
+    quizGrid.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  });
+
+  quizGrid.addEventListener('click', (event) => {
+    if (!(event.target instanceof Element)) {
+      return;
+    }
+    const button = event.target.closest('[data-start-quiz]');
+    if (button) {
+      showQuiz(button.dataset.startQuiz);
+    }
   });
 
   document.getElementById('backToQuizSelection').addEventListener('click', () => showSelection());
@@ -389,7 +401,7 @@ if (quizSearch && quizSearchEmpty && quizSelection && activeQuiz && quizForm && 
 
   window.addEventListener('popstate', () => {
     const topic = new URL(window.location.href).searchParams.get('tema');
-    if (topic && quizzes[topic]) {
+    if (topic && quizzesByTopic.has(resolveQuizTopic(topic))) {
       showQuiz(topic, false);
     } else {
       showSelection(false);
@@ -397,11 +409,10 @@ if (quizSearch && quizSearchEmpty && quizSelection && activeQuiz && quizForm && 
   });
 
   const initialTopic = new URL(window.location.href).searchParams.get('tema');
-  if (initialTopic && quizzes[initialTopic]) {
+  if (initialTopic && quizzesByTopic.has(resolveQuizTopic(initialTopic))) {
     showQuiz(initialTopic, false);
   }
 }
-
 document.addEventListener('keydown', (event) => {
   const target = event.target;
   const isTyping = target instanceof HTMLElement

@@ -3,27 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0d0d15" />
+    <meta name="theme-color" content="#fdf7fa" />
     <meta name="description" content="Explora preparados histológicos del sistema digestivo, estudia sus estructuras y practica con la Guía Digital de Histología II." />
     <title>Histología II | Guía Digital</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <script>
-      if (localStorage.getItem('histologia-theme') === 'light') {
-        document.documentElement.classList.add('light-mode');
-      }
+      document.documentElement.classList.add('light-mode');
     </script>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="dashboard-body">
     <div class="page-wrapper home-dashboard" id="top">
       <header class="dashboard-nav" aria-label="Navegación principal">
-        <a class="dashboard-brand" href="index.html" aria-label="Histotecnología II, inicio">
+        <a class="dashboard-brand" href="index.html" aria-label="T.S.U. Histotecnología, inicio">
           <span class="header-brand-content">
             <img class="header-logo-icon" src="image/image_8.png" alt="Universidad de Carabobo" />
             <img class="header-logo-icon" src="image/image_7.png" alt="Histotecnología" />
-            <span>Histotecnología <strong>II</strong></span>
+            <span>T.S.U. <strong>Histotecnología</strong></span>
           </span>
         </a>
         <nav class="dashboard-links" id="siteNavigation" aria-label="Navegación principal">
@@ -45,14 +43,16 @@
         <section class="dashboard-hero" id="visor-virtual" aria-labelledby="hero-title">
           <div class="hero-copy">
             <p class="dashboard-eyebrow"><span></span> LABORATORIO DIGITAL · HISTOLOGÍA</p>
-            <h1 id="hero-title">Explora lo invisible.<br /><span>Comprende lo esencial.</span></h1>
-            <p class="hero-description">Un recorrido interactivo por la microanatomía del sistema digestivo. Observa tejidos, identifica sus estructuras y conecta cada detalle con su función.</p>
+            <h1 id="hero-title">GUÍA DIGITAL<br /><span>DEL SISTEMA DIGESTIVO</span></h1>
+            <p class="hero-description">recurso complementario de las actividades prácticas</p>
+            <p class="hero-attribution">Asignatura Histología II / Carrera T.S.U en Histotecnología</p>
+            <p class="hero-overview">Un recorrido interactivo por la microfotografía histológica del sistema digestivo. Observa tejidos, identifica sus estructuras y conecta cada detalle con su función.</p>
             <div class="hero-badges" aria-label="Características del módulo">
-              <span>Módulo digestivo</span>
+              <span>Sistema Digestivo</span>
               <span>Aumentos 4×–40×</span>
               <span>Aprendizaje interactivo</span>
             </div>
-            <a class="primary-action" href="visor.html">Explorar visor virtual <span aria-hidden="true">↗</span></a>
+            <a class="primary-action" href="galeria.html">Explorar visor virtual <span aria-hidden="true">↗</span></a>
           </div>
           <div class="hero-art" aria-hidden="true">
             <div class="hero-orbit orbit-outer"></div>
@@ -61,15 +61,14 @@
             <div class="hero-float-card"><span class="float-card-icon">✳</span><span><strong>Microanatomía</strong><small>Un mundo por descubrir</small></span></div>
             <div class="hero-scale"><span>40×</span><small>MAGNIFICACIÓN</small></div>
           </div>
-          <a class="scroll-cue" href="#galeria"><span></span> Desliza para explorar</a>
         </section>
 
         <section class="module-section" id="galeria" aria-labelledby="modules-title">
           <div class="section-heading">
             <div>
               <p class="dashboard-eyebrow">TU RECORRIDO DE APRENDIZAJE</p>
-              <h2 id="modules-title">Atlas del sistema digestivo</h2>
-              <p>Selecciona un preparado para explorar su organización microscópica.</p>
+              <h2 id="modules-title">Guía del sistema digestivo</h2>
+              <p>Selecciona un órgano del sistema digestivo para explorar su organización microscópica</p>
             </div>
             <label class="module-search">
               <span class="search-icon" aria-hidden="true">⌕</span>
@@ -80,60 +79,196 @@
           </div>
 
           <div class="module-grid" id="moduleGrid" aria-live="polite">
-            <article class="module-card" data-search="esofago esófago epitelio estratificado adventicia mucosa muscular">
-              <div class="module-card-top"><span class="organ-icon icon-esophagus" aria-hidden="true">◉</span><span class="module-number">01 / 06</span></div>
-              <p class="module-system">TRACTO DIGESTIVO · 01</p>
+            <article class="module-card" data-chapter="1" data-search="glandulas salivales glándulas salivales acinos conductos saliva">
+              <div class="module-card-top"><span class="organ-icon" aria-hidden="true">◉</span><span class="module-number">01 / 21</span></div>
+              <p class="module-system">GLÁNDULAS SALIVALES · 01</p>
+              <h3>Glándulas Salivales</h3>
+              <p class="module-description">Organización histológica de las glándulas salivales y sus componentes secretores.</p>
+              <div class="module-tags"><span>Acinos</span><span>Conductos</span></div>
+              <a class="module-action" href="visor.html?chapter=1">Analizar lámina <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="module-card" data-chapter="2" data-search="epitelio parotida parótida glandula salival acinos serosos">
+              <div class="module-card-top"><span class="organ-icon" aria-hidden="true">◉</span><span class="module-number">02 / 21</span></div>
+              <p class="module-system">GLÁNDULAS SALIVALES · 02</p>
+              <h3>Glándula Parótida</h3>
+              <p class="module-description">Microfotografías y estructuras histológicas de la glándula parótida.</p>
+              <div class="module-tags"><span>Parótida</span><span>Acinos serosos</span></div>
+              <a class="module-action" href="visor.html?chapter=2">Analizar lámina <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="module-card" data-chapter="3" data-search="tejido conectivo submandibular glándula salival acinos semilunas">
+              <div class="module-card-top"><span class="organ-icon" aria-hidden="true">◉</span><span class="module-number">03 / 21</span></div>
+              <p class="module-system">GLÁNDULAS SALIVALES · 03</p>
+              <h3>Glándula Submandibular</h3>
+              <p class="module-description">Organización microscópica de la glándula submandibular.</p>
+              <div class="module-tags"><span>Submandibular</span><span>Acinos mixtos</span></div>
+              <a class="module-action" href="visor.html?chapter=3">Analizar lámina <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="module-card" data-chapter="4" data-search="sublingual glándula mucosa serosa conductos">
+              <div class="module-card-top"><span class="organ-icon" aria-hidden="true">◉</span><span class="module-number">04 / 21</span></div>
+              <p class="module-system">GLÁNDULAS SALIVALES · 04</p>
+              <h3>Sublingual</h3>
+              <p class="module-description">Características histológicas de la glándula sublingual.</p>
+              <div class="module-tags"><span>Mucosa</span><span>Glándulas</span></div>
+              <a class="module-action" href="visor.html?chapter=4">Analizar lámina <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="module-card" data-chapter="5" data-search="punta de lengua papilas gustativas epitelio">
+              <div class="module-card-top"><span class="organ-icon" aria-hidden="true">◉</span><span class="module-number">05 / 21</span></div>
+              <p class="module-system">LENGUA · 01</p>
+              <h3>Punta de lengua</h3>
+              <p class="module-description">Tejidos y estructuras histológicas de la punta de la lengua.</p>
+              <div class="module-tags"><span>Epitelio</span><span>Papilas</span></div>
+              <a class="module-action" href="visor.html?chapter=5">Analizar lámina <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="module-card" data-chapter="6" data-search="base de lengua papilas linguales tejido linfatico">
+              <div class="module-card-top"><span class="organ-icon" aria-hidden="true">◉</span><span class="module-number">06 / 21</span></div>
+              <p class="module-system">LENGUA · 02</p>
+              <h3>Base de lengua</h3>
+              <p class="module-description">Organización microscópica y estructuras de la base de la lengua.</p>
+              <div class="module-tags"><span>Lengua</span><span>Tejido linfático</span></div>
+              <a class="module-action" href="visor.html?chapter=6">Analizar lámina <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="module-card" data-chapter="7" data-search="esofago esófago mucosa submucosa muscular epitelio">
+              <div class="module-card-top"><span class="organ-icon" aria-hidden="true">◉</span><span class="module-number">07 / 21</span></div>
+              <p class="module-system">TUBO DIGESTIVO · 01</p>
               <h3>Esófago</h3>
-              <p class="module-description">Epitelio plano estratificado no queratinizado, submucosa glandular y muscular propia.</p>
-              <div class="module-tags"><span>Mucosa</span><span>Glándulas</span><span>Adventicia</span></div>
-              <a class="module-action" href="visor.html?organ=esofago">Analizar lámina <span aria-hidden="true">→</span></a>
+              <p class="module-description">Epitelio de revestimiento, glándulas submucosas y capas de la pared esofágica.</p>
+              <div class="module-tags"><span>Mucosa</span><span>Glándulas</span></div>
+              <a class="module-action" href="visor.html?chapter=7">Analizar lámina <span aria-hidden="true">→</span></a>
             </article>
 
-            <article class="module-card" data-search="estomago estómago fositas gastricas glándulas gastricas mucosa parietales principales">
-              <div class="module-card-top"><span class="organ-icon icon-stomach" aria-hidden="true">◉</span><span class="module-number">02 / 06</span></div>
-              <p class="module-system">TRACTO DIGESTIVO · 02</p>
+            <article class="module-card" data-chapter="8" data-search="union esofagogastrica unión esofagogástrica esofago estomago transición">
+              <div class="module-card-top"><span class="organ-icon" aria-hidden="true">◉</span><span class="module-number">08 / 21</span></div>
+              <p class="module-system">TUBO DIGESTIVO · 02</p>
+              <h3>Unión esofagogástrica</h3>
+              <p class="module-description">Zona de transición histológica entre el esófago y el estómago.</p>
+              <div class="module-tags"><span>Transición</span><span>Mucosa</span></div>
+              <a class="module-action" href="visor.html?chapter=8">Analizar lámina <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="module-card" data-chapter="9" data-search="estomago estómago mucosa fositas glándulas gastricas gástricas">
+              <div class="module-card-top"><span class="organ-icon icon-stomach" aria-hidden="true">◉</span><span class="module-number">09 / 21</span></div>
+              <p class="module-system">TUBO DIGESTIVO · 03</p>
               <h3>Estómago</h3>
-              <p class="module-description">Fositas y glándulas gástricas con células mucosas, parietales y principales.</p>
-              <div class="module-tags"><span>Fovéolas</span><span>Células parietales</span></div>
-              <a class="module-action" href="visor.html?organ=estomago">Analizar lámina <span aria-hidden="true">→</span></a>
+              <p class="module-description">Fositas gástricas, mucosa y organización de las glándulas del estómago.</p>
+              <div class="module-tags"><span>Fovéolas</span><span>Glándulas</span></div>
+              <a class="module-action" href="visor.html?chapter=9">Analizar lámina <span aria-hidden="true">→</span></a>
             </article>
 
-            <article class="module-card" data-search="intestino delgado duodeno yeyuno ileon íleon vellosidades enterocitos celulas paneth">
-              <div class="module-card-top"><span class="organ-icon icon-small-intestine" aria-hidden="true">◉</span><span class="module-number">03 / 06</span></div>
-              <p class="module-system">TRACTO DIGESTIVO · 03</p>
-              <h3>Intestino delgado</h3>
-              <p class="module-description">Vellosidades, criptas de Lieberkühn, enterocitos y células de Paneth.</p>
+            <article class="module-card" data-chapter="10" data-search="glandulas cardiales glándulas cardiales capas estomago estómago">
+              <div class="module-card-top"><span class="organ-icon icon-stomach" aria-hidden="true">◉</span><span class="module-number">10 / 21</span></div>
+              <p class="module-system">TUBO DIGESTIVO · 04</p>
+              <h3>Glándulas cardiales y capas del estómago</h3>
+              <p class="module-description">Características de las glándulas cardiales y capas gástricas.</p>
+              <div class="module-tags"><span>Cardias</span><span>Estómago</span></div>
+              <a class="module-action" href="visor.html?chapter=10">Analizar lámina <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="module-card" data-chapter="11" data-search="fundus fúndicas glandulas gástricas parietales principales">
+              <div class="module-card-top"><span class="organ-icon icon-stomach" aria-hidden="true">◉</span><span class="module-number">11 / 21</span></div>
+              <p class="module-system">TUBO DIGESTIVO · 05</p>
+              <h3>Glándula Fúndica</h3>
+              <p class="module-description">Regiones y tipos celulares de las glándulas fúndicas de la mucosa gástrica.</p>
+              <div class="module-tags"><span>Células parietales</span><span>Células principales</span></div>
+              <a class="module-action" href="visor.html?chapter=11">Analizar lámina <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="module-card" data-chapter="12" data-search="piloro píloro glandulas pilóricas capas estomago estómago">
+              <div class="module-card-top"><span class="organ-icon icon-stomach" aria-hidden="true">◉</span><span class="module-number">12 / 21</span></div>
+              <p class="module-system">TUBO DIGESTIVO · 06</p>
+              <h3>Glándula Pilórica</h3>
+              <p class="module-description">Glándulas pilóricas y organización histológica de la pared gástrica.</p>
+              <div class="module-tags"><span>Píloro</span><span>Capas</span></div>
+              <a class="module-action" href="visor.html?chapter=12">Analizar lámina <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="module-card" data-chapter="13" data-search="intestino delgado vellosidades duodeno yeyuno ileon íleon paneth enterocitos">
+              <div class="module-card-top"><span class="organ-icon icon-small-intestine" aria-hidden="true">◉</span><span class="module-number">13 / 21</span></div>
+              <p class="module-system">TUBO DIGESTIVO · 07</p>
+              <h3>Intestino Delgado</h3>
+              <p class="module-description">Vellosidades, criptas de Lieberkühn y células especializadas de la mucosa.</p>
               <div class="module-tags"><span>Vellosidades</span><span>Paneth</span></div>
-              <a class="module-action" href="visor.html?organ=intestino-delgado">Analizar lámina <span aria-hidden="true">→</span></a>
+              <a class="module-action" href="visor.html?chapter=13">Analizar lámina <span aria-hidden="true">→</span></a>
             </article>
 
-            <article class="module-card" data-search="intestino grueso colon criptas caliciformes mucosa">
-              <div class="module-card-top"><span class="organ-icon icon-large-intestine" aria-hidden="true">◉</span><span class="module-number">04 / 06</span></div>
-              <p class="module-system">TRACTO DIGESTIVO · 04</p>
-              <h3>Intestino grueso</h3>
-              <p class="module-description">Criptas rectas abundantes en células caliciformes y sin vellosidades.</p>
-              <div class="module-tags"><span>Colon</span><span>Células caliciformes</span></div>
-              <a class="module-action" href="visor.html?organ=intestino-grueso">Analizar lámina <span aria-hidden="true">→</span></a>
+            <article class="module-card" data-chapter="14" data-search="duodeno glándulas brunner quimo mucosa">
+              <div class="module-card-top"><span class="organ-icon icon-small-intestine" aria-hidden="true">◉</span><span class="module-number">14 / 21</span></div>
+              <p class="module-system">TUBO DIGESTIVO · 08</p>
+              <h3>Intestino Delgado: Duodeno</h3>
+              <p class="module-description">Capas histológicas, vellosidades y glándulas submucosas de Brunner.</p>
+              <div class="module-tags"><span>Brunner</span><span>Submucosa</span></div>
+              <a class="module-action" href="visor.html?chapter=14">Analizar lámina <span aria-hidden="true">→</span></a>
             </article>
 
-            <article class="module-card" data-search="higado hígado hepatocitos sinusoides espacio porta lobulillos">
-              <div class="module-card-top"><span class="organ-icon icon-liver" aria-hidden="true">◉</span><span class="module-number">05 / 06</span></div>
+            <article class="module-card" data-chapter="15" data-search="yeyuno vellosidades criptas absorción paneth">
+              <div class="module-card-top"><span class="organ-icon icon-small-intestine" aria-hidden="true">◉</span><span class="module-number">15 / 21</span></div>
+              <p class="module-system">TUBO DIGESTIVO · 09</p>
+              <h3>Intestino Delgado: Yeyuno</h3>
+              <p class="module-description">Vellosidades desarrolladas y estructuras relacionadas con la absorción intestinal.</p>
+              <div class="module-tags"><span>Vellosidades</span><span>Absorción</span></div>
+              <a class="module-action" href="visor.html?chapter=15">Analizar lámina <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="module-card" data-chapter="16" data-search="ileon íleon placas peyer nódulos linfáticos mucosa">
+              <div class="module-card-top"><span class="organ-icon icon-small-intestine" aria-hidden="true">◉</span><span class="module-number">16 / 21</span></div>
+              <p class="module-system">TUBO DIGESTIVO · 10</p>
+              <h3>Intestino Delgado: Íleon</h3>
+              <p class="module-description">Vellosidades, criptas y placas de Peyer características del íleon.</p>
+              <div class="module-tags"><span>Placas de Peyer</span><span>Mucosa</span></div>
+              <a class="module-action" href="visor.html?chapter=16">Analizar lámina <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="module-card" data-chapter="17" data-search="intestino grueso colon tenias haustras apéndices omentales">
+              <div class="module-card-top"><span class="organ-icon icon-large-intestine" aria-hidden="true">◉</span><span class="module-number">17 / 21</span></div>
+              <p class="module-system">TUBO DIGESTIVO · 11</p>
+              <h3>Intestino Grueso</h3>
+              <p class="module-description">Características generales y celulares del intestino grueso.</p>
+              <div class="module-tags"><span>Colon</span><span>Haustras</span></div>
+              <a class="module-action" href="visor.html?chapter=17">Analizar lámina <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="module-card" data-chapter="18" data-search="colon criptas lieberkuhn células caliciformes mucosa">
+              <div class="module-card-top"><span class="organ-icon icon-large-intestine" aria-hidden="true">◉</span><span class="module-number">18 / 21</span></div>
+              <p class="module-system">TUBO DIGESTIVO · 12</p>
+              <h3>Colon</h3>
+              <p class="module-description">Capas histológicas, criptas y características de la mucosa del colon.</p>
+              <div class="module-tags"><span>Criptas</span><span>Células caliciformes</span></div>
+              <a class="module-action" href="visor.html?chapter=18">Analizar lámina <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="module-card" data-chapter="19" data-search="higado hígado lobulillos hepatocitos sinusoides acino">
+              <div class="module-card-top"><span class="organ-icon icon-liver" aria-hidden="true">◉</span><span class="module-number">19 / 21</span></div>
               <p class="module-system">ÓRGANOS ANEXOS · 01</p>
               <h3>Hígado</h3>
-              <p class="module-description">Lobulillos con cordones de hepatocitos, sinusoides y espacios porta.</p>
+              <p class="module-description">Organización estructural, lobulillos, unidades funcionales y tipos celulares.</p>
               <div class="module-tags"><span>Hepatocitos</span><span>Sinusoides</span></div>
-              <a class="module-action" href="visor.html?organ=higado">Analizar lámina <span aria-hidden="true">→</span></a>
+              <a class="module-action" href="visor.html?chapter=19">Analizar lámina <span aria-hidden="true">→</span></a>
             </article>
 
-            <article class="module-card" data-search="pancreas páncreas acinos serosos islotes langerhans conductos">
-              <div class="module-card-top"><span class="organ-icon icon-pancreas" aria-hidden="true">◉</span><span class="module-number">06 / 06</span></div>
+            <article class="module-card" data-chapter="20" data-search="vesicula biliar vesícula mucosa bilis senos rokitansky aschoff">
+              <div class="module-card-top"><span class="organ-icon icon-liver" aria-hidden="true">◉</span><span class="module-number">20 / 21</span></div>
               <p class="module-system">ÓRGANOS ANEXOS · 02</p>
+              <h3>Vesícula Biliar</h3>
+              <p class="module-description">Mucosa, capas de la pared y conducto cístico de la vesícula biliar.</p>
+              <div class="module-tags"><span>Bilis</span><span>Mucosa</span></div>
+              <a class="module-action" href="visor.html?chapter=20">Analizar lámina <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="module-card" data-chapter="21" data-search="pancreas páncreas acinos serosos islotes langerhans células endocrino">
+              <div class="module-card-top"><span class="organ-icon icon-pancreas" aria-hidden="true">◉</span><span class="module-number">21 / 21</span></div>
+              <p class="module-system">ÓRGANOS ANEXOS · 03</p>
               <h3>Páncreas</h3>
-              <p class="module-description">Acinos serosos exocrinos y agrupaciones endocrinas de islotes de Langerhans.</p>
+              <p class="module-description">Porciones exocrina y endocrina, acinos e islotes de Langerhans.</p>
               <div class="module-tags"><span>Acinos</span><span>Islotes</span></div>
-              <a class="module-action" href="visor.html?organ=pancreas">Analizar lámina <span aria-hidden="true">→</span></a>
+              <a class="module-action" href="visor.html?chapter=21">Analizar lámina <span aria-hidden="true">→</span></a>
             </article>
           </div>
+          <nav class="module-pagination" id="modulePagination" aria-label="Paginación de capítulos"></nav>
           <p class="search-empty" id="searchEmpty" hidden>No encontramos preparados que coincidan con esa búsqueda.</p>
         </section>
 
@@ -142,7 +277,7 @@
           <div class="quiz-promo-copy">
             <p class="dashboard-eyebrow">APRENDIZAJE ACTIVO</p>
             <h2 id="quiz-promo-title">Pon a prueba tus conocimientos</h2>
-            <p>Ponte a prueba con preguntas interactivas sobre las capas tisulares y los preparados del sistema digestivo para consolidar lo aprendido en las prácticas.</p>
+            <p>Ponte a prueba con preguntas interactivas sobre las capas tisulares y los órganos del sistema digestivo para consolidar lo aprendido en las prácticas.</p>
           </div>
           <a class="quiz-promo-action" href="quiz.html">Iniciar Quiz <span aria-hidden="true">→</span></a>
         </section>
@@ -152,11 +287,14 @@
       <footer class="dashboard-site-footer">
         <div class="dashboard-footer-main">
           <div class="footer-brand-block">
-            <a class="dashboard-brand" href="index.html" aria-label="Histología II, inicio">
-              <img src="image/logo.png" alt="" />
-              <span>Histología <strong>II</strong></span>
+            <a class="dashboard-brand" href="index.html" aria-label="T.S.U. Histotecnología, inicio">
+              <span class="header-brand-content">
+                <img class="header-logo-icon" src="image/image_8.png" alt="Universidad de Carabobo" />
+                <img class="header-logo-icon" src="image/image_7.png" alt="Histotecnología" />
+                <span>T.S.U. <strong>Histotecnología</strong></span>
+              </span>
             </a>
-            <p>Guía Digital <span aria-hidden="true">•</span> Módulo Digestivo</p>
+            <p>Guía Digital <span aria-hidden="true">•</span> Sistema Digestivo</p>
           </div>
 
           <nav class="footer-quick-links" aria-label="Navegación rápida">
@@ -168,8 +306,7 @@
           </nav>
 
           <div class="footer-credit-block" id="contacto">
-            <p>Recurso educativo de Histología II.</p>
-            <p>Identidad institucional: Clínica Anglo Americana. Los recursos visuales conservan sus créditos y licencias cuando se indican.</p>
+            <p>Identidad institucional: Universidad de Carabobo / Autores: María Valencia, Joselyn Vivas, Masiel Ruiz, Marcos Marquez / Trabajo de grado en T.S.U. en Histotecnología</p>
             <details class="footer-contact">
               <summary>Contacto y créditos</summary>
               <p>Para consultas académicas o información sobre los recursos, comunícate con tu equipo docente.</p>
@@ -177,7 +314,7 @@
           </div>
         </div>
         <div class="dashboard-footer-bottom">
-          <span>Histología II <span aria-hidden="true">•</span> Módulo Digestivo</span>
+          <span>Histología II <span aria-hidden="true">•</span> Sistema Digestivo</span>
           <a href="#top" class="footer-back-to-top">Volver arriba ↑</a>
         </div>
       </footer>

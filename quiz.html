@@ -3,27 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0d0d15" />
+    <meta name="theme-color" content="#fdf7fa" />
     <meta name="description" content="Pon a prueba tus conocimientos sobre los tejidos y preparados histológicos del sistema digestivo." />
     <title>Quiz de Histología | Histología II</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <script>
-      if (localStorage.getItem('histologia-theme') === 'light') {
-        document.documentElement.classList.add('light-mode');
-      }
+      document.documentElement.classList.add('light-mode');
     </script>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="dashboard-body">
     <div class="page-wrapper home-dashboard quiz-dashboard" id="top">
       <header class="dashboard-nav" aria-label="Navegación principal">
-        <a class="dashboard-brand" href="index.html" aria-label="Histotecnología II, inicio">
+        <a class="dashboard-brand" href="index.html" aria-label="T.S.U. Histotecnología, inicio">
           <span class="header-brand-content">
             <img class="header-logo-icon" src="image/image_8.png" alt="Universidad de Carabobo" />
             <img class="header-logo-icon" src="image/image_7.png" alt="Histotecnología" />
-            <span>Histotecnología <strong>II</strong></span>
+            <span>T.S.U. <strong>Histotecnología</strong></span>
           </span>
         </a>
         <nav class="dashboard-links" id="siteNavigation" aria-label="Navegación principal">
@@ -43,16 +41,16 @@
 
       <main class="quiz-main">
         <section class="quiz-intro-panel" aria-labelledby="quiz-title">
-          <p class="dashboard-eyebrow">MÓDULO DIGESTIVO · AUTOEVALUACIÓN</p>
+          <p class="dashboard-eyebrow">SISTEMA DIGESTIVO · AUTOEVALUACIÓN</p>
           <h1 id="quiz-title">Pon a prueba tus <span>conocimientos</span></h1>
-          <p>Elige un tema para repasar las estructuras histológicas y comprobar lo aprendido a tu ritmo.</p>
-          <div class="quiz-meta"><span>6 temas</span><span>Selección múltiple</span><span>Retroalimentación inmediata</span></div>
+          <p>Elige un capítulo para repasar sus estructuras histológicas y comprobar lo aprendido a tu ritmo.</p>
+          <div class="quiz-meta"><span>21 capítulos</span><span>4 preguntas por quiz</span><span>Selección múltiple</span></div>
         </section>
 
         <section class="quiz-selection" id="quizSelection" aria-labelledby="quiz-selection-title">
           <div class="quiz-section-heading">
             <div>
-              <p class="dashboard-eyebrow">SELECCIONA UN PREPARADO</p>
+              <p class="dashboard-eyebrow">Selecciona un órgano del sistema digestivo para explorar su organización microscópica</p>
               <h2 id="quiz-selection-title" tabindex="-1">Explora las autoevaluaciones</h2>
             </div>
             <label class="module-search quiz-search" for="quizSearch">
@@ -61,56 +59,8 @@
               <kbd>/</kbd>
             </label>
           </div>
-          <div class="quiz-grid" id="quizGrid">
-            <article class="quiz-card" data-topic="esofago" data-search="esofago mucosa epitelio submucosa glandulas muscular adventicia">
-              <div class="quiz-card-top"><span class="quiz-topic-icon" aria-hidden="true">◉</span><span class="quiz-topic-label">TEMA 01</span></div>
-              <p class="quiz-card-eyebrow">TUBO DIGESTIVO</p>
-              <h3>Quiz: Esófago</h3>
-              <p class="quiz-card-description">Epitelio de revestimiento, glándulas submucosas y capas de la pared esofágica.</p>
-              <div class="quiz-card-badges"><span>3 preguntas</span><span>Selección múltiple</span></div>
-              <button class="quiz-card-action" type="button" data-start-quiz="esofago">Comenzar Quiz <span aria-hidden="true">→</span></button>
-            </article>
-            <article class="quiz-card" data-topic="estomago" data-search="estomago gástrico glandulas celulas parietales principales mucosa">
-              <div class="quiz-card-top"><span class="quiz-topic-icon" aria-hidden="true">◒</span><span class="quiz-topic-label">TEMA 02</span></div>
-              <p class="quiz-card-eyebrow">TUBO DIGESTIVO</p>
-              <h3>Quiz: Estómago y glándulas gástricas</h3>
-              <p class="quiz-card-description">Células parietales y principales, fositas, glándulas y organización de la mucosa.</p>
-              <div class="quiz-card-badges"><span>3 preguntas</span><span>Selección múltiple</span></div>
-              <button class="quiz-card-action" type="button" data-start-quiz="estomago">Comenzar Quiz <span aria-hidden="true">→</span></button>
-            </article>
-            <article class="quiz-card" data-topic="intestino-delgado" data-search="intestino delgado vellosidades criptas paneth enterocitos plicas">
-              <div class="quiz-card-top"><span class="quiz-topic-icon" aria-hidden="true">⟡</span><span class="quiz-topic-label">TEMA 03</span></div>
-              <p class="quiz-card-eyebrow">TUBO DIGESTIVO</p>
-              <h3>Quiz: Intestino delgado</h3>
-              <p class="quiz-card-description">Vellosidades, criptas de Lieberkühn, enterocitos y células de Paneth.</p>
-              <div class="quiz-card-badges"><span>3 preguntas</span><span>Selección múltiple</span></div>
-              <button class="quiz-card-action" type="button" data-start-quiz="intestino-delgado">Comenzar Quiz <span aria-hidden="true">→</span></button>
-            </article>
-            <article class="quiz-card" data-topic="intestino-grueso" data-search="intestino grueso colon criptas caliciformes mucosa">
-              <div class="quiz-card-top"><span class="quiz-topic-icon" aria-hidden="true">◎</span><span class="quiz-topic-label">TEMA 04</span></div>
-              <p class="quiz-card-eyebrow">TUBO DIGESTIVO</p>
-              <h3>Quiz: Intestino grueso</h3>
-              <p class="quiz-card-description">Rasgos distintivos del colon, criptas rectas y células caliciformes.</p>
-              <div class="quiz-card-badges"><span>3 preguntas</span><span>Selección múltiple</span></div>
-              <button class="quiz-card-action" type="button" data-start-quiz="intestino-grueso">Comenzar Quiz <span aria-hidden="true">→</span></button>
-            </article>
-            <article class="quiz-card" data-topic="higado" data-search="higado lobulillo hepatocitos sinusoides vena central espacio porta">
-              <div class="quiz-card-top"><span class="quiz-topic-icon" aria-hidden="true">✧</span><span class="quiz-topic-label">TEMA 05</span></div>
-              <p class="quiz-card-eyebrow">ÓRGANOS ANEXOS</p>
-              <h3>Quiz: Hígado</h3>
-              <p class="quiz-card-description">Lobulillo hepático, sinusoides, hepatocitos y espacios porta.</p>
-              <div class="quiz-card-badges"><span>3 preguntas</span><span>Selección múltiple</span></div>
-              <button class="quiz-card-action" type="button" data-start-quiz="higado">Comenzar Quiz <span aria-hidden="true">→</span></button>
-            </article>
-            <article class="quiz-card" data-topic="pancreas" data-search="pancreas acinos serosos islotes langerhans endocrino exocrino">
-              <div class="quiz-card-top"><span class="quiz-topic-icon" aria-hidden="true">◌</span><span class="quiz-topic-label">TEMA 06</span></div>
-              <p class="quiz-card-eyebrow">ÓRGANOS ANEXOS</p>
-              <h3>Quiz: Páncreas</h3>
-              <p class="quiz-card-description">Porción exocrina, acinos serosos y función endocrina de los islotes.</p>
-              <div class="quiz-card-badges"><span>3 preguntas</span><span>Selección múltiple</span></div>
-              <button class="quiz-card-action" type="button" data-start-quiz="pancreas">Comenzar Quiz <span aria-hidden="true">→</span></button>
-            </article>
-          </div>
+          <div class="quiz-grid" id="quizGrid" aria-live="polite"></div>
+          <nav class="module-pagination" id="quizPagination" aria-label="Paginación de autoevaluaciones"></nav>
           <p class="search-empty" id="quizSearchEmpty" hidden>No encontramos temas que coincidan con esa búsqueda.</p>
         </section>
 
@@ -136,11 +86,14 @@
       <footer class="dashboard-site-footer">
         <div class="dashboard-footer-main">
           <div class="footer-brand-block">
-            <a class="dashboard-brand" href="index.html" aria-label="Histología II, inicio">
-              <img src="image/logo.png" alt="" />
-              <span>Histología <strong>II</strong></span>
+            <a class="dashboard-brand" href="index.html" aria-label="T.S.U. Histotecnología, inicio">
+              <span class="header-brand-content">
+                <img class="header-logo-icon" src="image/image_8.png" alt="Universidad de Carabobo" />
+                <img class="header-logo-icon" src="image/image_7.png" alt="Histotecnología" />
+                <span>T.S.U. <strong>Histotecnología</strong></span>
+              </span>
             </a>
-            <p>Guía Digital <span aria-hidden="true">•</span> Módulo Digestivo</p>
+            <p>Guía Digital <span aria-hidden="true">•</span> Sistema Digestivo</p>
           </div>
           <nav class="footer-quick-links" aria-label="Navegación rápida">
             <h2>Explorar</h2>
@@ -149,9 +102,8 @@
             <a href="visor.html">Visor virtual</a>
             <a href="quiz.html" aria-current="page">Quiz</a>
           </nav>
-          <div class="footer-credit-block">
-            <p>Recurso educativo de Histología II.</p>
-            <p>Identidad institucional: Clínica Anglo Americana. Los recursos visuales conservan sus créditos y licencias cuando se indican.</p>
+          <div class="footer-credit-block" id="contacto">
+            <p>Identidad institucional: Universidad de Carabobo / Autores: María Valencia, Joselyn Vivas, Masiel Ruiz, Marcos Marquez / Trabajo de grado en T.S.U. en Histotecnología</p>
             <details class="footer-contact">
               <summary>Contacto y créditos</summary>
               <p>Para consultas académicas o información sobre los recursos, comunícate con tu equipo docente.</p>
@@ -159,11 +111,12 @@
           </div>
         </div>
         <div class="dashboard-footer-bottom">
-          <span>Histología II <span aria-hidden="true">•</span> Módulo Digestivo</span>
+          <span>Histología II <span aria-hidden="true">•</span> Sistema Digestivo</span>
           <a href="#top" class="footer-back-to-top">Volver arriba ↑</a>
         </div>
       </footer>
     </div>
+    <script src="quiz-data.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

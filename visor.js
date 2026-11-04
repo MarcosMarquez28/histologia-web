@@ -15,6 +15,22 @@ const viewerLayout = document.getElementById('viewerLayout');
 const viewerStatus = document.getElementById('viewerStatus');
 const fullscreenButton = document.getElementById('toggleFullscreen');
 const overlayToggle = document.getElementById('toggleViewerOverlay');
+const utilityActions = document.querySelector('.viewer-utility-actions');
+let overlayInteractionTimeout;
+const overlayPointerIds = new Set();
+
+function updateOverlayTogglePlacement() {
+  const isFullscreen = document.fullscreenElement === viewerLayout || viewerLayout.classList.contains('is-fullscreen');
+  const isCleanView = viewerLayout.classList.contains('is-clean-view');
+  (isFullscreen && !isCleanView ? utilityActions : stage).append(overlayToggle);
+}
+
+function showCaptionAfterInteraction() {
+  window.clearTimeout(overlayInteractionTimeout);
+  overlayInteractionTimeout = window.setTimeout(() => {
+    image.classList.remove('is-interacting');
+  }, 450);
+}
 
 const tissues = {
   esofago: {
@@ -244,8 +260,8 @@ const tissues = {
     ]
   },
   fundus: {
-    title: 'Glándulas Fúndicas de la Mucosa Gástrica',
-    englishTitle: 'Gastric Fundus',
+    title: 'Glándula Fúndica',
+    englishTitle: 'Fundic Gland',
     description: 'Las glándulas fúndicas, también llamadas glándulas gástricas, están presentes en toda la mucosa gástrica, excepto en las regiones relativamente pequeñas ocupadas por las glándulas cardiales y pilóricas. Las glándulas fúndicas son glándulas tubulares simples ramificadas que se extienden desde el fondo de las fositas gástricas hasta la muscular de la mucosa.',
     structures: [
       {
@@ -312,8 +328,8 @@ const tissues = {
     ]
   },
   piloro: {
-    title: 'Glándulas pilóricas y capas del estómago',
-    englishTitle: 'Pylorus',
+    title: 'Glándula Pilórica',
+    englishTitle: 'Pyloric Gland',
     description: 'Glándulas pilóricas: Tubulares, enrolladas y ramificadas. Sus células son similares a las mucosas superficiales y ayudan a proteger la mucosa pilórica. Las células de las glándulas pilóricas son similares a las células mucosas superficiales y contribuyen a proteger la mucosa pilórica. Las glándulas pilóricas están ubicadas en el antro pilórico (la parte del estómago entre el fundus y el píloro). Son glándulas tubulares, enrolladas y ramificadas. La luz es relativamente amplia y las células secretoras tienen un aspecto similar al de las células mucosas superficiales, lo cual sugiere una secreción bastante viscosa. Las células enteroendocrinas se encuentran intercaladas dentro del epitelio glandular junto con algunas células parietales. Las glándulas se vacían dentro de las criptas gástricas profundas que ocupan cerca de la mitad del espesor de la mucosa.',
     structures: [
       {
@@ -339,7 +355,7 @@ const tissues = {
     ]
   },
   yeyuno: {
-    title: 'Yeyuno',
+    title: 'Intestino Delgado: Yeyuno',
     englishTitle: 'Jejunum',
     description: 'El yeyuno es el principal sitio de absorción de sustancias nutritivas en el intestino delgado. Las vellosidades son más digitiformes que foliáceas y están cubiertas, sobre todo, por células epiteliales cilíndricas absortivas (enterocitos), aunque también hay células caliciformes y células enteroendocrinas. Las células madre de las que derivan todas estas células y las células de Paneth, que secretan la enzima antibacteriana lisozima, se encuentran en la base de las glándulas intestinales. Las células en replicación revisten la mitad basal de la glándula.',
     structures: [
@@ -362,7 +378,7 @@ const tissues = {
     ]
   },
   ileon: {
-    title: 'Íleon',
+    title: 'Intestino Delgado: Íleon',
     englishTitle: 'Ileum',
     description: 'El íleon es el sitio principal de reabsorción de agua y electrólitos del intestino delgado. En esencia, tiene las mismas características histológicas que el yeyuno, pero con algunas diferencias características. Las vellosidades en el íleon suelen ser foliáceas y el tejido linfático en la lámina propia está organizado en nódulos pequeños y grandes que se encuentran más concentrados en el borde antimesentérico del íleon. Los nódulos se fusionan para formar grandes cúmulos de tejido linfático denominadas placas de Peyer. El epitelio superficial del intestino delgado se renueva cada 5-6 días. Las células madre están restringidas a la base de las glándulas de la mucosa y la zona de replicación celular está limitada a la mitad basal de la glándula. Las células migran hacia las vellosidades y se exfolian desde su extremo. Todas las células epiteliales, absortivas y caliciformes, así como las células enteroendocrinas y las de Paneth, derivan de la misma población de células madre; sin embargo, las enteroendocrinas migran con lentitud y las de Paneth no migran.',
     structures: [
@@ -489,7 +505,7 @@ const tissues = {
     ]
   },
   duodeno: {
-    title: 'Duodeno',
+    title: 'Intestino Delgado: Duodeno',
     englishTitle: 'Duodenum',
     description: 'El primer segmento, el duodeno, recibe un bolo alimenticio semidigerido (quimo) desde el estómago, así como secreciones del estómago, el páncreas, el hígado y la vesícula biliar, que contienen enzimas digestivas, precursores de enzimas y otros productos que contribuyen a la digestión y la absorción. El intestino delgado se caracteriza por los pliegues circulares (válvulas conniventes) permanentes, transversales, con un centro de submucosa y vellosidades que son proyecciones digitiformes y foliáceas de la mucosa que se extienden dentro de la luz intestinal. Las microvellosidades, que son múltiples evaginaciones digitiformes de la superficie apical de cada célula epitelial intestinal (enterocito), incrementan la superficie de absorción de metabolitos. Las glándulas mucosas se extienden hacia la lámina propia. Contienen a las células madre y en desarrollo que finalmente migrarán a la superficie de las vellosidades. En el duodeno, las glándulas submucosas (de Brunner) secretan moco alcalino que ayuda a neutralizar el quimo ácido. Los enterocitos no solo absorben metabolitos digeridos en la luz intestinal, sino que también sintetizan enzimas que se insertan en la membrana de las microvellosidades para la digestión terminal de los disacáridos y los dipéptidos.',
     structures: [
@@ -840,8 +856,8 @@ const tissues = {
     ]
   },
   epitelio: {
-    title: 'El Epitelio',
-    englishTitle: 'Epithelium',
+    title: 'Glándula Parótida',
+    englishTitle: 'Parotid Gland',
     description: 'Son serosas y de estructura par, y constituyen las glándulas salivales mayores más grandes. El conducto parotídeo se desplaza desde la glándula que se encuentra debajo y delante del oído para ingresar en la cavidad bucal opuesta al segundo diente molar superior. Las unidades secretoras en la parótida son acinos serosos y rodean numerosos conductos intercalados largos y estrechos; los conductos estriados son grandes y suele haber una gran cantidad de tejido adiposo.',
     structures: [
       {
@@ -875,8 +891,8 @@ const tissues = {
     ]
   },
   conectivo: {
-    title: 'Tejido Conectivo',
-    englishTitle: 'Connective Tissue',
+    title: 'Glándula Submandibular',
+    englishTitle: 'Submandibular Gland',
     description: 'Son órganos pares más o menos grandes, están ubicadas debajo de cada lado del piso de la boca, cerca de la mandíbula. De cada glándula parte un conducto, con un trayecto central y hacia adelante, hasta una papila situada en el piso de la boca, lateral al frenillo de la lengua. Entre los acinos serosos predominantes suelen aparecer algunos acinos mucosos coronados por semilunas serosas. Los conductos intercalados son menos abundantes que en la glándula parótida.',
     structures: [
       {
@@ -1014,7 +1030,7 @@ const chapterImageSets = {
     }
   },
   2: {
-    label: 'Parótida',
+    label: 'Glándula Parótida',
     imageDescription: 'la glándula parótida',
     images: {
       4: 'image/parotida 4x.jpg',
@@ -1023,7 +1039,7 @@ const chapterImageSets = {
     }
   },
   3: {
-    label: 'Submandibular',
+    label: 'Glándula Submandibular',
     imageDescription: 'la glándula submandibular',
     images: {
       4: 'image/submandibular 4x.jpg',
@@ -1087,7 +1103,7 @@ const chapterImageSets = {
     }
   },
   11: {
-    label: 'Fundus',
+    label: 'Glándula Fúndica',
     imageDescription: 'el fundus gástrico',
     images: {
       4: 'image/fundus 4x.jpg',
@@ -1098,7 +1114,7 @@ const chapterImageSets = {
     }
   },
   12: {
-    label: 'Píloro',
+    label: 'Glándula Pilórica',
     imageDescription: 'el píloro',
     images: {
       4: 'image/piloro 4x.jpg',
@@ -1418,8 +1434,8 @@ function loadTissue() {
   if (chapterImageSet) {
     const chapterTitles = {
       1: 'GLÁNDULAS SALIVALES',
-      2: 'EL EPITELIO',
-      3: 'TEJIDO CONECTIVO',
+      2: 'GLÁNDULA PARÓTIDA',
+      3: 'GLÁNDULA SUBMANDIBULAR',
       4: 'SUBLINGUAL',
       5: 'PUNTA DE LENGUA',
       6: 'BASE DE LENGUA',
@@ -1427,12 +1443,12 @@ function loadTissue() {
       8: 'UNIÓN ESOFAGOGÁSTRICA',
       9: 'ESTÓMAGO',
       10: 'GLÁNDULAS CARDIALES Y CAPAS DEL ESTÓMAGO',
-      11: 'GLÁNDULAS FÚNDICAS DE LA MUCOSA GÁSTRICA',
-      12: 'GLÁNDULAS PILÓRICAS Y CAPAS DEL ESTÓMAGO',
+      11: 'GLÁNDULA FÚNDICA',
+      12: 'GLÁNDULA PILÓRICA',
       13: 'INTESTINO DELGADO',
-      14: 'DUODENO',
-      15: 'YEYUNO',
-      16: 'ÍLEON',
+      14: 'INTESTINO DELGADO: DUODENO',
+      15: 'INTESTINO DELGADO: YEYUNO',
+      16: 'INTESTINO DELGADO: ÍLEON',
       17: 'INTESTINO GRUESO',
       18: 'INTESTINO GRUESO: COLON',
       19: 'HÍGADO',
@@ -1470,7 +1486,7 @@ function loadTissue() {
     document.getElementById('viewerImageTitle').textContent = `${activeImageLabel} · 4×`;
     document.getElementById('viewerImageCaption').textContent = `MICROFOTOGRAFÍA · ${activeImageLabel.toUpperCase()}`;
   } else if (isDuodenumChapter) {
-    document.getElementById('viewerChapter').textContent = 'CAPÍTULO 14 · DUODENO';
+    document.getElementById('viewerChapter').textContent = 'CAPÍTULO 14 · INTESTINO DELGADO: DUODENO';
     document.getElementById('viewerImageTitle').textContent = 'Microfotografía no disponible';
     document.getElementById('viewerImageCaption').textContent = 'CAPÍTULO SIN MICROFOTOGRAFÍA';
     imageSource.removeAttribute('src');
@@ -1565,6 +1581,7 @@ fullscreenButton.addEventListener('click', async () => {
       await document.exitFullscreen();
     } else if (viewerLayout.classList.contains('is-fullscreen')) {
       viewerLayout.classList.remove('is-fullscreen');
+      updateOverlayTogglePlacement();
       viewerStatus.textContent = '';
       updateFullscreenButton();
     } else {
@@ -1575,6 +1592,7 @@ fullscreenButton.addEventListener('click', async () => {
     const enteringFullscreen = !document.fullscreenElement && !viewerLayout.classList.contains('is-fullscreen');
     if (enteringFullscreen) {
       viewerLayout.classList.add('is-fullscreen');
+      updateOverlayTogglePlacement();
       viewerStatus.textContent = 'Pantalla completa del navegador no disponible; se activó la vista expandida.';
       updateFullscreenButton();
       console.warn('Se activó la vista expandida porque el navegador no permitió usar pantalla completa.', error);
@@ -1590,6 +1608,7 @@ function setCleanView(isClean) {
     setInfoOpen(false);
   }
   viewerLayout.classList.toggle('is-clean-view', isClean);
+  updateOverlayTogglePlacement();
   overlayToggle.setAttribute('aria-pressed', String(isClean));
   overlayToggle.setAttribute(
     'aria-label',
@@ -1614,12 +1633,14 @@ overlayToggle.addEventListener('click', () => {
 document.addEventListener('fullscreenchange', () => {
   const isFullscreen = document.fullscreenElement === viewerLayout;
   viewerLayout.classList.toggle('is-fullscreen', isFullscreen);
+  updateOverlayTogglePlacement();
   updateFullscreenButton();
 });
 
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && !document.fullscreenElement && viewerLayout.classList.contains('is-fullscreen')) {
     viewerLayout.classList.remove('is-fullscreen');
+    updateOverlayTogglePlacement();
     viewerStatus.textContent = '';
     updateFullscreenButton();
   }
@@ -1636,6 +1657,12 @@ stage.addEventListener('wheel', (event) => {
 }, { passive: false });
 
 stage.addEventListener('pointerdown', (event) => {
+  if (event.pointerType !== 'mouse' && !event.target.closest('button')) {
+    window.clearTimeout(overlayInteractionTimeout);
+    image.classList.add('is-interacting');
+    overlayPointerIds.add(event.pointerId);
+  }
+
   if (event.target.closest('button')) {
     return;
   }
@@ -1671,7 +1698,20 @@ function stopDragging() {
 
 stage.addEventListener('pointerup', stopDragging);
 stage.addEventListener('pointercancel', stopDragging);
-stage.addEventListener('lostpointercapture', stopDragging);
+stage.addEventListener('lostpointercapture', (event) => {
+  stopDragging();
+  finishOverlayInteraction(event);
+});
+
+function finishOverlayInteraction(event) {
+  overlayPointerIds.delete(event.pointerId);
+  if (overlayPointerIds.size === 0 && image.classList.contains('is-interacting')) {
+    showCaptionAfterInteraction();
+  }
+}
+
+document.addEventListener('pointerup', finishOverlayInteraction);
+document.addEventListener('pointercancel', finishOverlayInteraction);
 window.addEventListener('resize', () => {
   limitPan();
   renderImage();

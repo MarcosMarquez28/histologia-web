@@ -3,26 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0d0d15" />
+    <meta name="theme-color" content="#fdf7fa" />
     <title>Visor de láminas | Histología II</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <script>
-      if (localStorage.getItem('histologia-theme') === 'light') {
-        document.documentElement.classList.add('light-mode');
-      }
+      document.documentElement.classList.add('light-mode');
     </script>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="page-wrapper gallery-page viewer-page">
       <header class="dashboard-nav" aria-label="Navegación principal">
-        <a class="dashboard-brand" href="index.html" aria-label="Histotecnología II, inicio">
+        <a class="dashboard-brand" href="index.html" aria-label="T.S.U. Histotecnología, inicio">
           <span class="header-brand-content">
             <img class="header-logo-icon" src="image/image_8.png" alt="Universidad de Carabobo" />
             <img class="header-logo-icon" src="image/image_7.png" alt="Histotecnología" />
-            <span>Histotecnología <strong>II</strong></span>
+            <span>T.S.U. <strong>Histotecnología</strong></span>
           </span>
         </a>
         <nav class="dashboard-links" id="siteNavigation" aria-label="Navegación principal">
@@ -43,7 +41,7 @@
       <main class="viewer-layout" id="viewerLayout">
         <section class="viewer-panel" aria-labelledby="tissue-title">
           <div class="viewer-meta-strip">
-            <span id="viewerChapter">MÓDULO DIGESTIVO · GUÍA DE ESTRUCTURAS</span>
+            <span id="viewerChapter">SISTEMA DIGESTIVO · GUÍA DE ESTRUCTURAS</span>
           </div>
 
           <div class="viewer-stage" id="viewerStage" aria-label="Visor de referencia anatómica">
@@ -74,7 +72,7 @@
               <div class="viewer-utility-actions">
                 <button type="button" id="resetView" aria-label="Reiniciar vista">Reiniciar vista</button>
                 <button type="button" id="toggleFullscreen" aria-label="Activar pantalla completa">⛶ <span>Pantalla completa</span></button>
-                <button type="button" class="info-toggle" id="toggleInfo" aria-controls="tissueInfo" aria-expanded="false">Anatomía</button>
+                <button type="button" class="info-toggle" id="toggleInfo" aria-controls="tissueInfo" aria-expanded="false">Descripción histológica</button>
               </div>
             </div>
 

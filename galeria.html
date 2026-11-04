@@ -3,26 +3,24 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="theme-color" content="#0d0d15" />
+		<meta name="theme-color" content="#fdf7fa" />
 		<title>Galería de Histología | Histología II</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 		<script>
-			if (localStorage.getItem('histologia-theme') === 'light') {
-				document.documentElement.classList.add('light-mode');
-			}
+			document.documentElement.classList.add('light-mode');
 		</script>
 		<link rel="stylesheet" href="styles.css" />
 	</head>
 	<body>
 		<div class="page-wrapper gallery-page" id="top">
 			<header class="dashboard-nav" aria-label="Navegación principal">
-				<a class="dashboard-brand" href="index.html" aria-label="Histotecnología II, inicio">
+				<a class="dashboard-brand" href="index.html" aria-label="T.S.U. Histotecnología, inicio">
 					<span class="header-brand-content">
 						<img class="header-logo-icon" src="image/image_8.png" alt="Universidad de Carabobo" />
 						<img class="header-logo-icon" src="image/image_7.png" alt="Histotecnología" />
-						<span>Histotecnología <strong>II</strong></span>
+						<span>T.S.U. <strong>Histotecnología</strong></span>
 					</span>
 				</a>
 				<nav class="dashboard-links" id="siteNavigation" aria-label="Navegación principal">
@@ -42,16 +40,23 @@
 
 			<main class="gallery-main">
 				<section class="gallery-intro" aria-labelledby="gallery-title">
-					<p class="gallery-eyebrow">Atlas de histología</p>
+					<p class="gallery-eyebrow">Guía de histología</p>
 					<h1 id="gallery-title">GALERÍA</h1>
-					<p>Esta galería reúne imágenes y recursos de histología para explorar la estructura microscópica del cuerpo humano. Recorre los capítulos por tema y descubre células, tejidos y órganos a través de una colección organizada para el aprendizaje.</p>
+					<p>El aparato digestivo es un sistema tubular que, desde el punto de vista funcional y anatómico, se extiende desde la cavidad bucal hasta el conducto anal, en las etapas tempranas del desarrollo embrionario este tracto se origina a partir de un tubo ciego limitado por las membranas bucofaríngea y cloacal, la ruptura de estas estructuras da paso al canal continuo definitivo. Su función esencial es transformar los alimentos mediante procesos físicos y químicos, permitiendo que los componentes útiles sean absorbidos y utilizados por el cuerpo, mientras que los residuos se eliminan como materia fecal. El sistema digestivo inicia en la cavidad bucal, Conformada por el vestíbulo y la cavidad oral propiamente dicha, glándulas salivales, el borde bermellón (labios), los dientes, la lengua como estructura anexa. Su revestimiento está formado por tres tipos de mucosa: la mucosa masticatoria,  de revestimiento, y  especializada.</p>
 				</section>
 
 				<section class="gallery-section" aria-labelledby="cells-title">
 					<div class="gallery-section-heading">
 						<p class="gallery-eyebrow">Explora por tema</p>
-						<h2 id="cells-title">CÉLULAS Y TEJIDOS</h2>
-						<p>Los tejidos se clasifican en cuatro tipos básicos: epitelial, tejido conectivo (que incluye cartílago, hueso y sangre), muscular y tejido nervioso.</p>
+						<h2 id="cells-title">CÉLULAS, TEJIDO Y FISIOLOGÍA DEL SISTEMA DIGESTIVO</h2>
+						<p class="gallery-section-description">Posteriormente, el sistema continúa con el tubo digestivo, que incluye el esófago, estómago, intestino delgado e intestino grueso. A lo largo de toda su extensión, este tubo mantiene una organización histológica compuesta por cuatro capas:</p>
+						<ul class="gallery-layer-list">
+							<li>Mucosa: capa interna encargada de protección, absorción y secreción.</li>
+							<li>Submucosa: tejido conjuntivo con vasos y el plexo de Meissner, que regula la motilidad local.</li>
+							<li>Muscular externa: dos capas de músculo liso responsables del peristaltismo, regulado por el plexo de Auerbach.</li>
+							<li>Serosa o adventicia: capa externa que protege o fija el órgano según su ubicación.</li>
+						</ul>
+						<p class="gallery-section-description">células absortivas, secretoras, inmunitarias y enteroendocrinas, como parte del sistema funcional de la mucosa. El aparato digestivo incluye glándulas anexas como el hígado, el páncreas y la vesícula biliar, que aportan secreciones indispensables para la digestión y la absorción, completando así la estructura funcional del sistema, se organiza desde la lengua y la cavidad bucal, continúa por el tubo digestivo y se complementa con las glándulas anexas, formando un sistema integral destinado a la digestión, absorción y protección del organismo.</p>
 					</div>
 					<div class="chapter-grid">
 						<article class="chapter-card">
@@ -60,11 +65,11 @@
 						</article>
 						<article class="chapter-card">
 							<div class="chapter-image chapter-image-has-photo" role="img" aria-label="Microfotografía de parótida a 4×"><img src="image/parotida 4x.jpg" alt="" /></div>
-							<div class="chapter-content"><h3>Capítulo 2</h3><p>El Epitelio</p><button type="button" class="chapter-more" data-chapter="2">Ver más</button></div>
+							<div class="chapter-content"><h3>Capítulo 2</h3><p>Glándula Parótida</p><button type="button" class="chapter-more" data-chapter="2">Ver más</button></div>
 						</article>
 						<article class="chapter-card">
 							<div class="chapter-image chapter-image-has-photo" role="img" aria-label="Microfotografía de glándula submandibular a 4×"><img src="image/submandibular 4x.jpg" alt="" /></div>
-							<div class="chapter-content"><h3>Capítulo 3</h3><p>Tejido Conectivo</p><button type="button" class="chapter-more" data-chapter="3">Ver más</button></div>
+							<div class="chapter-content"><h3>Capítulo 3</h3><p>Glándula Submandibular</p><button type="button" class="chapter-more" data-chapter="3">Ver más</button></div>
 						</article>
 						<article class="chapter-card">
 							<div class="chapter-image chapter-image-has-photo" role="img" aria-label="Microfotografía de glándula sublingual a 4x"><img src="image/sublingual 4x.jpg" alt="" /></div>
@@ -90,27 +95,17 @@
 							<div class="chapter-image chapter-image-has-photo" role="img" aria-label="Microfotografía de estómago a 4x"><img src="image/estomago.jpeg" alt="" /></div>
 							<div class="chapter-content"><h3>Capítulo 9</h3><p>Estómago</p><button type="button" class="chapter-more" data-chapter="9">Ver más</button></div>
 						</article>
-					</div>
-				</section>
-
-				<section class="gallery-section" aria-labelledby="organs-title">
-					<div class="gallery-section-heading">
-						<p class="gallery-eyebrow">Del tejido al organismo</p>
-						<h2 id="organs-title">SISTEMA DE ÓRGANOS</h2>
-						<p>Los órganos se ensamblan a partir de los cuatro tipos básicos de tejidos y forman sistemas especializados que trabajan en conjunto.</p>
-					</div>
-					<div class="chapter-grid">
 						<article class="chapter-card">
 							<div class="chapter-image" role="img" aria-label="Capítulo de glándulas cardiales y capas del estómago"><span>Guía histológica</span></div>
 							<div class="chapter-content"><h3>Capítulo 10</h3><p>Glándulas cardiales y capas del estómago</p><button type="button" class="chapter-more" data-chapter="10">Ver más</button></div>
 						</article>
 						<article class="chapter-card">
 							<div class="chapter-image chapter-image-has-photo" role="img" aria-label="Microfotografía del fundus gástrico a 4x"><img src="image/fundus 4x.jpg" alt="" /></div>
-							<div class="chapter-content"><h3>Capítulo 11</h3><p>Fundus</p><button type="button" class="chapter-more" data-chapter="11">Ver más</button></div>
+							<div class="chapter-content"><h3>Capítulo 11</h3><p>Glándula Fúndica</p><button type="button" class="chapter-more" data-chapter="11">Ver más</button></div>
 						</article>
 						<article class="chapter-card">
 							<div class="chapter-image chapter-image-has-photo" role="img" aria-label="Microfotografía de píloro a 4x"><img src="image/piloro 4x.jpg" alt="" /></div>
-							<div class="chapter-content"><h3>Capítulo 12</h3><p>Píloro</p><button type="button" class="chapter-more" data-chapter="12">Ver más</button></div>
+							<div class="chapter-content"><h3>Capítulo 12</h3><p>Glándula Pilórica</p><button type="button" class="chapter-more" data-chapter="12">Ver más</button></div>
 						</article>
 						<article class="chapter-card">
 							<div class="chapter-image chapter-image-has-photo" role="img" aria-label="Microfotografía de intestino delgado"><img src="image/intestino delgado.jpeg" alt="" /></div>
@@ -118,15 +113,15 @@
 						</article>
 						<article class="chapter-card">
 							<div class="chapter-image" role="img" aria-label="Capítulo de duodeno sin microfotografía asignada"><span>Guía histológica</span></div>
-							<div class="chapter-content"><h3>Capítulo 14</h3><p>Duodeno</p><button type="button" class="chapter-more" data-chapter="14">Ver más</button></div>
+							<div class="chapter-content"><h3>Capítulo 14</h3><p>Intestino Delgado: Duodeno</p><button type="button" class="chapter-more" data-chapter="14">Ver más</button></div>
 						</article>
 						<article class="chapter-card">
 							<div class="chapter-image chapter-image-has-photo" role="img" aria-label="Microfotografía de yeyuno a 4x"><img src="image/yeyuno 4x.jpg" alt="" /></div>
-							<div class="chapter-content"><h3>Capítulo 15</h3><p>Yeyuno</p><button type="button" class="chapter-more" data-chapter="15">Ver más</button></div>
+							<div class="chapter-content"><h3>Capítulo 15</h3><p>Intestino Delgado: Yeyuno</p><button type="button" class="chapter-more" data-chapter="15">Ver más</button></div>
 						</article>
 						<article class="chapter-card">
 							<div class="chapter-image chapter-image-has-photo" role="img" aria-label="Microfotografía de íleon a 4x"><img src="image/ileon 4x.jpeg" alt="" /></div>
-							<div class="chapter-content"><h3>Capítulo 16</h3><p>Íleon</p><button type="button" class="chapter-more" data-chapter="16">Ver más</button></div>
+							<div class="chapter-content"><h3>Capítulo 16</h3><p>Intestino Delgado: Íleon</p><button type="button" class="chapter-more" data-chapter="16">Ver más</button></div>
 						</article>
 						<article class="chapter-card">
 							<div class="chapter-image chapter-image-has-photo" role="img" aria-label="Microfotografía de intestino grueso"><img src="image/Generalidades del Colon.jpeg" alt="" /></div>
@@ -155,11 +150,14 @@
 			<footer class="dashboard-site-footer">
 				<div class="dashboard-footer-main">
 					<div class="footer-brand-block">
-						<a class="dashboard-brand" href="index.html" aria-label="Histología II, inicio">
-							<img src="image/logo.png" alt="" />
-							<span>Histología <strong>II</strong></span>
+						<a class="dashboard-brand" href="index.html" aria-label="T.S.U. Histotecnología, inicio">
+							<span class="header-brand-content">
+								<img class="header-logo-icon" src="image/image_8.png" alt="Universidad de Carabobo" />
+								<img class="header-logo-icon" src="image/image_7.png" alt="Histotecnología" />
+								<span>T.S.U. <strong>Histotecnología</strong></span>
+							</span>
 						</a>
-						<p>Guía Digital <span aria-hidden="true">•</span> Módulo Digestivo</p>
+						<p>Guía Digital <span aria-hidden="true">•</span> Sistema Digestivo</p>
 					</div>
 					<nav class="footer-quick-links" aria-label="Navegación rápida">
 						<h2>Explorar</h2>
@@ -169,8 +167,7 @@
 						<a href="quiz.html">Quiz</a>
 					</nav>
 					<div class="footer-credit-block" id="contacto">
-						<p>Recurso educativo de Histología II.</p>
-						<p>Identidad institucional: Clínica Anglo Americana. Los recursos visuales conservan sus créditos y licencias cuando se indican.</p>
+						<p>Identidad institucional: Universidad de Carabobo / Autores: María Valencia, Joselyn Vivas, Masiel Ruiz, Marcos Marquez / Trabajo de grado en T.S.U. en Histotecnología</p>
 						<details class="footer-contact">
 							<summary>Contacto y créditos</summary>
 							<p>Para consultas académicas o información sobre los recursos, comunícate con tu equipo docente.</p>
@@ -178,7 +175,7 @@
 					</div>
 				</div>
 				<div class="dashboard-footer-bottom">
-					<span>Histología II <span aria-hidden="true">•</span> Módulo Digestivo</span>
+					<span>Histología II <span aria-hidden="true">•</span> Sistema Digestivo</span>
 					<a href="#top" class="footer-back-to-top">Volver arriba ↑</a>
 				</div>
 			</footer>
