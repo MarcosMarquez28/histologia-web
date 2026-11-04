@@ -5062,6 +5062,7 @@ body.light-mode:has(.viewer-page) {
 .viewer-layout:fullscreen .info-backdrop,
 .viewer-layout:-webkit-full-screen .info-backdrop,
 .viewer-layout.is-fullscreen .info-backdrop {
+  z-index: 11;
   background: transparent;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
@@ -5217,12 +5218,93 @@ body.light-mode:has(.viewer-page) {
     bottom: 8px;
     width: min(340px, calc(100vw - 16px));
     padding: 15px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
   }
 
   .viewer-layout:fullscreen .info-panel:not(.is-open),
   .viewer-layout.is-fullscreen:not(.is-clean-view) .info-panel:not(.is-open) {
     visibility: hidden;
     transform: translateX(105%);
+    pointer-events: none;
+  }
+
+  .viewer-layout:fullscreen.is-zoomed .viewer-image .viewer-overlay,
+  .viewer-layout:-webkit-full-screen.is-zoomed .viewer-image .viewer-overlay,
+  .viewer-layout.is-fullscreen.is-zoomed .viewer-image .viewer-overlay {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .viewer-layout:fullscreen.is-zoomed .viewer-controls,
+  .viewer-layout:-webkit-full-screen.is-zoomed .viewer-controls,
+  .viewer-layout.is-fullscreen.is-zoomed .viewer-controls,
+  .viewer-layout:fullscreen.is-zoomed .viewer-meta-strip,
+  .viewer-layout:-webkit-full-screen.is-zoomed .viewer-meta-strip,
+  .viewer-layout.is-fullscreen.is-zoomed .viewer-meta-strip,
+  .viewer-layout:fullscreen.is-zoomed .viewer-overlay-toggle,
+  .viewer-layout:-webkit-full-screen.is-zoomed .viewer-overlay-toggle,
+  .viewer-layout.is-fullscreen.is-zoomed .viewer-overlay-toggle {
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+  }
+
+  .viewer-layout:fullscreen .viewer-controls,
+  .viewer-layout:-webkit-full-screen .viewer-controls,
+  .viewer-layout.is-fullscreen .viewer-controls,
+  .viewer-layout:fullscreen .viewer-meta-strip,
+  .viewer-layout:-webkit-full-screen .viewer-meta-strip,
+  .viewer-layout.is-fullscreen .viewer-meta-strip,
+  .viewer-layout:fullscreen .viewer-image .viewer-overlay,
+  .viewer-layout:-webkit-full-screen .viewer-image .viewer-overlay,
+  .viewer-layout.is-fullscreen .viewer-image .viewer-overlay,
+  .viewer-layout:fullscreen .viewer-overlay-toggle,
+  .viewer-layout:-webkit-full-screen .viewer-overlay-toggle,
+  .viewer-layout.is-fullscreen .viewer-overlay-toggle {
+    transition: opacity 220ms ease, transform 220ms ease;
+  }
+
+  .viewer-layout:fullscreen .info-backdrop,
+  .viewer-layout:-webkit-full-screen .info-backdrop,
+  .viewer-layout.is-fullscreen .info-backdrop {
+    z-index: 11;
+    background: rgba(3, 7, 14, 0.28);
+  }
+
+  .viewer-layout:fullscreen .info-panel,
+  .viewer-layout:-webkit-full-screen .info-panel,
+  .viewer-layout.is-fullscreen:not(.is-clean-view) .info-panel {
+    z-index: 12;
+    top: auto;
+    right: 8px;
+    bottom: 8px;
+    left: 8px;
+    width: auto;
+    height: min(72dvh, 620px);
+    max-height: calc(100dvh - 64px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 18px;
+    transform: translateY(calc(100% + 24px));
+    transition: transform 240ms ease;
+  }
+
+  .viewer-layout:fullscreen .info-panel.is-open,
+  .viewer-layout:-webkit-full-screen .info-panel.is-open,
+  .viewer-layout.is-fullscreen:not(.is-clean-view) .info-panel.is-open {
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .viewer-layout:fullscreen .info-panel:not(.is-open),
+  .viewer-layout:-webkit-full-screen .info-panel:not(.is-open),
+  .viewer-layout.is-fullscreen:not(.is-clean-view) .info-panel:not(.is-open) {
+    visibility: hidden;
+    transform: translateY(calc(100% + 24px));
     pointer-events: none;
   }
 }

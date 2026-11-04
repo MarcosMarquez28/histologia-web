@@ -1219,7 +1219,8 @@ const state = {
   startPanX: 0,
   startPanY: 0,
   pinchStartDistance: 0,
-  pinchStartZoom: 1
+  pinchStartZoom: 1,
+  isPinching: false
 };
 
 function clamp(value, min, max) {
@@ -1252,6 +1253,7 @@ function updateZoomUI() {
 
 function renderImage() {
   imageSource.style.transform = `translate(${state.panX}px, ${state.panY}px) scale(${state.zoom})`;
+  viewerLayout.classList.toggle('is-zoomed', state.zoom > state.minZoom || state.isPinching);
   updateZoomUI();
 }
 
@@ -1672,6 +1674,8 @@ stage.addEventListener('touchstart', (event) => {
   if (event.touches.length === 2) {
     event.preventDefault();
     state.dragging = false;
+    state.isPinching = true;
+    renderImage();
     state.pinchStartDistance = getTouchDistance(event.touches[0], event.touches[1]);
     state.pinchStartZoom = state.zoom;
     stage.classList.remove('is-dragging');
@@ -1725,12 +1729,15 @@ stage.addEventListener('touchmove', (event) => {
 stage.addEventListener('touchend', (event) => {
   if (event.touches.length === 0) {
     state.dragging = false;
+    state.isPinching = false;
     state.pinchStartDistance = 0;
+    renderImage();
     stage.classList.remove('is-dragging');
     return;
   }
 
   if (event.touches.length === 1) {
+    state.isPinching = false;
     const touch = event.touches[0];
     state.dragging = true;
     state.startX = touch.clientX;
@@ -1738,9 +1745,18 @@ stage.addEventListener('touchend', (event) => {
     state.startPanX = state.panX;
     state.startPanY = state.panY;
     state.pinchStartDistance = 0;
+    renderImage();
     stage.classList.add('is-dragging');
   }
 }, { passive: false });
+
+stage.addEventListener('touchcancel', () => {
+  state.dragging = false;
+  state.isPinching = false;
+  state.pinchStartDistance = 0;
+  stage.classList.remove('is-dragging');
+  renderImage();
+});
 
 stage.addEventListener('pointerdown', (event) => {
   if (event.pointerType === 'touch') {
