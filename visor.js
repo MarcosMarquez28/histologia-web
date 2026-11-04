@@ -15,6 +15,10 @@ const viewerLayout = document.getElementById('viewerLayout');
 const viewerStatus = document.getElementById('viewerStatus');
 const fullscreenButton = document.getElementById('toggleFullscreen');
 const overlayToggle = document.getElementById('toggleViewerOverlay');
+const captionDetailsButton = document.getElementById('toggleCaptionDetails');
+const captionDetailsPanel = document.getElementById('captionDetailsPanel');
+const captionDetailsButton16 = document.getElementById('toggleCaptionDetails16');
+const captionDetailsPanel16 = document.getElementById('captionDetailsPanel16');
 const utilityActions = document.querySelector('.viewer-utility-actions');
 let overlayInteractionTimeout;
 const overlayPointerIds = new Set();
@@ -31,6 +35,36 @@ function showCaptionAfterInteraction() {
     image.classList.remove('is-interacting');
   }, 450);
 }
+
+function setExtendedInfoOpen(panel, button, isOpen) {
+  panel.hidden = !isOpen;
+  panel.classList.toggle('is-open', isOpen);
+  button.setAttribute('aria-expanded', String(isOpen));
+  if (isOpen) {
+    const captionRect = image.querySelector('.viewer-overlay').getBoundingClientRect();
+    const stageRect = stage.getBoundingClientRect();
+    panel.style.top = `${Math.max(8, captionRect.top - stageRect.top - panel.offsetHeight - 10)}px`;
+  }
+}
+
+function setCaptionDetailsOpen(isOpen) {
+  setExtendedInfoOpen(captionDetailsPanel, captionDetailsButton, isOpen);
+}
+
+function toggleCap8Info() {
+  setCaptionDetailsOpen(!captionDetailsPanel.classList.contains('is-open'));
+}
+
+function setCaptionDetailsOpen16(isOpen) {
+  setExtendedInfoOpen(captionDetailsPanel16, captionDetailsButton16, isOpen);
+}
+
+function toggleCap16Info() {
+  setCaptionDetailsOpen16(!captionDetailsPanel16.classList.contains('is-open'));
+}
+
+window.toggleCap8Info = toggleCap8Info;
+window.toggleCap16Info = toggleCap16Info;
 
 const tissues = {
   esofago: {
@@ -1495,6 +1529,11 @@ function loadTissue() {
     image.setAttribute('aria-label', `Microfotografía de ${activeImageDescription} a 4×`);
     document.getElementById('viewerImageTitle').textContent = `${activeImageLabel} · 4×`;
     document.getElementById('viewerImageCaption').textContent = `MICROFOTOGRAFÍA · ${activeImageLabel.toUpperCase()}`;
+    captionDetailsButton.hidden = !isEsophagogastricChapter;
+    captionDetailsButton16.hidden = !isIleumChapter;
+    image.classList.toggle('has-caption-details', isEsophagogastricChapter || isIleumChapter);
+    setCaptionDetailsOpen(false);
+    setCaptionDetailsOpen16(false);
   } else if (isDuodenumChapter) {
     document.getElementById('viewerChapter').textContent = 'CAPÍTULO 14 · INTESTINO DELGADO: DUODENO';
     document.getElementById('viewerImageTitle').textContent = 'Microfotografía no disponible';
@@ -1659,6 +1698,13 @@ document.addEventListener('keydown', (event) => {
 infoToggle.addEventListener('click', () => setInfoOpen(!infoPanel.classList.contains('is-open')));
 document.getElementById('closeInfo').addEventListener('click', () => setInfoOpen(false));
 infoBackdrop.addEventListener('click', () => setInfoOpen(false));
+document.querySelectorAll('#toggleCaptionDetails, #captionDetailsPanel .viewer-caption-close, #captionDetailsPanel .extended-info-close').forEach((button) => {
+  button.addEventListener('click', toggleCap8Info);
+});
+
+document.querySelectorAll('#toggleCaptionDetails16, #captionDetailsPanel16 .viewer-caption-close, #captionDetailsPanel16 .extended-info-close').forEach((button) => {
+  button.addEventListener('click', toggleCap16Info);
+});
 
 stage.addEventListener('wheel', (event) => {
   event.preventDefault();
@@ -1821,6 +1867,12 @@ document.addEventListener('pointercancel', finishOverlayInteraction);
 window.addEventListener('resize', () => {
   limitPan();
   renderImage();
+  if (!captionDetailsPanel.hidden) {
+    setCaptionDetailsOpen(true);
+  }
+  if (!captionDetailsPanel16.hidden) {
+    setCaptionDetailsOpen16(true);
+  }
 });
 
 loadTissue();

@@ -45,13 +45,27 @@
           </div>
 
           <div class="viewer-stage" id="viewerStage" aria-label="Visor de referencia anatómica">
-            <div class="viewer-image" id="viewerImage" role="img" aria-label="Microfotografía de parótida a 4×">
+            <div class="viewer-image" id="viewerImage" role="group" aria-label="Microfotografía de parótida a 4×">
               <img class="viewer-image-source" id="viewerImageSource" src="image/parotida 4x.jpg" alt="" draggable="false" />
               <div class="viewer-overlay">
                 <span id="viewerImageCaption">MICROFOTOGRAFÍA · PARÓTIDA</span>
                 <strong id="viewerImageTitle">Parótida · 4×</strong>
+                <button type="button" class="viewer-caption-more btn-show-more" id="toggleCaptionDetails" aria-controls="captionDetailsPanel" aria-expanded="false" hidden>Mostrar más</button>
+                <button type="button" class="viewer-caption-more btn-show-more" id="toggleCaptionDetails16" aria-controls="captionDetailsPanel16" aria-expanded="false" hidden>Mostrar más</button>
               </div>
             </div>
+            <section class="viewer-caption-panel extended-info-panel" id="captionDetailsPanel" aria-label="Descripción histológica de la unión esofagogástrica" hidden>
+              <button type="button" class="viewer-caption-close" id="closeCaptionDetails" aria-label="Cerrar descripción">×</button>
+              <p>FIGURA 17-6. Microfotografía de la unión esofagogástrica. En esta vista panorámica se observa la transición histológica exacta entre el esófago y el estómago. El epitelio plano estratificado característico del esófago da paso de forma abrupta al epitelio cilíndrico simple que tapiza la mucosa gástrica. Dicha superficie presenta profundas depresiones conocidas como criptas gástricas, de cuyas bases emergen las glándulas cardiales (ubicadas en la zona más próxima al esófago) y las glándulas fúndicas o gástricas que se extienden por el resto de la mucosa. Asimismo, destaca una capa muscular externa engrosada. Aumento: 4x.</p>
+              <p><em>Referencia: Ross. Histología: Texto y Atlas, 8.ª edición.</em></p>
+              <button type="button" class="extended-info-close">Cerrar</button>
+            </section>
+            <section class="viewer-caption-panel extended-info-panel" id="captionDetailsPanel16" aria-label="Descripción histológica del íleon" hidden>
+              <button type="button" class="viewer-caption-close" id="closeCaptionDetails16" aria-label="Cerrar descripción">×</button>
+              <p>ÍLEON. Microfotografía de íleon con coloración H-E. El íleon es un órgano tubular cuya pared muestra las capas características del tubo digestivo. La mucosa presenta vellosidades intestinales y criptas de Lieberkühn, tapizadas por un epitelio cilíndrico simple con abundantes células caliciformes; en la lámina propia se observan cúmulos nodulares linfoides que constituyen las placas de Peyer. La submucosa contiene tejido conectivo denso, vasos sanguíneos y extensiones de las placas de Peyer. La capa muscular está formada por una capa circular interna y una longitudinal externa. Finalmente, la serosa o adventicia está constituida por tejido conectivo y mesotelio.</p>
+              <p><em>Referencia: microfotografías obtenidas del libro ROSS. Histología: Texto y Atlas.</em></p>
+              <button type="button" class="extended-info-close">Cerrar</button>
+            </section>
             <button type="button" class="viewer-overlay-toggle" id="toggleViewerOverlay" aria-pressed="false" aria-label="Ocultar controles y guía anatómica">
               <span aria-hidden="true">◉</span>
               <span class="viewer-overlay-toggle-label">Vista limpia</span>
