@@ -42,7 +42,6 @@ const annotationChapters = {
     toggleLabel: 'Alternar etiquetas de las estructuras del yeyuno',
     tags: [
       { label: 'V', className: 'annotation-tag-v', title: 'Vellosidades' },
-      { label: 'PC', className: 'annotation-tag-pc', title: 'Pliegues circulares' },
       {
         label: 'Muc',
         className: 'annotation-tag-muc',
@@ -118,6 +117,47 @@ const annotationChapters = {
         href: '#muscular-externa',
         title: 'Ir a Muscular externa',
         ariaLabel: 'Ir a la descripción de la muscular externa'
+      }
+    ]
+  },
+  '20': {
+    ariaLabel: 'Anotaciones histológicas de la vesícula biliar',
+    toggleLabel: 'Alternar etiquetas de las estructuras de la vesícula biliar',
+    tags: [
+      {
+        label: 'capa mucosa',
+        className: 'annotation-tag-ves-muc',
+        href: '#mucosa',
+        title: 'Ir a la capa mucosa',
+        ariaLabel: 'Ir a la descripción de la capa mucosa'
+      },
+      {
+        label: 'capa muscular',
+        className: 'annotation-tag-ves-muscular',
+        href: '#capa-muscular',
+        title: 'Ir a la capa muscular',
+        ariaLabel: 'Ir a la descripción de la capa muscular'
+      },
+      {
+        label: 'capa adventicia',
+        className: 'annotation-tag-ves-adventicia',
+        href: '#capa-serosa',
+        title: 'Ir a la capa adventicia (serosa)',
+        ariaLabel: 'Ir a la descripción de la capa adventicia o serosa'
+      },
+      {
+        label: 't.c.d',
+        className: 'annotation-tag-ves-tcd',
+        href: '#tejido-conjuntivo-denso',
+        title: 'Ir al tejido conjuntivo denso',
+        ariaLabel: 'Ir a la descripción del tejido conjuntivo denso perimuscular'
+      },
+      {
+        label: 'v.s',
+        className: 'annotation-tag-ves-vs',
+        href: '#vasos-sanguineos',
+        title: 'Ir a Vasos sanguíneos',
+        ariaLabel: 'Ir a la descripción de los vasos sanguíneos'
       }
     ]
   }
@@ -980,6 +1020,7 @@ const tissues = {
     structures: [
       {
         title: 'La mucosa',
+        id: 'mucosa',
         description: 'Está revestida en su cara luminal por una capa de epitelio cilíndrico simple, los núcleos son ovalados y de ubicación basal, y el citoplasma es eosinófilo claro con abundantes microvellosidades cortas apicales. Además, presenta divertículos profundos de la mucosa llamados senos de Rokitansky-Aschoff.',
         children: [
           {
@@ -1012,6 +1053,7 @@ const tissues = {
       },
       {
         title: 'La capa muscular',
+        id: 'capa-muscular',
         description: 'Las fibras musculares lisas se disponen en haces separados por tejido conectivo en dirección no uniforme. Está rodeada en su totalidad por una capa de tejido conectivo perimuscular bien desarrollada, la cual es tejido conectivo denso y presenta características de cápsula que se continúa con la cápsula del hígado; posee abundantes fibras colágenas y elásticas.',
         children: [
           {
@@ -1020,17 +1062,24 @@ const tissues = {
           },
           {
             title: 'Función del tejido conectivo perimuscular (tejido conectivo denso, fibras elásticas y colágeno)',
+            id: 'tejido-conjuntivo-denso',
             description: 'Dar resistencia estructural, envolver la capa muscular y dar continuidad anatómica con la cápsula hepática.'
           }
         ]
       },
       {
         title: 'La capa serosa de la vesícula biliar (peritoneo)',
+        id: 'capa-serosa',
         description: 'La capa se transforma en una subserosa más laxa. Las capas de tejido conectivo contienen vasos sanguíneos, nervios, vías linfáticas y tejido adiposo.',
         children: [
           {
             title: 'Función de la serosa',
             description: 'Proteger exteriormente la vesícula, reducir la fricción con órganos vecinos, alojar tejido adiposo y permitir el paso de vasos sanguíneos, linfáticos y nervios.'
+          },
+          {
+            title: 'Vasos sanguíneos',
+            id: 'vasos-sanguineos',
+            description: 'La subserosa laxa contiene vasos sanguíneos y linfáticos, nervios y tejido adiposo que nutren y drenan la pared vesicular.'
           }
         ]
       },

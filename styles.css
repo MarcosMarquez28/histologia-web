@@ -5897,13 +5897,8 @@ header img {
 }
 
 .annotation-tag-v {
-  top: 33.5%;
-  left: 49.5%;
-}
-
-.annotation-tag-pc {
-  top: 36.5%;
-  left: 76.5%;
+  top: 40.8%;
+  left: 45.1%;
 }
 
 .annotation-tag-muc {
@@ -5954,6 +5949,31 @@ header img {
 .annotation-tag-colon-me {
   top: 94.6%;
   left: 59.8%;
+}
+
+.annotation-tag-ves-muc {
+  top: 45%;
+  left: 15.46%;
+}
+
+.annotation-tag-ves-muscular {
+  top: 65.38%;
+  left: 44.04%;
+}
+
+.annotation-tag-ves-adventicia {
+  top: 80%;
+  left: 60%;
+}
+
+.annotation-tag-ves-tcd {
+  top: 80%;
+  left: 82%;
+}
+
+.annotation-tag-ves-vs {
+  top: 93.2%;
+  left: 16.5%;
 }
 
 .light-mode .annotation-toggle {
