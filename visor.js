@@ -208,6 +208,55 @@ const annotationChapters = {
         ariaLabel: 'Ir a la descripción de los vasos sanguíneos'
       }
     ]
+  },
+  '21': {
+    ariaLabel: 'Anotaciones histológicas del páncreas',
+    toggleLabel: 'Alternar etiquetas de las estructuras del páncreas',
+    magnification: 10,
+    tags: [
+      {
+        label: 'C.l',
+        className: 'annotation-tag-pancreas-cl',
+        href: '#conducto-interlobulillar',
+        title: 'Ir a Conducto interlobulillar',
+        ariaLabel: 'Ir a la descripción del conducto interlobulillar'
+      },
+      {
+        label: 'i.l',
+        className: 'annotation-tag-pancreas-il',
+        href: '#islotes-langerhans',
+        title: 'Ir a Islotes de Langerhans',
+        ariaLabel: 'Ir a la descripción de los islotes de Langerhans centrales'
+      },
+      {
+        label: 'i.l',
+        className: 'annotation-tag-pancreas-il-right',
+        href: '#islotes-langerhans',
+        title: 'Ir a Islotes de Langerhans',
+        ariaLabel: 'Ir a la descripción de los islotes de Langerhans derechos'
+      },
+      {
+        label: 't.a',
+        className: 'annotation-tag-pancreas-ta',
+        href: '#tejido-adiposo',
+        title: 'Ir a Tejido adiposo',
+        ariaLabel: 'Ir a la descripción del tejido adiposo superior izquierdo'
+      },
+      {
+        label: 't.a',
+        className: 'annotation-tag-pancreas-ta-lower',
+        href: '#tejido-adiposo',
+        title: 'Ir a Tejido adiposo',
+        ariaLabel: 'Ir a la descripción del tejido adiposo inferior izquierdo'
+      },
+      {
+        label: 't.c',
+        className: 'annotation-tag-pancreas-tc',
+        href: '#tejido-conjuntivo',
+        title: 'Ir a Tejido conjuntivo',
+        ariaLabel: 'Ir a la descripción del tejido conjuntivo'
+      }
+    ]
   }
 };
 
@@ -340,7 +389,8 @@ function renderAnnotationTransform() {
 }
 
 function updateAnnotationState() {
-  const isAnnotatedMagnification = annotationsChapterEnabled && state.magnification === 4;
+  const annotationMagnification = Number(activeAnnotationConfig?.magnification) || 4;
+  const isAnnotatedMagnification = annotationsChapterEnabled && state.magnification === annotationMagnification;
   annotationToggle.hidden = !isAnnotatedMagnification;
 
   const isVisible = isAnnotatedMagnification && annotationsActive;
@@ -1179,6 +1229,7 @@ const tissues = {
     ],
     structures: [
       {
+        id: 'islotes-langerhans',
         title: 'Células del páncreas (Islotes de Langerhans)',
         children: [
           {
@@ -1209,6 +1260,21 @@ const tissues = {
           {
             title: 'Porción Endocrina',
             description: 'Representada por los islotes de Langerhans, que se observan como cúmulos celulares pálidos dispersos entre los acinos exocrinos. En su interior albergan distintos tipos celulares: Células Alfa (A), Células Beta (B), Células Delta (D) y Células PP (polipéptido pancreático).'
+          },
+          {
+            id: 'conducto-interlobulillar',
+            title: 'Conducto interlobulillar',
+            description: 'Los conductos interlobulillares recogen la secreción de los conductos intralobulillares y discurren por los tabiques de tejido conjuntivo que separan los lobulillos. Su pared está revestida por epitelio cúbico a cilíndrico y su luz es bien evidente en los cortes histológicos.'
+          },
+          {
+            id: 'tejido-adiposo',
+            title: 'Tejido adiposo',
+            description: 'El tejido adiposo se dispone en los tabiques conjuntivos y en la superficie del páncreas. En los preparados histológicos los adipocitos aparecen como espacios claros, redondeados y de paredes finas, debido a la pérdida de los lípidos durante el procesamiento.'
+          },
+          {
+            id: 'tejido-conjuntivo',
+            title: 'Tejido conjuntivo',
+            description: 'El tejido conjuntivo forma la cápsula y los tabiques que dividen el páncreas en lobulillos, y por él transcurren los vasos sanguíneos y los conductos. Está compuesto por fibras de colágeno, fibroblastos y sustancia fundamental.'
           }
         ]
       }
@@ -1664,7 +1730,11 @@ function resetView() {
     return;
   }
 
-  const defaultPreset = Array.from(presetButtons).find((button) => !button.hidden && button.dataset.magnification === '4')
+  const preferredMagnification = Number(activeAnnotationConfig?.magnification) || 4;
+  const defaultPreset = Array.from(presetButtons).find(
+    (button) => !button.hidden && Number(button.dataset.magnification) === preferredMagnification
+  )
+    || Array.from(presetButtons).find((button) => !button.hidden && button.dataset.magnification === '4')
     || Array.from(presetButtons).find((button) => !button.hidden);
   if (defaultPreset) {
     setMagnification(defaultPreset);
@@ -1868,7 +1938,14 @@ function loadTissue() {
         }
       }
     });
-    const defaultImageKey = chapterImageSet.images[4] ? 4 : chapterImageSet.images[10] ? 10 : 40;
+    const preferredMagnification = Number(annotationChapters[requestedChapter]?.magnification) || 4;
+    const defaultImageKey = chapterImageSet.images[preferredMagnification]
+      ? preferredMagnification
+      : chapterImageSet.images[4]
+        ? 4
+        : chapterImageSet.images[10]
+          ? 10
+          : 40;
     const defaultImage = chapterImageSet.images[defaultImageKey];
     const defaultMagnification = Number(defaultImageKey);
     const referenceImage = document.getElementById('referenceImage');
