@@ -6011,7 +6011,12 @@ header img {
 .annotation-tag-pancreas-il-right,
 .annotation-tag-pancreas-ta,
 .annotation-tag-pancreas-ta-lower,
-.annotation-tag-pancreas-tc {
+.annotation-tag-pancreas-tc,
+.annotation-tag-pancreas-as-top,
+.annotation-tag-pancreas-as-upper,
+.annotation-tag-pancreas-as-center,
+.annotation-tag-pancreas-as-lower,
+.annotation-tag-pancreas-il-40 {
   min-width: 0;
   min-height: 0;
   padding: 2px 7px;
@@ -6054,6 +6059,31 @@ header img {
 .annotation-tag-pancreas-tc {
   top: 85.8%;
   left: 62.23%;
+}
+
+.annotation-tag-pancreas-as-top {
+  top: 10.73%;
+  left: 21.35%;
+}
+
+.annotation-tag-pancreas-as-upper {
+  top: 23.76%;
+  left: 34.4%;
+}
+
+.annotation-tag-pancreas-as-center {
+  top: 45.19%;
+  left: 52.78%;
+}
+
+.annotation-tag-pancreas-as-lower {
+  top: 61.22%;
+  left: 21.77%;
+}
+
+.annotation-tag-pancreas-il-40 {
+  top: 36.6%;
+  left: 53.13%;
 }
 
 .light-mode .annotation-toggle {

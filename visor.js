@@ -34,6 +34,7 @@ let overlayInteractionTimeout;
 const overlayPointerIds = new Set();
 let annotationsChapterEnabled = false;
 let annotationsActive = true;
+let activeAnnotationChapterConfig = null;
 let activeAnnotationConfig = null;
 
 const annotationChapters = {
@@ -210,55 +211,129 @@ const annotationChapters = {
     ]
   },
   '21': {
-    ariaLabel: 'Anotaciones histológicas del páncreas',
-    toggleLabel: 'Alternar etiquetas de las estructuras del páncreas',
-    magnification: 10,
-    tags: [
+    views: [
       {
-        label: 'C.l',
-        className: 'annotation-tag-pancreas-cl',
-        href: '#conducto-interlobulillar',
-        title: 'Ir a Conducto interlobulillar',
-        ariaLabel: 'Ir a la descripción del conducto interlobulillar'
+        magnification: 10,
+        ariaLabel: 'Anotaciones histológicas del páncreas',
+        toggleLabel: 'Alternar etiquetas de las estructuras del páncreas',
+        tags: [
+          {
+            label: 'C.l',
+            className: 'annotation-tag-pancreas-cl',
+            href: '#conducto-interlobulillar',
+            title: 'Ir a Conducto interlobulillar',
+            ariaLabel: 'Ir a la descripción del conducto interlobulillar'
+          },
+          {
+            label: 'i.l',
+            className: 'annotation-tag-pancreas-il',
+            href: '#islotes-langerhans',
+            title: 'Ir a Islotes de Langerhans',
+            ariaLabel: 'Ir a la descripción de los islotes de Langerhans centrales'
+          },
+          {
+            label: 'i.l',
+            className: 'annotation-tag-pancreas-il-right',
+            href: '#islotes-langerhans',
+            title: 'Ir a Islotes de Langerhans',
+            ariaLabel: 'Ir a la descripción de los islotes de Langerhans derechos'
+          },
+          {
+            label: 't.a',
+            className: 'annotation-tag-pancreas-ta',
+            href: '#tejido-adiposo',
+            title: 'Ir a Tejido adiposo',
+            ariaLabel: 'Ir a la descripción del tejido adiposo superior izquierdo'
+          },
+          {
+            label: 't.a',
+            className: 'annotation-tag-pancreas-ta-lower',
+            href: '#tejido-adiposo',
+            title: 'Ir a Tejido adiposo',
+            ariaLabel: 'Ir a la descripción del tejido adiposo inferior izquierdo'
+          },
+          {
+            label: 't.c',
+            className: 'annotation-tag-pancreas-tc',
+            href: '#tejido-conjuntivo',
+            title: 'Ir a Tejido conjuntivo',
+            ariaLabel: 'Ir a la descripción del tejido conjuntivo'
+          }
+        ]
       },
       {
-        label: 'i.l',
-        className: 'annotation-tag-pancreas-il',
-        href: '#islotes-langerhans',
-        title: 'Ir a Islotes de Langerhans',
-        ariaLabel: 'Ir a la descripción de los islotes de Langerhans centrales'
-      },
-      {
-        label: 'i.l',
-        className: 'annotation-tag-pancreas-il-right',
-        href: '#islotes-langerhans',
-        title: 'Ir a Islotes de Langerhans',
-        ariaLabel: 'Ir a la descripción de los islotes de Langerhans derechos'
-      },
-      {
-        label: 't.a',
-        className: 'annotation-tag-pancreas-ta',
-        href: '#tejido-adiposo',
-        title: 'Ir a Tejido adiposo',
-        ariaLabel: 'Ir a la descripción del tejido adiposo superior izquierdo'
-      },
-      {
-        label: 't.a',
-        className: 'annotation-tag-pancreas-ta-lower',
-        href: '#tejido-adiposo',
-        title: 'Ir a Tejido adiposo',
-        ariaLabel: 'Ir a la descripción del tejido adiposo inferior izquierdo'
-      },
-      {
-        label: 't.c',
-        className: 'annotation-tag-pancreas-tc',
-        href: '#tejido-conjuntivo',
-        title: 'Ir a Tejido conjuntivo',
-        ariaLabel: 'Ir a la descripción del tejido conjuntivo'
+        magnification: 40,
+        ariaLabel: 'Anotaciones histológicas del páncreas a 40 aumentos',
+        toggleLabel: 'Alternar etiquetas de las estructuras del páncreas a 40 aumentos',
+        tags: [
+          {
+            label: 'A.S',
+            className: 'annotation-tag-pancreas-as-top',
+            href: '#porcion-exocrina',
+            title: 'Ir a Porción Exocrina (acinos serosos)',
+            ariaLabel: 'Ir a la descripción de la porción exocrina, acinos serosos superiores'
+          },
+          {
+            label: 'A.S',
+            className: 'annotation-tag-pancreas-as-upper',
+            href: '#porcion-exocrina',
+            title: 'Ir a Porción Exocrina (acinos serosos)',
+            ariaLabel: 'Ir a la descripción de la porción exocrina, acinos serosos superiores derechos'
+          },
+          {
+            label: 'A.S',
+            className: 'annotation-tag-pancreas-as-center',
+            href: '#porcion-exocrina',
+            title: 'Ir a Porción Exocrina (acinos serosos)',
+            ariaLabel: 'Ir a la descripción de la porción exocrina, acinos serosos centrales'
+          },
+          {
+            label: 'A.S',
+            className: 'annotation-tag-pancreas-as-lower',
+            href: '#porcion-exocrina',
+            title: 'Ir a Porción Exocrina (acinos serosos)',
+            ariaLabel: 'Ir a la descripción de la porción exocrina, acinos serosos inferiores izquierdos'
+          },
+          {
+            label: 'is.l',
+            className: 'annotation-tag-pancreas-il-40',
+            href: '#islotes-langerhans',
+            title: 'Ir a Islotes de Langerhans',
+            ariaLabel: 'Ir a la descripción del gran islote de Langerhans central'
+          }
+        ]
       }
     ]
   }
 };
+
+function getAnnotationViewConfig(chapterConfig, magnification) {
+  if (!chapterConfig) {
+    return null;
+  }
+
+  if (Array.isArray(chapterConfig.views)) {
+    return chapterConfig.views.find(
+      (view) => Number(view.magnification) === Number(magnification)
+    ) || null;
+  }
+
+  return (Number(chapterConfig.magnification) || 4) === Number(magnification)
+    ? chapterConfig
+    : null;
+}
+
+function getChapterDefaultMagnification(chapterConfig) {
+  if (!chapterConfig) {
+    return 4;
+  }
+
+  if (Array.isArray(chapterConfig.views) && chapterConfig.views.length) {
+    return Number(chapterConfig.views[0].magnification) || 4;
+  }
+
+  return Number(chapterConfig.magnification) || 4;
+}
 
 function renderAnnotationTags(config) {
   if (!annotationLayer) {
@@ -390,7 +465,9 @@ function renderAnnotationTransform() {
 
 function updateAnnotationState() {
   const annotationMagnification = Number(activeAnnotationConfig?.magnification) || 4;
-  const isAnnotatedMagnification = annotationsChapterEnabled && state.magnification === annotationMagnification;
+  const isAnnotatedMagnification = Boolean(activeAnnotationConfig)
+    && annotationsChapterEnabled
+    && state.magnification === annotationMagnification;
   annotationToggle.hidden = !isAnnotatedMagnification;
 
   const isVisible = isAnnotatedMagnification && annotationsActive;
@@ -1254,6 +1331,7 @@ const tissues = {
         title: 'Histología',
         children: [
           {
+            id: 'porcion-exocrina',
             title: 'Porción Exocrina',
             description: 'Está compuesta principalmente por acinos serosos formados por células acinares, las cuales presentan gránulos de cimógeno eosinófilos en su citoplasma apical. Contiene células centroacinares, que corresponden al inicio de los conductos excretores (conductos de Boll) ubicados dentro de la luz del acino. Sintetiza y secreta enzimas digestivas hacia el duodeno.'
           },
@@ -1718,6 +1796,11 @@ function setMagnification(button) {
   state.panX = 0;
   state.panY = 0;
   setZoom(state.minZoom);
+  if (activeAnnotationChapterConfig) {
+    renderAnnotationTags(
+      getAnnotationViewConfig(activeAnnotationChapterConfig, state.magnification)
+    );
+  }
   updateAnnotationState();
 }
 
@@ -1730,7 +1813,7 @@ function resetView() {
     return;
   }
 
-  const preferredMagnification = Number(activeAnnotationConfig?.magnification) || 4;
+  const preferredMagnification = getChapterDefaultMagnification(activeAnnotationChapterConfig);
   const defaultPreset = Array.from(presetButtons).find(
     (button) => !button.hidden && Number(button.dataset.magnification) === preferredMagnification
   )
@@ -1938,7 +2021,9 @@ function loadTissue() {
         }
       }
     });
-    const preferredMagnification = Number(annotationChapters[requestedChapter]?.magnification) || 4;
+    const preferredMagnification = getChapterDefaultMagnification(
+      annotationChapters[requestedChapter] || null
+    );
     const defaultImageKey = chapterImageSet.images[preferredMagnification]
       ? preferredMagnification
       : chapterImageSet.images[4]
@@ -1967,8 +2052,11 @@ function loadTissue() {
     setCaptionDetailsOpen10(false);
     setCaptionDetailsOpen14(false);
     activeAnnotationConfig = null;
-    renderAnnotationTags(annotationChapters[requestedChapter] || null);
-    annotationsChapterEnabled = Boolean(activeAnnotationConfig);
+    activeAnnotationChapterConfig = annotationChapters[requestedChapter] || null;
+    renderAnnotationTags(
+      getAnnotationViewConfig(activeAnnotationChapterConfig, defaultMagnification)
+    );
+    annotationsChapterEnabled = Boolean(activeAnnotationChapterConfig);
     if (annotationsChapterEnabled) {
       annotationsActive = true;
     }
