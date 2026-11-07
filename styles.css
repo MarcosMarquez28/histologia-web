@@ -5976,6 +5976,36 @@ header img {
   left: 16.5%;
 }
 
+.annotation-tag-tongue-pfl {
+  top: 14.27%;
+  left: 33.19%;
+}
+
+.annotation-tag-tongue-pf {
+  top: 22.66%;
+  left: 52.23%;
+}
+
+.annotation-tag-tongue-lp {
+  top: 24.1%;
+  left: 11.09%;
+}
+
+.annotation-tag-tongue-lp-center {
+  top: 35.94%;
+  left: 56.27%;
+}
+
+.annotation-tag-tongue-mt {
+  top: 63.36%;
+  left: 72.79%;
+}
+
+.annotation-tag-tongue-ml {
+  top: 87.55%;
+  left: 57.48%;
+}
+
 .light-mode .annotation-toggle {
   border-color: rgba(173, 91, 177, 0.3);
   background: rgba(255, 255, 255, 0.9);

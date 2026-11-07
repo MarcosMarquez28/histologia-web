@@ -37,6 +37,54 @@ let annotationsActive = true;
 let activeAnnotationConfig = null;
 
 const annotationChapters = {
+  '5': {
+    ariaLabel: 'Anotaciones histológicas de la punta de lengua',
+    toggleLabel: 'Alternar etiquetas de las estructuras de la punta de lengua',
+    tags: [
+      {
+        label: 'PFL',
+        className: 'annotation-tag-tongue-pfl',
+        href: '#mucosa',
+        title: 'Ir a Mucosa (papila foliada)',
+        ariaLabel: 'Ir a la descripción de la mucosa, papila foliada superior'
+      },
+      {
+        label: 'PF',
+        className: 'annotation-tag-tongue-pf',
+        href: '#mucosa',
+        title: 'Ir a Mucosa (papila fungiforme)',
+        ariaLabel: 'Ir a la descripción de la mucosa, papila fungiforme'
+      },
+      {
+        label: 'LP',
+        className: 'annotation-tag-tongue-lp',
+        href: '#lamina-propia',
+        title: 'Ir a Lámina propia',
+        ariaLabel: 'Ir a la descripción de la lámina propia izquierda'
+      },
+      {
+        label: 'LP',
+        className: 'annotation-tag-tongue-lp-center',
+        href: '#lamina-propia',
+        title: 'Ir a Lámina propia',
+        ariaLabel: 'Ir a la descripción de la lámina propia central'
+      },
+      {
+        label: 'MT',
+        className: 'annotation-tag-tongue-mt',
+        href: '#muscular',
+        title: 'Ir a Muscular (capa transversal)',
+        ariaLabel: 'Ir a la descripción de la capa muscular transversal'
+      },
+      {
+        label: 'ML',
+        className: 'annotation-tag-tongue-ml',
+        href: '#muscular',
+        title: 'Ir a Muscular (capa longitudinal)',
+        ariaLabel: 'Ir a la descripción de la capa muscular longitudinal'
+      }
+    ]
+  },
   '15': {
     ariaLabel: 'Anotaciones histológicas del yeyuno',
     toggleLabel: 'Alternar etiquetas de las estructuras del yeyuno',
@@ -1284,14 +1332,17 @@ const tissues = {
     ],
     structures: [
       {
+        id: 'mucosa',
         title: 'Mucosa',
         description: 'La punta de la lengua presenta principalmente papilas filiformes y fungiformes. Las filiformes son proyecciones cónicas y curvadas del epitelio dirigidas posteriormente, no poseen corpúsculos gustativos y están revestidas por un epitelio plano estratificado muy cornificado. Las fungiformes se distribuyen entre las filiformes y aparecen como estructuras redondeadas en forma de hongo, emergentes y aisladas, revestidas por un epitelio plano estratificado no queratinizado; solo las fungiformes contienen corpúsculos gustativos, comprendidos por células neuroepiteliales, de sostén y basales.'
       },
       {
+        id: 'lamina-propia',
         title: 'Lámina propia',
         description: 'Bajo el epitelio se observa la lámina propia de tejido conjuntivo laxo, que sostiene las papilas y alberga vasos y nervios; más profundo se identifica tejido conjuntivo denso irregular formando tabiques y soporte estructural.'
       },
       {
+        id: 'muscular',
         title: 'Muscular',
         description: 'En la región profunda se observa músculo estriado esquelético intrínseco y extrínseco.'
       },
