@@ -34,6 +34,125 @@ let overlayInteractionTimeout;
 const overlayPointerIds = new Set();
 let annotationsChapterEnabled = false;
 let annotationsActive = true;
+let activeAnnotationConfig = null;
+
+const annotationChapters = {
+  '15': {
+    ariaLabel: 'Anotaciones histológicas del yeyuno',
+    toggleLabel: 'Alternar etiquetas de las estructuras del yeyuno',
+    tags: [
+      { label: 'V', className: 'annotation-tag-v', title: 'Vellosidades' },
+      { label: 'PC', className: 'annotation-tag-pc', title: 'Pliegues circulares' },
+      {
+        label: 'Muc',
+        className: 'annotation-tag-muc',
+        href: '#mucosa',
+        title: 'Ir a Mucosa',
+        ariaLabel: 'Ir a la descripción de la mucosa'
+      },
+      {
+        label: 'SubM',
+        className: 'annotation-tag-subm',
+        href: '#submucosa',
+        title: 'Ir a Submucosa',
+        ariaLabel: 'Ir a la descripción de la submucosa'
+      },
+      {
+        label: 'ME',
+        className: 'annotation-tag-me',
+        href: '#muscular-externa',
+        title: 'Ir a Muscular externa',
+        ariaLabel: 'Ir a la descripción de la muscular externa'
+      }
+    ]
+  },
+  '18': {
+    ariaLabel: 'Anotaciones histológicas del colon',
+    toggleLabel: 'Alternar etiquetas de las estructuras del colon',
+    tags: [
+      {
+        label: 'Muc',
+        className: 'annotation-tag-colon-muc',
+        href: '#mucosa',
+        title: 'Ir a Mucosa',
+        ariaLabel: 'Ir a la descripción de la mucosa'
+      },
+      {
+        label: 'MM',
+        className: 'annotation-tag-colon-mm',
+        href: '#muscular-mucosa',
+        title: 'Ir a Muscular de la mucosa',
+        ariaLabel: 'Ir a la descripción de la muscular de la mucosa'
+      },
+      {
+        label: 'SubM',
+        className: 'annotation-tag-colon-subm',
+        href: '#submucosa',
+        title: 'Ir a Submucosa',
+        ariaLabel: 'Ir a la descripción de la submucosa'
+      },
+      {
+        label: 'VS',
+        className: 'annotation-tag-colon-vs',
+        href: '#vasos-sanguineos',
+        title: 'Ir a Vasos sanguíneos',
+        ariaLabel: 'Ir a la descripción de los vasos sanguíneos de la submucosa izquierda'
+      },
+      {
+        label: 'VS',
+        className: 'annotation-tag-colon-vs-center',
+        href: '#vasos-sanguineos',
+        title: 'Ir a Vasos sanguíneos',
+        ariaLabel: 'Ir a la descripción de los vasos sanguíneos de la submucosa central'
+      },
+      {
+        label: 'VS',
+        className: 'annotation-tag-colon-vs-right',
+        href: '#vasos-sanguineos',
+        title: 'Ir a Vasos sanguíneos',
+        ariaLabel: 'Ir a la descripción de los vasos sanguíneos de la submucosa derecha'
+      },
+      {
+        label: 'ME',
+        className: 'annotation-tag-colon-me',
+        href: '#muscular-externa',
+        title: 'Ir a Muscular externa',
+        ariaLabel: 'Ir a la descripción de la muscular externa'
+      }
+    ]
+  }
+};
+
+function renderAnnotationTags(config) {
+  if (!annotationLayer) {
+    return;
+  }
+
+  if (!config) {
+    annotationLayer.replaceChildren();
+    activeAnnotationConfig = null;
+    return;
+  }
+
+  const tags = config.tags.map((tag) => {
+    const element = tag.href ? document.createElement('a') : document.createElement('span');
+    element.className = `annotation-tag ${tag.className}${tag.href ? ' annotation-tag-link' : ''}`;
+    element.title = tag.title;
+    element.textContent = tag.label;
+    if (tag.href) {
+      element.href = tag.href;
+      if (tag.ariaLabel) {
+        element.setAttribute('aria-label', tag.ariaLabel);
+      }
+    }
+    return element;
+  });
+
+  annotationLayer.replaceChildren(...tags);
+  annotationLayer.setAttribute('aria-label', config.ariaLabel);
+  annotationToggle.setAttribute('aria-label', config.toggleLabel);
+  activeAnnotationConfig = config;
+}
 
 function updateOverlayTogglePlacement() {
   const isFullscreen = document.fullscreenElement === viewerLayout || viewerLayout.classList.contains('is-fullscreen');
@@ -133,10 +252,10 @@ function renderAnnotationTransform() {
 }
 
 function updateAnnotationState() {
-  const isYeyunum4x = annotationsChapterEnabled && state.magnification === 4;
-  annotationToggle.hidden = !isYeyunum4x;
+  const isAnnotatedMagnification = annotationsChapterEnabled && state.magnification === 4;
+  annotationToggle.hidden = !isAnnotatedMagnification;
 
-  const isVisible = isYeyunum4x && annotationsActive;
+  const isVisible = isAnnotatedMagnification && annotationsActive;
   annotationLayer.classList.toggle('is-visible', isVisible);
   annotationLayer.setAttribute('aria-hidden', String(!isVisible));
   annotationToggle.classList.toggle('is-active', isVisible);
@@ -149,7 +268,7 @@ function updateAnnotationState() {
 }
 
 function toggleYeyunumAnnotations() {
-  if (!annotationsChapterEnabled) {
+  if (!annotationsChapterEnabled || !activeAnnotationConfig) {
     return;
   }
 
@@ -710,6 +829,7 @@ const tissues = {
     ],
     structures: [
       {
+        id: 'mucosa',
         title: 'Mucosa',
         description: 'Es una superficie lisa sin vellosidades ni pliegues circulares, contiene:',
         children: [
@@ -721,15 +841,26 @@ const tissues = {
         ]
       },
       {
+        id: 'muscular-mucosa',
+        title: 'Muscular de la mucosa',
+        description: 'Es una capa delgada de músculo liso situada entre la mucosa y la submucosa. Está formada por una subcapa circular interna y una longitudinal externa, cuyas contracciones generan movimientos locales que favorecen la expulsión del contenido de las glándulas intestinales y la remodelación de la superficie mucosa.'
+      },
+      {
+        id: 'submucosa',
         title: 'Submucosa',
         children: [
           'Tejido adiposo.',
-          'Vasos sanguíneos.',
+          {
+            id: 'vasos-sanguineos',
+            title: 'Vasos sanguíneos',
+            description: 'La submucosa contiene una red abundante de arterias y venas de calibre variable que irrigan la mucosa y drenan la sangre hacia la circulación venosa. En los cortes histológicos se reconocen por su pared endotelial y, en las venas, por la presencia de eritrocitos en la luz.'
+          },
           'Tejido conectivo denso irregular.',
           'Plexo submucoso de Meissner.'
         ]
       },
       {
+        id: 'muscular-externa',
         title: 'Muscular externa',
         children: [
           'Capa circular interna y capa longitudinal externa.',
@@ -1658,7 +1789,9 @@ function loadTissue() {
     setCaptionDetailsOpen16(false);
     setCaptionDetailsOpen10(false);
     setCaptionDetailsOpen14(false);
-    annotationsChapterEnabled = isJejunumChapter;
+    activeAnnotationConfig = null;
+    renderAnnotationTags(annotationChapters[requestedChapter] || null);
+    annotationsChapterEnabled = Boolean(activeAnnotationConfig);
     if (annotationsChapterEnabled) {
       annotationsActive = true;
     }
@@ -1856,7 +1989,7 @@ annotationLayer.addEventListener('click', (event) => {
   const highlightTimer = window.setTimeout(() => {
     target.classList.remove('highlight-target');
     structureHighlightTimers.delete(target);
-  }, 2000);
+  }, 1800);
   structureHighlightTimers.set(target, highlightTimer);
 });
 

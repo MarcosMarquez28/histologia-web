@@ -5921,6 +5921,41 @@ header img {
   left: 9.5%;
 }
 
+.annotation-tag-colon-muc {
+  top: 39.7%;
+  left: 55.6%;
+}
+
+.annotation-tag-colon-mm {
+  top: 50.8%;
+  left: 53.2%;
+}
+
+.annotation-tag-colon-subm {
+  top: 72.5%;
+  left: 57.5%;
+}
+
+.annotation-tag-colon-vs {
+  top: 76.9%;
+  left: 34.4%;
+}
+
+.annotation-tag-colon-vs-center {
+  top: 61.2%;
+  left: 72.4%;
+}
+
+.annotation-tag-colon-vs-right {
+  top: 63.1%;
+  left: 93.5%;
+}
+
+.annotation-tag-colon-me {
+  top: 94.6%;
+  left: 59.8%;
+}
+
 .light-mode .annotation-toggle {
   border-color: rgba(173, 91, 177, 0.3);
   background: rgba(255, 255, 255, 0.9);
