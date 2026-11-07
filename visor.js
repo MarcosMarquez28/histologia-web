@@ -1,7 +1,13 @@
 const stage = document.getElementById('viewerStage');
 const image = document.getElementById('viewerImage');
 const imageSource = document.getElementById('viewerImageSource');
+const annotationLayer = document.getElementById('annotationLayer');
+const annotationToggle = document.getElementById('toggleAnnotations');
 imageSource.addEventListener('dragstart', (event) => event.preventDefault());
+imageSource.addEventListener('load', () => {
+  updateAnnotationLayerBounds();
+  renderAnnotationTransform();
+});
 const zoomSlider = document.getElementById('zoomSlider');
 const zoomReadout = document.getElementById('zoomReadout');
 const zoomInButton = document.getElementById('zoomIn');
@@ -26,6 +32,8 @@ const captionDetailsPanel14 = document.getElementById('captionDetailsPanel14');
 const utilityActions = document.querySelector('.viewer-utility-actions');
 let overlayInteractionTimeout;
 const overlayPointerIds = new Set();
+let annotationsChapterEnabled = false;
+let annotationsActive = true;
 
 function updateOverlayTogglePlacement() {
   const isFullscreen = document.fullscreenElement === viewerLayout || viewerLayout.classList.contains('is-fullscreen');
@@ -87,6 +95,69 @@ window.toggleCap8Info = toggleCap8Info;
 window.toggleCap16Info = toggleCap16Info;
 window.toggleCap10Info = toggleCap10Info;
 window.toggleCap14Info = toggleCap14Info;
+
+function updateAnnotationLayerBounds() {
+  if (!annotationLayer || !imageSource.naturalWidth || !imageSource.naturalHeight) {
+    return;
+  }
+
+  const imageRect = image.getBoundingClientRect();
+  const imagePadding = 8;
+  const availableWidth = Math.max(0, imageRect.width - imagePadding * 2);
+  const availableHeight = Math.max(0, imageRect.height - imagePadding * 2);
+  if (!availableWidth || !availableHeight) {
+    return;
+  }
+
+  const imageRatio = imageSource.naturalWidth / imageSource.naturalHeight;
+  let layerWidth = availableWidth;
+  let layerHeight = layerWidth / imageRatio;
+  if (layerHeight > availableHeight) {
+    layerHeight = availableHeight;
+    layerWidth = layerHeight * imageRatio;
+  }
+
+  annotationLayer.style.left = `${(imageRect.width - layerWidth) / 2}px`;
+  annotationLayer.style.top = `${(imageRect.height - layerHeight) / 2}px`;
+  annotationLayer.style.width = `${layerWidth}px`;
+  annotationLayer.style.height = `${layerHeight}px`;
+}
+
+function renderAnnotationTransform() {
+  if (!annotationLayer) {
+    return;
+  }
+
+  annotationLayer.style.transform = `translate(${state.panX}px, ${state.panY}px) scale(${state.zoom})`;
+  annotationLayer.style.setProperty('--annotation-tag-scale', String(1 / state.zoom));
+}
+
+function updateAnnotationState() {
+  const isYeyunum4x = annotationsChapterEnabled && state.magnification === 4;
+  annotationToggle.hidden = !isYeyunum4x;
+
+  const isVisible = isYeyunum4x && annotationsActive;
+  annotationLayer.classList.toggle('is-visible', isVisible);
+  annotationLayer.setAttribute('aria-hidden', String(!isVisible));
+  annotationToggle.classList.toggle('is-active', isVisible);
+  annotationToggle.setAttribute('aria-pressed', String(isVisible));
+
+  if (isVisible) {
+    updateAnnotationLayerBounds();
+    renderAnnotationTransform();
+  }
+}
+
+function toggleYeyunumAnnotations() {
+  if (!annotationsChapterEnabled) {
+    return;
+  }
+
+  annotationsActive = !annotationsActive;
+  updateAnnotationState();
+}
+
+window.toggleYeyunumAnnotations = toggleYeyunumAnnotations;
 
 const tissues = {
   esofago: {
@@ -416,18 +487,22 @@ const tissues = {
     description: 'El yeyuno es el principal sitio de absorción de sustancias nutritivas en el intestino delgado. Las vellosidades son más digitiformes que foliáceas y están cubiertas, sobre todo, por células epiteliales cilíndricas absortivas (enterocitos), aunque también hay células caliciformes y células enteroendocrinas. Las células madre de las que derivan todas estas células y las células de Paneth, que secretan la enzima antibacteriana lisozima, se encuentran en la base de las glándulas intestinales. Las células en replicación revisten la mitad basal de la glándula.',
     structures: [
       {
+        id: 'mucosa',
         title: 'Mucosa',
         description: 'Epitelio cilíndrico simple con vellosidades altas y delgadas, las más desarrolladas del intestino delgado. Criptas de Lieberkühn bien definidas. Enterocitos abundantes con chapa estriada, células caliciformes en número moderado, células de Paneth evidentes y células enteroendocrinas. La lámina propia contiene nódulos linfáticos, pero no forma Placas de Peyer prominentes. Muscular de la mucosa con dos capas delgadas.'
       },
       {
+        id: 'submucosa',
         title: 'Submucosa',
         description: 'Tejido conjuntivo denso sin glándulas de Brunner. Pliegues circulares muy desarrollados. Plexo de Meissner presente.'
       },
       {
+        id: 'muscular-externa',
         title: 'Muscular externa',
         description: 'Capa circular interna y longitudinal externa con plexo de Auerbach. Motilidad muy activa por ser la región de máxima absorción.'
       },
       {
+        id: 'serosa',
         title: 'Serosa',
         description: 'Mesotelio y tejido conjuntivo.'
       }
@@ -1326,6 +1401,7 @@ function updateZoomUI() {
 function renderImage() {
   imageSource.style.transform = `translate(${state.panX}px, ${state.panY}px) scale(${state.zoom})`;
   viewerLayout.classList.toggle('is-zoomed', state.zoom > state.minZoom || state.isPinching);
+  renderAnnotationTransform();
   updateZoomUI();
 }
 
@@ -1345,6 +1421,7 @@ function setMagnification(button) {
   state.panX = 0;
   state.panY = 0;
   setZoom(state.minZoom);
+  updateAnnotationState();
 }
 
 function resetView() {
@@ -1581,6 +1658,11 @@ function loadTissue() {
     setCaptionDetailsOpen16(false);
     setCaptionDetailsOpen10(false);
     setCaptionDetailsOpen14(false);
+    annotationsChapterEnabled = isJejunumChapter;
+    if (annotationsChapterEnabled) {
+      annotationsActive = true;
+    }
+    updateAnnotationState();
   }
 
   const structureList = document.getElementById('tissueStructures');
@@ -1608,6 +1690,11 @@ function loadTissue() {
     if (typeof structure === 'string') {
       item.textContent = structure;
     } else {
+      if (structure.id) {
+        item.id = structure.id;
+        item.tabIndex = -1;
+        item.classList.add('structure-anchor');
+      }
       const title = document.createElement('strong');
       title.textContent = `${structure.title}: `;
       item.append(title);
@@ -1735,6 +1822,44 @@ document.querySelectorAll('#toggleCaptionDetails14, #captionDetailsPanel14 .view
   button.addEventListener('click', toggleCap14Info);
 });
 
+annotationToggle.addEventListener('click', toggleYeyunumAnnotations);
+
+const structureHighlightTimers = new WeakMap();
+
+annotationLayer.addEventListener('click', (event) => {
+  const link = event.target.closest('.annotation-tag-link');
+  if (!link) {
+    return;
+  }
+
+  const targetId = link.getAttribute('href')?.replace(/^#/, '');
+  const target = targetId ? document.getElementById(targetId) : null;
+  if (!target) {
+    return;
+  }
+
+  event.preventDefault();
+
+  if (window.matchMedia('(max-width: 900px)').matches) {
+    setInfoOpen(true);
+  }
+
+  target.focus({ preventScroll: true });
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+
+  const activeTimer = structureHighlightTimers.get(target);
+  if (activeTimer) {
+    window.clearTimeout(activeTimer);
+  }
+  target.classList.add('highlight-target');
+  const highlightTimer = window.setTimeout(() => {
+    target.classList.remove('highlight-target');
+    structureHighlightTimers.delete(target);
+  }, 2000);
+  structureHighlightTimers.set(target, highlightTimer);
+});
+
 stage.addEventListener('wheel', (event) => {
   event.preventDefault();
   const delta = event.deltaY < 0 ? 0.12 : -0.12;
@@ -1742,7 +1867,7 @@ stage.addEventListener('wheel', (event) => {
 }, { passive: false });
 
 stage.addEventListener('touchstart', (event) => {
-  if (event.target.closest('button')) {
+  if (event.target.closest('button, a')) {
     return;
   }
 
@@ -1773,7 +1898,7 @@ stage.addEventListener('touchstart', (event) => {
 }, { passive: false });
 
 stage.addEventListener('touchmove', (event) => {
-  if (event.target.closest('button')) {
+  if (event.target.closest('button, a')) {
     return;
   }
 
@@ -1838,13 +1963,13 @@ stage.addEventListener('pointerdown', (event) => {
     return;
   }
 
-  if (event.pointerType !== 'mouse' && !event.target.closest('button')) {
+  if (event.pointerType !== 'mouse' && !event.target.closest('button, a')) {
     window.clearTimeout(overlayInteractionTimeout);
     image.classList.add('is-interacting');
     overlayPointerIds.add(event.pointerId);
   }
 
-  if (event.target.closest('button')) {
+  if (event.target.closest('button, a')) {
     return;
   }
 
@@ -1896,6 +2021,7 @@ document.addEventListener('pointercancel', finishOverlayInteraction);
 window.addEventListener('resize', () => {
   limitPan();
   renderImage();
+  updateAnnotationLayerBounds();
   if (!captionDetailsPanel.hidden) {
     setCaptionDetailsOpen(true);
   }

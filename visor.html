@@ -47,6 +47,17 @@
           <div class="viewer-stage" id="viewerStage" aria-label="Visor de referencia anatómica">
             <div class="viewer-image" id="viewerImage" role="group" aria-label="Microfotografía de parótida a 4×">
               <img class="viewer-image-source" id="viewerImageSource" src="image/parotida 4x.jpg" alt="" draggable="false" />
+              <div class="annotation-layer" id="annotationLayer" aria-label="Anotaciones histológicas del yeyuno" aria-hidden="true">
+                <span class="annotation-tag annotation-tag-v" title="Vellosidades">V</span>
+                <span class="annotation-tag annotation-tag-pc" title="Pliegues circulares">PC</span>
+                <a class="annotation-tag annotation-tag-link annotation-tag-muc" href="#mucosa" title="Ir a Mucosa" aria-label="Ir a la descripción de la mucosa">Muc</a>
+                <a class="annotation-tag annotation-tag-link annotation-tag-subm" href="#submucosa" title="Ir a Submucosa" aria-label="Ir a la descripción de la submucosa">SubM</a>
+                <a class="annotation-tag annotation-tag-link annotation-tag-me" href="#muscular-externa" title="Ir a Muscular externa" aria-label="Ir a la descripción de la muscular externa">ME</a>
+              </div>
+              <button type="button" class="annotation-toggle" id="toggleAnnotations" aria-controls="annotationLayer" aria-pressed="true" aria-label="Alternar etiquetas de las estructuras del yeyuno" hidden>
+                <span class="annotation-toggle-dot" aria-hidden="true"></span>
+                <span class="annotation-toggle-label">Etiquetas</span>
+              </button>
               <div class="viewer-overlay">
                 <span id="viewerImageCaption">MICROFOTOGRAFÍA · PARÓTIDA</span>
                 <strong id="viewerImageTitle">Parótida · 4×</strong>

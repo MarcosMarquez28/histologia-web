@@ -2753,6 +2753,7 @@ body:has(.viewer-page) {
   min-width: 0;
   padding: 16px;
   overflow-y: auto;
+  scroll-behavior: smooth;
   border: 1px solid var(--dashboard-border);
   border-radius: 18px;
   background: rgba(15, 23, 39, 0.91);
@@ -2878,6 +2879,23 @@ body:has(.viewer-page) {
   border-radius: 50%;
   background: var(--dashboard-cyan);
   content: "";
+}
+
+.info-copy .structure-anchor {
+  scroll-margin-top: 14px;
+  border-radius: 10px;
+  transition: background-color 500ms ease, box-shadow 500ms ease;
+}
+
+.info-copy .structure-anchor.highlight-target {
+  background-color: rgba(243, 104, 224, 0.14);
+  box-shadow:
+    inset 0 0 0 1px rgba(243, 104, 224, 0.44),
+    0 0 20px rgba(243, 104, 224, 0.2);
+}
+
+.info-copy .structure-anchor:focus {
+  outline: none;
 }
 
 .info-backdrop {
@@ -5746,6 +5764,202 @@ header img {
 @media (prefers-reduced-motion: reduce) {
   .dashboard-links,
   .menu-toggle {
+    transition: none;
+  }
+}
+
+/* Chapter 15 · Yeyuno 4x interactive annotations */
+.annotation-toggle {
+  position: absolute;
+  z-index: 4;
+  top: 16px;
+  left: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 0 13px;
+  border: 1px solid rgba(243, 104, 224, 0.32);
+  border-radius: 999px;
+  background: rgba(20, 14, 29, 0.82);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+  color: #f5d7ff;
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background 160ms ease, border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.annotation-toggle[hidden] {
+  display: none;
+}
+
+.annotation-toggle-dot {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: rgba(245, 215, 255, 0.34);
+  transition: background 160ms ease, box-shadow 160ms ease;
+}
+
+.annotation-toggle.is-active {
+  border-color: rgba(145, 223, 233, 0.62);
+  background: rgba(12, 30, 38, 0.86);
+  color: #d7fbff;
+}
+
+.annotation-toggle.is-active .annotation-toggle-dot {
+  background: #91dfe9;
+  box-shadow: 0 0 9px rgba(145, 223, 233, 0.9);
+}
+
+.annotation-toggle:hover,
+.annotation-toggle:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(243, 104, 224, 0.68);
+  background: rgba(43, 24, 51, 0.9);
+  box-shadow: 0 0 18px rgba(224, 86, 253, 0.24);
+  outline: none;
+}
+
+.annotation-layer {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  transform-origin: center center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms ease, visibility 200ms ease;
+}
+
+.annotation-layer.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.annotation-tag {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  min-height: 27px;
+  padding: 4px 9px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 9px;
+  background: rgba(9, 15, 26, 0.6);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  color: #f4f9ff;
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+  white-space: nowrap;
+  transform: translate(-50%, -50%) scale(var(--annotation-tag-scale, 1));
+  transform-origin: center center;
+  backdrop-filter: blur(8px) saturate(140%);
+  -webkit-backdrop-filter: blur(8px) saturate(140%);
+}
+
+.annotation-tag-link {
+  pointer-events: auto;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 160ms ease, border-color 160ms ease, box-shadow 160ms ease, color 160ms ease;
+}
+
+.annotation-tag-link:hover,
+.annotation-tag-link:focus-visible {
+  border-color: rgba(145, 223, 233, 0.82);
+  background: rgba(12, 42, 52, 0.86);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.4), 0 0 16px rgba(145, 223, 233, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  color: #eafcff;
+}
+
+.annotation-tag-link:focus-visible {
+  outline: 2px solid rgba(145, 223, 233, 0.9);
+  outline-offset: 3px;
+}
+
+.annotation-tag-link:active {
+  background: rgba(20, 62, 74, 0.92);
+}
+
+.annotation-tag-v {
+  top: 33.5%;
+  left: 49.5%;
+}
+
+.annotation-tag-pc {
+  top: 36.5%;
+  left: 76.5%;
+}
+
+.annotation-tag-muc {
+  top: 75%;
+  left: 64%;
+}
+
+.annotation-tag-subm {
+  top: 80%;
+  left: 26.5%;
+}
+
+.annotation-tag-me {
+  top: 89%;
+  left: 9.5%;
+}
+
+.light-mode .annotation-toggle {
+  border-color: rgba(173, 91, 177, 0.3);
+  background: rgba(255, 255, 255, 0.9);
+  color: #4f3158;
+  box-shadow: 0 8px 24px rgba(75, 41, 84, 0.14);
+}
+
+.light-mode .annotation-toggle.is-active {
+  border-color: rgba(50, 160, 180, 0.45);
+  background: rgba(231, 250, 253, 0.94);
+  color: #0b4f5b;
+}
+
+.light-mode .annotation-toggle:hover,
+.light-mode .annotation-toggle:focus-visible {
+  background: rgba(255, 255, 255, 0.97);
+}
+
+@media (max-width: 620px) {
+  .annotation-toggle {
+    top: 10px;
+    left: 10px;
+    min-height: 34px;
+    padding: 0 10px;
+    font-size: 0.64rem;
+  }
+
+  .annotation-tag {
+    min-width: 27px;
+    min-height: 23px;
+    padding: 3px 7px;
+    font-size: 0.64rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .annotation-layer,
+  .annotation-tag,
+  .annotation-toggle {
     transition: none;
   }
 }
