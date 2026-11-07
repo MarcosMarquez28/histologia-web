@@ -6014,7 +6014,7 @@ header img {
 .annotation-tag-pancreas-tc,
 .annotation-tag-pancreas-as-top,
 .annotation-tag-pancreas-as-upper,
-.annotation-tag-pancreas-as-center,
+.annotation-tag-pancreas-as-right,
 .annotation-tag-pancreas-as-lower,
 .annotation-tag-pancreas-il-40 {
   min-width: 0;
@@ -6071,9 +6071,9 @@ header img {
   left: 34.4%;
 }
 
-.annotation-tag-pancreas-as-center {
-  top: 45.19%;
-  left: 52.78%;
+.annotation-tag-pancreas-as-right {
+  top: 32%;
+  left: 70%;
 }
 
 .annotation-tag-pancreas-as-lower {

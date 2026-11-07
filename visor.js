@@ -282,10 +282,10 @@ const annotationChapters = {
           },
           {
             label: 'A.S',
-            className: 'annotation-tag-pancreas-as-center',
+            className: 'annotation-tag-pancreas-as-right',
             href: '#porcion-exocrina',
             title: 'Ir a Porción Exocrina (acinos serosos)',
-            ariaLabel: 'Ir a la descripción de la porción exocrina, acinos serosos centrales'
+            ariaLabel: 'Ir a la descripción de la porción exocrina, acinos serosos periféricos derechos'
           },
           {
             label: 'A.S',
