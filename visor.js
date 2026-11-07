@@ -19,6 +19,10 @@ const captionDetailsButton = document.getElementById('toggleCaptionDetails');
 const captionDetailsPanel = document.getElementById('captionDetailsPanel');
 const captionDetailsButton16 = document.getElementById('toggleCaptionDetails16');
 const captionDetailsPanel16 = document.getElementById('captionDetailsPanel16');
+const captionDetailsButton10 = document.getElementById('toggleCaptionDetails10');
+const captionDetailsPanel10 = document.getElementById('captionDetailsPanel10');
+const captionDetailsButton14 = document.getElementById('toggleCaptionDetails14');
+const captionDetailsPanel14 = document.getElementById('captionDetailsPanel14');
 const utilityActions = document.querySelector('.viewer-utility-actions');
 let overlayInteractionTimeout;
 const overlayPointerIds = new Set();
@@ -63,8 +67,26 @@ function toggleCap16Info() {
   setCaptionDetailsOpen16(!captionDetailsPanel16.classList.contains('is-open'));
 }
 
+function setCaptionDetailsOpen10(isOpen) {
+  setExtendedInfoOpen(captionDetailsPanel10, captionDetailsButton10, isOpen);
+}
+
+function toggleCap10Info() {
+  setCaptionDetailsOpen10(!captionDetailsPanel10.classList.contains('is-open'));
+}
+
+function setCaptionDetailsOpen14(isOpen) {
+  setExtendedInfoOpen(captionDetailsPanel14, captionDetailsButton14, isOpen);
+}
+
+function toggleCap14Info() {
+  setCaptionDetailsOpen14(!captionDetailsPanel14.classList.contains('is-open'));
+}
+
 window.toggleCap8Info = toggleCap8Info;
 window.toggleCap16Info = toggleCap16Info;
+window.toggleCap10Info = toggleCap10Info;
+window.toggleCap14Info = toggleCap14Info;
 
 const tissues = {
   esofago: {
@@ -1136,6 +1158,14 @@ const chapterImageSets = {
       4: 'image/estomago.jpeg'
     }
   },
+  10: {
+    label: 'Estómago - Cardias',
+    imageDescription: 'el cardias gástrico',
+    images: {
+      10: 'image/estomago cardias 10x.jpeg',
+      40: 'image/estomago cardias 40x.jpeg'
+    }
+  },
   11: {
     label: 'Glándula Fúndica',
     imageDescription: 'el fundus gástrico',
@@ -1161,6 +1191,14 @@ const chapterImageSets = {
     imageDescription: 'el intestino delgado',
     images: {
       4: 'image/intestino delgado.jpeg'
+    }
+  },
+  14: {
+    label: 'Intestino Delgado: Duodeno',
+    imageDescription: 'el duodeno',
+    images: {
+      4: 'image/intestino delgado duodeno 4x.jpeg',
+      10: 'image/intestino delgado duodeno 10x.jpeg'
     }
   },
   15: {
@@ -1318,7 +1356,8 @@ function resetView() {
     return;
   }
 
-  const defaultPreset = Array.from(presetButtons).find((button) => !button.hidden && button.dataset.magnification === '4');
+  const defaultPreset = Array.from(presetButtons).find((button) => !button.hidden && button.dataset.magnification === '4')
+    || Array.from(presetButtons).find((button) => !button.hidden);
   if (defaultPreset) {
     setMagnification(defaultPreset);
   }
@@ -1521,45 +1560,27 @@ function loadTissue() {
         }
       }
     });
+    const defaultImageKey = chapterImageSet.images[4] ? 4 : chapterImageSet.images[10] ? 10 : 40;
+    const defaultImage = chapterImageSet.images[defaultImageKey];
+    const defaultMagnification = Number(defaultImageKey);
     const referenceImage = document.getElementById('referenceImage');
-    referenceImage.src = chapterImageSet.images[4];
+    referenceImage.src = defaultImage;
     referenceImage.hidden = false;
-    state.imagePath = chapterImageSet.images[4];
-    imageSource.src = chapterImageSet.images[4];
-    image.setAttribute('aria-label', `Microfotografía de ${activeImageDescription} a 4×`);
-    document.getElementById('viewerImageTitle').textContent = `${activeImageLabel} · 4×`;
+    state.imagePath = defaultImage;
+    state.magnification = defaultMagnification;
+    imageSource.src = defaultImage;
+    image.setAttribute('aria-label', `Microfotografía de ${activeImageDescription} a ${defaultMagnification}×`);
+    document.getElementById('viewerImageTitle').textContent = `${activeImageLabel} · ${defaultMagnification}×`;
     document.getElementById('viewerImageCaption').textContent = `MICROFOTOGRAFÍA · ${activeImageLabel.toUpperCase()}`;
     captionDetailsButton.hidden = !isEsophagogastricChapter;
     captionDetailsButton16.hidden = !isIleumChapter;
-    image.classList.toggle('has-caption-details', isEsophagogastricChapter || isIleumChapter);
+    captionDetailsButton10.hidden = !isCardiacGlandsChapter;
+    captionDetailsButton14.hidden = !isDuodenumChapter;
+    image.classList.toggle('has-caption-details', isEsophagogastricChapter || isIleumChapter || isCardiacGlandsChapter || isDuodenumChapter);
     setCaptionDetailsOpen(false);
     setCaptionDetailsOpen16(false);
-  } else if (isDuodenumChapter) {
-    document.getElementById('viewerChapter').textContent = 'CAPÍTULO 14 · INTESTINO DELGADO: DUODENO';
-    document.getElementById('viewerImageTitle').textContent = 'Microfotografía no disponible';
-    document.getElementById('viewerImageCaption').textContent = 'CAPÍTULO SIN MICROFOTOGRAFÍA';
-    imageSource.removeAttribute('src');
-    image.setAttribute('aria-label', 'Capítulo 14 sin microfotografía');
-    document.getElementById('referenceImage').hidden = true;
-    document.querySelector('.info-thumb').hidden = true;
-    presetButtons.forEach((button) => {
-      button.hidden = true;
-    });
-    state.imagePath = '';
-    magnificationReadout.textContent = 'Sin aumento';
-    viewerStatus.textContent = 'El contenido histológico está disponible; no hay una microfotografía asignada a este capítulo.';
-  } else if (isCardiacGlandsChapter) {
-    document.getElementById('viewerChapter').textContent = 'CAPÍTULO 10 · GLÁNDULAS CARDIALES Y CAPAS DEL ESTÓMAGO';
-    document.getElementById('viewerImageTitle').textContent = 'Microfotografía no disponible';
-    document.getElementById('viewerImageCaption').textContent = 'CAPÍTULO SIN MICROFOTOGRAFÍA';
-    imageSource.removeAttribute('src');
-    image.setAttribute('aria-label', 'Capítulo 10 sin microfotografía');
-    document.querySelector('.info-thumb').hidden = true;
-    presetButtons.forEach((button) => {
-      button.hidden = true;
-    });
-    state.imagePath = '';
-    viewerStatus.textContent = 'El contenido histológico está disponible; no hay una microfotografía asignada a este capítulo.';
+    setCaptionDetailsOpen10(false);
+    setCaptionDetailsOpen14(false);
   }
 
   const structureList = document.getElementById('tissueStructures');
@@ -1704,6 +1725,14 @@ document.querySelectorAll('#toggleCaptionDetails, #captionDetailsPanel .viewer-c
 
 document.querySelectorAll('#toggleCaptionDetails16, #captionDetailsPanel16 .viewer-caption-close, #captionDetailsPanel16 .extended-info-close').forEach((button) => {
   button.addEventListener('click', toggleCap16Info);
+});
+
+document.querySelectorAll('#toggleCaptionDetails10, #captionDetailsPanel10 .viewer-caption-close, #captionDetailsPanel10 .extended-info-close').forEach((button) => {
+  button.addEventListener('click', toggleCap10Info);
+});
+
+document.querySelectorAll('#toggleCaptionDetails14, #captionDetailsPanel14 .viewer-caption-close, #captionDetailsPanel14 .extended-info-close').forEach((button) => {
+  button.addEventListener('click', toggleCap14Info);
 });
 
 stage.addEventListener('wheel', (event) => {
@@ -1872,6 +1901,12 @@ window.addEventListener('resize', () => {
   }
   if (!captionDetailsPanel16.hidden) {
     setCaptionDetailsOpen16(true);
+  }
+  if (!captionDetailsPanel10.hidden) {
+    setCaptionDetailsOpen10(true);
+  }
+  if (!captionDetailsPanel14.hidden) {
+    setCaptionDetailsOpen14(true);
   }
 });
 
